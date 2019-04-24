@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+body {
+    font: 12px Arial;
+}
+
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+</style>
+<link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+<link rel="stylesheet" href={{ url_for('static', filename='style.css') }}
+>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<body>
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Visualization Project</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Tasks</p>
+            <li class="active">
+                <a href="/">Visualize Sampled Data</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<script>
+    /*
+    d3v5 example code below
+    const margin = ({top: 60, right: 20, bottom: 30, left: 40});
+    const width = 1000;
+    const height = 400;
+
+    let chart = (data, title) => {
+        data.x = "{{feature | safe}}";
+        data.y = "Count";
+
+        const x = d3.scaleLinear()
+                    .domain(d3.extent(data)).nice()
+                    .range([margin.left, width - margin.right])
+
+        const histogram = d3.histogram()
+                            .domain(x.domain())
+                            .thresholds(x.ticks(40))
+
+        const bins = histogram(data);
+
+        const y = d3.scaleLinear()
+                    .domain([0, d3.max(bins, d => d.length)]).nice()
+                    .range([height - margin.bottom, margin.top])
+
+        const xAxis = (g) => g.attr("transform", `translate(0,${height - margin.bottom})`)
+                              .call(d3.axisBottom(x).tickSizeOuter(0))
+                              .call(g => g.append("text")
+                                          .attr("x", width - margin.right)
+                                          .attr("y", -10)
+                                          .attr("fill", "#000")
+                                          .attr("font-size", 14)
+                                          .attr("font-weight", "bold")
+                                          .attr("text-anchor", "end")
+                                          .text(data.x))
+
+        const yAxis = (g) => g.attr("transform", `translate(${margin.left},0)`)
+                              .call(d3.axisLeft(y))
+                              .call(g => g.select(".domain").remove())
+                              .call(g => g.select(".tick:last-of-type text").clone()
+                                          .attr("x", 4)
+                                          .attr("font-size", 14)
+                                          .attr("text-anchor", "start")
+                                          .attr("font-weight", "bold")
+                                          .text(data.y))
+        const svg = d3.select('#content')
+                      .append('svg')
+                      .attr("width", width)
+                      .attr("height", height);
+
+        svg.append("text")
+           .attr("transform", "translate(400,0)")
+           .attr("x", 100)
+           .attr("y", 50)
+           .attr("font-size", "16px")
+           .text(`Board Game Data - ${title}`);
+
+        const bar = svg.append("g")
+                       .attr("fill", "steelblue")
+                       .selectAll("rect")
+                       .data(bins)
+                       .join("rect")
+                       .attr("x", (i, d) => x(i.x0) + 1)
+                       .attr("width", d => Math.max(0, x(d.x1) - x(d.x0) - 1))
+                       .attr("y", d => y(d.length))
+                       .attr("height", d => y(0) - y(d.length));
+
+        svg.append("g")
+           .call(xAxis);
+
+        svg.append("g")
+           .call(yAxis);
+
+        return svg.node();
+    }
+
+    var reg_data = {{ data.reg_chart_data | safe }};
+    chart(reg_data, "Regular Data");
+
+    var sample_data = {{ data.sample_chart_data | safe }};
+    chart(sample_data, "Sampled Data");
+    */
+
+    $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+    });
+
+</script>
+</body>
