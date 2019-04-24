@@ -1,0 +1,195 @@
+,index,state,majority_religion,majority_population,majority_ratio
+0,85,Guinea-Bissau,animism,702000,0.475
+1,157,Mongolia,buddhism,1455388,0.53
+2,163,Bhutan,buddhism,583740,0.8402
+3,166,Myanmar,buddhism,43983776,0.7479
+4,167,Sri Lanka,buddhism,14467488,0.7026
+5,170,Thailand,buddhism,58580120,0.87
+6,171,Cambodia,buddhism,14801990,0.9669
+7,172,Laos,buddhism,4159404,0.6773
+8,173,Vietnam,buddhism,43079830,0.49
+9,175,Singapore,buddhism,1688506,0.3303
+10,0,United States of America,christianity,233111307,0.7454
+11,1,Canada,christianity,26431104,0.7661
+12,2,Bahamas,christianity,302657,0.966
+13,3,Cuba,christianity,7407107,0.6589
+14,4,Haiti,christianity,8003882,0.82
+15,5,Dominican Republic,christianity,8662283,0.87
+16,6,Jamaica,christianity,1974000,0.6881
+17,7,Trinidad and Tobago,christianity,729270,0.5588
+18,8,Barbados,christianity,185756,0.6434
+19,9,Dominica,christianity,67160,0.92
+20,10,Grenada,christianity,94323,0.87
+21,11,St. Lucia,christianity,151183,0.9218
+22,12,St. Vincent and the Grenadines,christianity,93496,0.899
+23,13,Antigua & Barbuda,christianity,79425,0.914
+24,14,St. Kitts and Nevis,christianity,45525,0.8979
+25,15,Mexico,christianity,108811290,0.9686
+26,16,Belize,christianity,223972,0.7365
+27,17,Guatemala,christianity,13133239,0.95
+28,18,Honduras,christianity,7121814,0.89
+29,19,El Salvador,christianity,6209779,0.861
+30,20,Nicaragua,christianity,5242544,0.9005
+31,21,Costa Rica,christianity,3925741,0.8822
+32,22,Panama,christianity,4166894,0.9793
+33,23,Colombia,christianity,44910647,0.9701
+34,24,Venezuela,christianity,27392300,0.95
+35,25,Guyana,christianity,427919,0.5575
+36,26,Suriname,christianity,271680,0.48
+37,27,Ecuador,christianity,12830327,0.903
+38,28,Peru,christianity,27579681,0.938
+39,29,Brazil,christianity,168313010,0.8823
+40,30,Bolivia,christianity,9720100,0.9426
+41,31,Paraguay,christianity,6138983,0.951
+42,32,Chile,christianity,15587652,0.9128
+43,33,Argentina,christianity,34400709,0.8515
+44,34,Uruguay,christianity,2746709,0.8183
+45,35,United Kingdom,christianity,38957273,0.6263
+46,36,Ireland,christianity,4150307,0.9299
+47,37,Netherlands,christianity,9626041,0.5794
+48,38,Belgium,christianity,7526165,0.6920000000000001
+49,39,Luxembourg,christianity,460637,0.9106
+50,40,France,christianity,44023361,0.7019
+51,41,Monaco,christianity,26550,0.802
+52,42,Liechtenstein,christianity,31031,0.8678
+53,43,Switzerland,christianity,6303993,0.8056
+54,44,Spain,christianity,37121529,0.8056
+55,45,Andorra,christianity,77546,0.907
+56,46,Portugal,christianity,9123319,0.8573
+57,47,Germany,christianity,57827992,0.7078
+58,48,Poland,christianity,34539629,0.9046
+59,49,Austria,christianity,6124531,0.73
+60,50,Hungary,christianity,6669095,0.6736
+61,52,Slovakia,christianity,4101842,0.7548
+62,53,Italy,christianity,48018881,0.7939
+63,54,San Marino,christianity,28088,0.8631
+64,55,Malta,christianity,401633,0.9727
+65,57,Montenegro,christianity,478002,0.7593
+66,58,Macedonia,christianity,1310808,0.6374
+67,59,Croatia,christianity,4042145,0.9137
+68,60,Yugoslavia,christianity,6652741,0.9122
+69,61,Bosnia and Herzegovina,christianity,1988372,0.52
+70,63,Slovenia,christianity,1375987,0.67
+71,64,Greece,christianity,10682948,0.9438
+72,65,Cyprus,christianity,606674,0.7453
+73,66,Bulgaria,christianity,6206119,0.8227
+74,67,Moldova,christianity,2925500,0.8213
+75,68,Romania,christianity,20899522,0.9751
+76,69,Russia,christianity,105697556,0.7423
+77,71,Latvia,christianity,1772369,0.7902
+78,72,Lithuania,christianity,2755107,0.8296
+79,73,Ukraine,christianity,39196664,0.852
+80,74,Belarus,christianity,5394257,0.5684
+81,75,Armenia,christianity,3086654,0.951
+82,76,Georgia,christianity,3553010,0.7979999999999999
+83,78,Finland,christianity,4258941,0.794
+84,79,Sweden,christianity,7133814,0.7606
+85,80,Norway,christianity,4103723,0.8401
+86,81,Denmark,christianity,4527237,0.8172
+87,82,Iceland,christianity,290063,0.9155
+88,83,Cape Verde,christianity,450220,0.9478
+89,84,Sao Tome and Principe,christianity,153810,0.9441
+90,86,Equatorial Guinea,christianity,622914,0.892
+91,90,Benin,christianity,3514394,0.4
+92,93,Ivory Coast,christianity,8029336,0.375
+93,96,Liberia,christianity,3542240,0.85
+94,98,Ghana,christianity,16879326,0.7034
+95,99,Togo,christianity,2797212,0.48
+96,100,Cameroon,christianity,9868484,0.4952
+97,102,Gabon,christianity,1047752,0.7472
+98,103,Central African Republic,christianity,2215305,0.49200000000000005
+99,105,Congo,christianity,3228666,0.8063
+100,106,Democratic Republic of the Congo,christianity,63127199,0.9302
+101,107,Uganda,christianity,25921856,0.833
+102,108,Kenya,christianity,32402646,0.8063
+103,109,Tanzania,christianity,20574501,0.4777
+104,110,Burundi,christianity,7641386,0.889
+105,111,Rwanda,christianity,9252868,0.8945
+106,114,Ethiopia,christianity,50654152,0.6156
+107,115,Eritrea,christianity,3009808,0.575
+108,116,Angola,christianity,17034849,0.8912
+109,117,Mozambique,christianity,10340024,0.4734
+110,118,Zambia,christianity,11344499,0.87
+111,119,Zimbabwe,christianity,9961179,0.8188
+112,120,Malawi,christianity,10452600,0.7228
+113,121,South Africa,christianity,40488807,0.8094
+114,122,Namibia,christianity,1865944,0.87
+115,123,Lesotho,christianity,1972951,0.9418
+116,124,Botswana,christianity,1250799,0.6920000000000001
+117,125,Swaziland,christianity,957312,0.7843
+118,126,Madagascar,christianity,12031782,0.5858
+119,129,Seychelles,christianity,81121,0.9365
+120,177,Philippines,christianity,84493445,0.9174
+121,179,East Timor,christianity,1105222,0.98
+122,180,Australia,christianity,13150670,0.6145
+123,181,Papua New Guinea,christianity,6611410,0.96
+124,182,New Zealand,christianity,2361557,0.5407
+125,183,Vanuatu,christianity,205190,0.85
+126,184,Solomon Islands,christianity,482878,0.9
+127,185,Kiribati,christianity,98880,0.96
+128,186,Tuvalu,christianity,9764,0.9699
+129,187,Fiji,christianity,549963,0.64
+130,188,Tonga,christianity,98745,0.9421
+131,189,Nauru,christianity,9638,0.9699
+132,190,Marshall Islands,christianity,50971,0.9341
+133,191,Palau,christianity,18391,0.8606
+134,192,Federated States of Micronesia,christianity,96000,0.8651
+135,193,Samoa,christianity,180140,0.9538
+136,128,Mauritius,hinduism,622238,0.4859
+137,162,India,hinduism,961401054,0.8045
+138,169,Nepal,hinduism,21551492,0.8134
+139,56,Albania,islam,2013180,0.63
+140,62,Kosovo,islam,1657720,0.9561
+141,77,Azerbaijan,islam,8595234,0.95
+142,87,Gambia,islam,1548362,0.9
+143,88,Mali,islam,12754822,0.94
+144,89,Senegal,islam,11346069,0.9389
+145,91,Mauritania,islam,3212166,0.97
+146,92,Niger,islam,13714412,0.915
+147,94,Guinea,islam,8702832,0.85
+148,95,Burkina Faso,islam,9023117,0.579
+149,97,Sierra Leone,islam,3396544,0.5532
+150,101,Nigeria,islam,78284656,0.508
+151,104,Chad,islam,6347232,0.552
+152,112,Somalia,islam,9283692,0.995
+153,113,Djibouti,islam,860869,0.975
+154,127,Comoros,islam,666746,0.9806
+155,130,Morocco,islam,31430015,0.9891
+156,131,Algeria,islam,35309660,0.99
+157,132,Tunisia,islam,10443506,0.99
+158,133,Libya,islam,6310833,0.9695
+159,134,Sudan,islam,28488914,0.71
+160,135,Iran,islam,73332824,0.99
+161,136,Turkey,islam,75699756,0.9858
+162,137,Iraq,islam,30210000,0.95
+163,138,Egypt,islam,70248701,0.8643
+164,139,Syria,islam,18372466,0.902
+165,140,Lebanon,islam,2203740,0.54
+166,141,Jordan,islam,5928782,0.97
+167,143,Saudi Arabia,islam,24477606,0.9382
+168,144,Yemen,islam,23369328,0.99
+169,145,Kuwait,islam,2478497,0.9195
+170,146,Bahrain,islam,1106174,0.8959999999999999
+171,147,Qatar,islam,798733,0.47
+172,148,United Arab Emirates,islam,4208337,0.6748
+173,149,Oman,islam,2678195,0.8987
+174,150,Afghanistan,islam,26880000,0.9956
+175,151,Turkmenistan,islam,4998243,0.89
+176,152,Tajikistan,islam,6692802,0.9
+177,153,Kyrgyzstan,islam,4132536,0.7702
+178,154,Uzbekistan,islam,26189329,0.93
+179,155,Kazakhstan,islam,9678983,0.5932
+180,164,Pakistan,islam,161189415,0.9569
+181,165,Bangladesh,islam,132119746,0.897
+182,168,Maldives,islam,311056,0.98
+183,174,Malaysia,islam,17263000,0.61
+184,176,Brunei,islam,335000,0.8129
+185,178,Indonesia,islam,201550000,0.8399
+186,142,Israel,judaism,5573299,0.731
+187,51,Czech Republic,noreligion,7980000,0.7575
+188,70,Estonia,noreligion,925000,0.6903
+189,159,North Korea,noreligion,15690406,0.6432
+190,160,South Korea,noreligion,22199939,0.4542
+191,161,Japan,shinto,108000000,0.8474
+192,156,China,syncretism,564973194,0.42
+193,158,Taiwan,syncretism,9120490,0.4005
