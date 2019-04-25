@@ -1,1 +1,1 @@
-MAJORITY_POP_FILE = 'data/world-religions/national_majority_data.csv'
+MAJORITY_POP_BY_YEAR = 'data/world-religions/national_majority_data_by_year.csv'

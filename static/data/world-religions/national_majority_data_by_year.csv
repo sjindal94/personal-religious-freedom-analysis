@@ -1,0 +1,1996 @@
+index,year,state,code,majority_religion,majority_population,majority_ratio
+892,1975,Guinea Bissau,GNB,animism,370000,0.5901
+893,1980,Guinea Bissau,GNB,animism,429550,0.55
+894,1985,Guinea Bissau,GNB,animism,460370,0.5298
+895,1990,Guinea Bissau,GNB,animism,510920,0.53
+896,1995,Guinea Bissau,GNB,animism,534500,0.5
+897,2000,Guinea Bissau,GNB,animism,545850,0.45
+898,2005,Guinea Bissau,GNB,animism,583440,0.44
+899,2010,Guinea Bissau,GNB,animism,702000,0.475
+941,1960,Benin,BEN,animism,1615380,0.7221
+942,1965,Benin,BEN,animism,1567519,0.725
+943,1970,Benin,BEN,animism,1841564,0.6775
+944,1975,Benin,BEN,animism,2075040,0.6668
+945,1980,Benin,BEN,animism,2204920,0.6369
+946,1985,Benin,BEN,animism,2546170,0.6273
+947,1990,Benin,BEN,animism,2522300,0.5322
+948,1995,Benin,BEN,animism,2308085,0.4265
+974,1960,Ivory Coast,CDI,animism,2521310,0.6637
+975,1965,Ivory Coast,CDI,animism,2642550,0.5837
+976,1970,Ivory Coast,CDI,animism,2867474,0.5199
+977,1975,Ivory Coast,CDI,animism,3240706,0.4797
+978,1980,Ivory Coast,CDI,animism,3683937,0.4496
+979,1985,Ivory Coast,CDI,animism,4092169,0.41200000000000003
+986,1965,Guinea,GUI,animism,1700000,0.4843
+996,1960,Burkina Faso,BFO,animism,3029760,0.7348
+997,1965,Burkina Faso,BFO,animism,2996461,0.6563
+998,1970,Burkina Faso,BFO,animism,2963162,0.5861
+999,1975,Burkina Faso,BFO,animism,2990031,0.534
+1000,1980,Burkina Faso,BFO,animism,3012900,0.4361
+1007,1945,Liberia,LBR,animism,440560,0.727
+1008,1950,Liberia,LBR,animism,596970,0.7245
+1009,1955,Liberia,LBR,animism,639800,0.7
+1010,1960,Liberia,LBR,animism,466200,0.7
+1011,1965,Liberia,LBR,animism,593428,0.615
+1012,1970,Liberia,LBR,animism,720556,0.5701
+1013,1975,Liberia,LBR,animism,782028,0.5003
+1014,1980,Liberia,LBR,animism,843400,0.45299999999999996
+1015,1985,Liberia,LBR,animism,950840,0.44
+1016,1990,Liberia,LBR,animism,1059080,0.44
+1017,1995,Liberia,LBR,animism,1227995,0.4449
+1021,1965,Sierra Leone,SIE,animism,1360240,0.56
+1022,1970,Sierra Leone,SIE,animism,1395036,0.5252
+1023,1975,Sierra Leone,SIE,animism,1490338,0.5085
+1024,1980,Sierra Leone,SIE,animism,1585640,0.49
+1025,1985,Sierra Leone,SIE,animism,1684950,0.47
+1042,1960,Togo,TOG,animism,965000,0.6683
+1043,1965,Togo,TOG,animism,1025010,0.63
+1044,1970,Togo,TOG,animism,1142395,0.5823
+1045,1975,Togo,TOG,animism,1115500,0.5
+1046,1980,Togo,TOG,animism,1202900,0.46
+1047,1985,Togo,TOG,animism,1320000,0.4359
+1050,2000,Togo,TOG,animism,2100000,0.4537
+1053,1960,Cameroon,CAO,animism,2860240,0.5401
+1054,1965,Cameroon,CAO,animism,3030120,0.5152
+1055,1970,Cameroon,CAO,animism,2640419,0.3993
+1086,1960,Central African Republic,CEN,animism,650000,0.5012
+1087,1965,Central African Republic,CEN,animism,698760,0.488
+1150,1965,United Republic of Tanzania,TAZ,animism,4506390,0.3861
+1224,1975,Mozambique,MZM,animism,4020070,0.4408
+1225,1980,Mozambique,MZM,animism,5567380,0.46
+1226,1985,Mozambique,MZM,animism,6727000,0.4851
+1227,1990,Mozambique,MZM,animism,6367950,0.45
+1242,1965,Zimbabwe,ZIM,animism,2206000,0.493
+1290,1970,Botswana,BOT,animism,374740,0.6277
+1291,1975,Botswana,BOT,animism,377360,0.53
+1292,1980,Botswana,BOT,animism,455940,0.51
+1308,1960,Madagascar,MAG,animism,2700000,0.5031
+1309,1965,Madagascar,MAG,animism,2985653,0.4911
+1311,1975,Madagascar,MAG,animism,3800743,0.4887
+1641,1950,Mongolia,MON,animism,348579,0.4551
+1647,1980,Mongolia,MON,animism,577100,0.3474
+1667,1950,North Korea,PRK,animism,5218300,0.55
+1668,1955,North Korea,PRK,animism,4335420,0.49
+1680,1950,South Korea,ROK,animism,13000480,0.6386
+1681,1955,South Korea,ROK,animism,13082880,0.6107
+1682,1960,South Korea,ROK,animism,14535708,0.5811
+1683,1965,South Korea,ROK,animism,15587750,0.5429999999999999
+1684,1970,South Korea,ROK,animism,15798090,0.49
+1685,1975,South Korea,ROK,animism,15160230,0.4297
+1686,1980,South Korea,ROK,animism,14105880,0.37
+1648,1985,Mongolia,MON,buddhism,698017,0.3717
+1649,1990,Mongolia,MON,buddhism,921911,0.41600000000000004
+1650,1995,Mongolia,MON,buddhism,1145806,0.4882
+1651,2000,Mongolia,MON,buddhism,1732962,0.6509999999999999
+1652,2005,Mongolia,MON,buddhism,1850000,0.6491
+1653,2010,Mongolia,MON,buddhism,1455388,0.53
+1665,2005,Taiwan,TAW,buddhism,7969500,0.35
+1720,1975,Bhutan,BHU,buddhism,842070,0.7265
+1721,1980,Bhutan,BHU,buddhism,850450,0.73
+1722,1985,Bhutan,BHU,buddhism,1049230,0.7231
+1723,1990,Bhutan,BHU,buddhism,1213370,0.7376
+1724,1995,Bhutan,BHU,buddhism,1378300,0.7787
+1725,2000,Bhutan,BHU,buddhism,1764913,0.8309
+1726,2005,Bhutan,BHU,buddhism,551176,0.8202
+1727,2010,Bhutan,BHU,buddhism,583740,0.8402
+1749,1950,Myanmar,MYA,buddhism,14031137,0.7869
+1750,1955,Myanmar,MYA,buddhism,14866360,0.76
+1751,1960,Myanmar,MYA,buddhism,16766250,0.75
+1752,1965,Myanmar,MYA,buddhism,18305680,0.7559
+1753,1970,Myanmar,MYA,buddhism,20862636,0.7717
+1754,1975,Myanmar,MYA,buddhism,22929200,0.76
+1755,1980,Myanmar,MYA,buddhism,25227750,0.75
+1756,1985,Myanmar,MYA,buddhism,29946775,0.775
+1757,1990,Myanmar,MYA,buddhism,32049350,0.775
+1758,1995,Myanmar,MYA,buddhism,33355000,0.7395
+1759,2000,Myanmar,MYA,buddhism,34909000,0.7654
+1760,2005,Myanmar,MYA,buddhism,41406500,0.7478
+1761,2010,Myanmar,MYA,buddhism,43983776,0.7479
+1762,1950,Sri Lanka,SRI,buddhism,4896154,0.6377
+1763,1955,Sri Lanka,SRI,buddhism,5669950,0.65
+1764,1960,Sri Lanka,SRI,buddhism,6427850,0.65
+1765,1965,Sri Lanka,SRI,buddhism,7479780,0.67
+1766,1970,Sri Lanka,SRI,buddhism,8433620,0.6738
+1767,1975,Sri Lanka,SRI,buddhism,9392060,0.6959
+1768,1980,Sri Lanka,SRI,buddhism,10050200,0.6815
+1769,1985,Sri Lanka,SRI,buddhism,11160000,0.7045
+1770,1990,Sri Lanka,SRI,buddhism,11650720,0.6856
+1771,1995,Sri Lanka,SRI,buddhism,12447280,0.6872
+1772,2000,Sri Lanka,SRI,buddhism,12985000,0.7594
+1773,2005,Sri Lanka,SRI,buddhism,13537599,0.6883
+1774,2010,Sri Lanka,SRI,buddhism,14467488,0.7026
+1799,1945,Thailand,THI,buddhism,15302760,0.8854
+1800,1950,Thailand,THI,buddhism,17807850,0.9069
+1801,1955,Thailand,THI,buddhism,20841040,0.9156
+1802,1960,Thailand,THI,buddhism,24503000,0.92
+1803,1965,Thailand,THI,buddhism,28102750,0.9058
+1804,1970,Thailand,THI,buddhism,32912056,0.9049
+1805,1975,Thailand,THI,buddhism,38050790,0.9088
+1806,1980,Thailand,THI,buddhism,42513380,0.91
+1807,1985,Thailand,THI,buddhism,45906200,0.89
+1808,1990,Thailand,THI,buddhism,48579930,0.87
+1809,1995,Thailand,THI,buddhism,52866890,0.89
+1810,2000,Thailand,THI,buddhism,53417130,0.87
+1811,2005,Thailand,THI,buddhism,56409930,0.87
+1812,2010,Thailand,THI,buddhism,58580120,0.87
+1813,1955,Cambodia,CAM,buddhism,4162400,0.86
+1814,1960,Cambodia,CAM,buddhism,4723710,0.8694
+1815,1965,Cambodia,CAM,buddhism,5400075,0.8793
+1816,1970,Cambodia,CAM,buddhism,6100420,0.8793
+1817,1975,Cambodia,CAM,buddhism,6104280,0.86
+1818,1980,Cambodia,CAM,buddhism,5548280,0.8538
+1819,1985,Cambodia,CAM,buddhism,6285550,0.8469
+1820,1990,Cambodia,CAM,buddhism,7253800,0.8466
+1821,1995,Cambodia,CAM,buddhism,8360600,0.85
+1822,2000,Cambodia,CAM,buddhism,10783820,0.9656
+1823,2005,Cambodia,CAM,buddhism,12792905,0.9365
+1824,2010,Cambodia,CAM,buddhism,14801990,0.9669
+1825,1955,Laos,LAO,buddhism,1179000,0.6065
+1826,1960,Laos,LAO,buddhism,1402200,0.6
+1827,1965,Laos,LAO,buddhism,1499670,0.57
+1828,1970,Laos,LAO,buddhism,1637377,0.5528
+1829,1975,Laos,LAO,buddhism,1632960,0.54
+1830,1980,Laos,LAO,buddhism,1698650,0.53
+1831,1985,Laos,LAO,buddhism,1868880,0.52
+1832,1990,Laos,LAO,buddhism,2143020,0.51
+1833,1995,Laos,LAO,buddhism,2538640,0.52
+1834,2000,Laos,LAO,buddhism,3573450,0.6577
+1835,2005,Laos,LAO,buddhism,3849930,0.6779
+1836,2010,Laos,LAO,buddhism,4159404,0.6773
+1846,2000,Vietnam,DRV,buddhism,39916000,0.5
+1847,2005,Vietnam,DRV,buddhism,41553000,0.5
+1848,2010,Vietnam,DRV,buddhism,43079830,0.49
+1849,1955,Republic of Vietnam,RVN,buddhism,6458400,0.52
+1850,1960,Republic of Vietnam,RVN,buddhism,8372000,0.52
+1851,1965,Republic of Vietnam,RVN,buddhism,8382400,0.52
+1852,1970,Republic of Vietnam,RVN,buddhism,9531600,0.52
+1871,2000,Singapore,SIN,buddhism,1708366,0.4252
+1872,2005,Singapore,SIN,buddhism,1698436,0.3721
+1873,2010,Singapore,SIN,buddhism,1688506,0.3303
+0,1945,United States of America,USA,christianity,110265118,0.7879999999999999
+1,1950,United States of America,USA,christianity,122994019,0.8077
+2,1955,United States of America,USA,christianity,134001770,0.8076
+3,1960,United States of America,USA,christianity,150234347,0.8315
+4,1965,United States of America,USA,christianity,167515758,0.8607
+5,1970,United States of America,USA,christianity,172867051,0.8613
+6,1975,United States of America,USA,christianity,182810532,0.8466
+7,1980,United States of America,USA,christianity,186649864,0.8196
+8,1985,United States of America,USA,christianity,199787782,0.8378
+9,1990,United States of America,USA,christianity,214425162,0.858
+10,1995,United States of America,USA,christianity,215593975,0.8205
+11,2000,United States of America,USA,christianity,219818305,0.7897
+12,2005,United States of America,USA,christianity,226464805,0.7654
+13,2010,United States of America,USA,christianity,233111307,0.7454
+14,1945,Canada,CAN,christianity,10531961,0.9153
+15,1950,Canada,CAN,christianity,12225479,0.89
+16,1955,Canada,CAN,christianity,13969532,0.8877
+17,1960,Canada,CAN,christianity,16170219,0.9029
+18,1965,Canada,CAN,christianity,17316559,0.88
+19,1970,Canada,CAN,christianity,17889480,0.84
+20,1975,Canada,CAN,christianity,20097739,0.8685
+21,1980,Canada,CAN,christianity,21554382,0.8792
+22,1985,Canada,CAN,christianity,23296160,0.9014
+23,1990,Canada,CAN,christianity,24346000,0.8789
+24,1995,Canada,CAN,christianity,24958842,0.8503
+25,2000,Canada,CAN,christianity,25571687,0.821
+26,2005,Canada,CAN,christianity,26057640,0.8067
+27,2010,Canada,CAN,christianity,26431104,0.7661
+28,1975,Bahamas,BHM,christianity,164603,0.8709
+29,1980,Bahamas,BHM,christianity,174180,0.8294
+30,1985,Bahamas,BHM,christianity,185700,0.8004
+31,1990,Bahamas,BHM,christianity,209670,0.8222
+32,1995,Bahamas,BHM,christianity,253645,0.8931
+33,2000,Bahamas,BHM,christianity,297045,0.966
+34,2005,Bahamas,BHM,christianity,313950,0.966
+35,2010,Bahamas,BHM,christianity,302657,0.966
+36,1945,Cuba,CUB,christianity,4573565,0.9277
+37,1950,Cuba,CUB,christianity,5184852,0.8851
+38,1955,Cuba,CUB,christianity,5704366,0.8877
+39,1960,Cuba,CUB,christianity,6189000,0.8805
+40,1965,Cuba,CUB,christianity,6225920,0.8413
+41,1970,Cuba,CUB,christianity,6382300,0.7468
+42,1975,Cuba,CUB,christianity,6504238,0.7611
+43,1980,Cuba,CUB,christianity,6921580,0.7118
+44,1985,Cuba,CUB,christianity,7554920,0.7482
+45,1990,Cuba,CUB,christianity,7680210,0.7229
+46,1995,Cuba,CUB,christianity,8524160,0.7763
+47,2000,Cuba,CUB,christianity,8100650,0.7232
+48,2005,Cuba,CUB,christianity,7520095,0.6689
+49,2010,Cuba,CUB,christianity,7407107,0.6589
+50,1945,Haiti,HAI,christianity,2936500,0.9503
+51,1950,Haiti,HAI,christianity,2944000,0.9506
+52,1955,Haiti,HAI,christianity,3098500,0.8853
+53,1960,Haiti,HAI,christianity,3253000,0.8552
+54,1965,Haiti,HAI,christianity,3742881,0.9034
+55,1970,Haiti,HAI,christianity,4235925,0.9372
+56,1975,Haiti,HAI,christianity,4553806,0.9256
+57,1980,Haiti,HAI,christianity,5002500,0.9345
+58,1985,Haiti,HAI,christianity,5125000,0.8738
+59,1990,Haiti,HAI,christianity,5934500,0.915
+60,1995,Haiti,HAI,christianity,6621510,0.9222
+61,2000,Haiti,HAI,christianity,7377600,0.8973
+62,2005,Haiti,HAI,christianity,7998500,0.85
+63,2010,Haiti,HAI,christianity,8003882,0.82
+64,1945,Dominican Republic,DOM,christianity,1879020,0.9490000000000001
+65,1950,Dominican Republic,DOM,christianity,2131914,0.9517
+66,1955,Dominican Republic,DOM,christianity,2490952,0.9753
+67,1960,Dominican Republic,DOM,christianity,3149465,0.9748
+68,1965,Dominican Republic,DOM,christianity,3239450,0.9670000000000001
+69,1970,Dominican Republic,DOM,christianity,3598539,0.8859
+70,1975,Dominican Republic,DOM,christianity,3949249,0.8408
+71,1980,Dominican Republic,DOM,christianity,4855425,0.8523
+72,1985,Dominican Republic,DOM,christianity,5357360,0.835
+73,1990,Dominican Republic,DOM,christianity,6044752,0.8506
+74,1995,Dominican Republic,DOM,christianity,6098300,0.8505
+75,2000,Dominican Republic,DOM,christianity,6526613,0.79
+76,2005,Dominican Republic,DOM,christianity,7484946,0.815
+77,2010,Dominican Republic,DOM,christianity,8662283,0.87
+78,1960,Jamaica,JAM,christianity,1327363,0.8228
+79,1965,Jamaica,JAM,christianity,1332121,0.7754
+80,1970,Jamaica,JAM,christianity,1445671,0.7987
+81,1975,Jamaica,JAM,christianity,1480069,0.8177
+82,1980,Jamaica,JAM,christianity,1514468,0.8367
+83,1985,Jamaica,JAM,christianity,1997000,0.8641
+84,1990,Jamaica,JAM,christianity,1701798,0.7047
+85,1995,Jamaica,JAM,christianity,1754579,0.7265
+86,2000,Jamaica,JAM,christianity,1807362,0.6997
+87,2005,Jamaica,JAM,christianity,1890680,0.7135
+88,2010,Jamaica,JAM,christianity,1974000,0.6881
+89,1960,Trinidad and Tobago,TRI,christianity,574696,0.6386
+90,1965,Trinidad and Tobago,TRI,christianity,607342,0.6093
+91,1970,Trinidad and Tobago,TRI,christianity,639990,0.6591
+92,1975,Trinidad and Tobago,TRI,christianity,741575,0.6306
+93,1980,Trinidad and Tobago,TRI,christianity,712000,0.6579999999999999
+94,1985,Trinidad and Tobago,TRI,christianity,727820,0.6178
+95,1990,Trinidad and Tobago,TRI,christianity,760400,0.6258
+96,1995,Trinidad and Tobago,TRI,christianity,776469,0.6162
+97,2000,Trinidad and Tobago,TRI,christianity,792540,0.612
+98,2005,Trinidad and Tobago,TRI,christianity,754060,0.5827
+99,2010,Trinidad and Tobago,TRI,christianity,729270,0.5588
+100,1970,Barbados,BAR,christianity,165690,0.6933
+101,1975,Barbados,BAR,christianity,167765,0.7019
+102,1980,Barbados,BAR,christianity,167840,0.6741
+103,1985,Barbados,BAR,christianity,176790,0.6988
+104,1990,Barbados,BAR,christianity,177173,0.6894
+105,1995,Barbados,BAR,christianity,183005,0.6932
+106,2000,Barbados,BAR,christianity,188838,0.6994
+107,2005,Barbados,BAR,christianity,187296,0.6861
+108,2010,Barbados,BAR,christianity,185756,0.6434
+109,1980,Dominica,DMA,christianity,73940,0.9992
+110,1985,Dominica,DMA,christianity,74000,0.9867
+111,1990,Dominica,DMA,christianity,69480,0.965
+112,1995,Dominica,DMA,christianity,69050,0.9725
+113,2000,Dominica,DMA,christianity,60965,0.8587
+114,2005,Dominica,DMA,christianity,64061,0.885
+115,2010,Dominica,DMA,christianity,67160,0.92
+116,1975,Grenada,GRN,christianity,89800,0.833
+117,1980,Grenada,GRN,christianity,92590,0.8494
+118,1985,Grenada,GRN,christianity,77000,0.8462
+119,1990,Grenada,GRN,christianity,75257,0.8270000000000001
+120,1995,Grenada,GRN,christianity,77438,0.851
+121,2000,Grenada,GRN,christianity,76726,0.8719
+122,2005,Grenada,GRN,christianity,96820,0.94
+123,2010,Grenada,GRN,christianity,94323,0.87
+124,1980,St. Lucia,SLU,christianity,123131,0.993
+125,1985,St. Lucia,SLU,christianity,135000,0.9854
+126,1990,St. Lucia,SLU,christianity,131057,0.9854
+127,1995,St. Lucia,SLU,christianity,135978,0.9378
+128,2000,St. Lucia,SLU,christianity,141130,0.9164
+129,2005,St. Lucia,SLU,christianity,146156,0.8858
+130,2010,St. Lucia,SLU,christianity,151183,0.9218
+131,1980,St. Vincent and the Grenadines,SVG,christianity,88650,0.9046
+132,1985,St. Vincent and the Grenadines,SVG,christianity,92000,0.902
+133,1990,St. Vincent and the Grenadines,SVG,christianity,91423,0.8625
+134,1995,St. Vincent and the Grenadines,SVG,christianity,96441,0.8688
+135,2000,St. Vincent and the Grenadines,SVG,christianity,98157,0.861
+136,2005,St. Vincent and the Grenadines,SVG,christianity,95826,0.9214
+137,2010,St. Vincent and the Grenadines,SVG,christianity,93496,0.899
+138,1980,Antigua & Barbuda,AAB,christianity,53150,0.8437
+139,1985,Antigua & Barbuda,AAB,christianity,52750,0.8242
+140,1990,Antigua & Barbuda,AAB,christianity,47650,0.8028
+141,1995,Antigua & Barbuda,AAB,christianity,52032,0.8446
+142,2000,Antigua & Barbuda,AAB,christianity,56415,0.8834
+143,2005,Antigua & Barbuda,AAB,christianity,67920,0.8183
+144,2010,Antigua & Barbuda,AAB,christianity,79425,0.914
+145,1985,St. Kitts and Nevis,SKN,christianity,38690,0.8793
+146,1990,St. Kitts and Nevis,SKN,christianity,35517,0.877
+147,1995,St. Kitts and Nevis,SKN,christianity,36837,0.8485
+148,2000,St. Kitts and Nevis,SKN,christianity,38155,0.8236
+149,2005,St. Kitts and Nevis,SKN,christianity,41839,0.8716
+150,2010,St. Kitts and Nevis,SKN,christianity,45525,0.8979
+151,1945,Mexico,MEX,christianity,20896200,0.94
+152,1950,Mexico,MEX,christianity,25659609,0.9373
+153,1955,Mexico,MEX,christianity,25659000,0.9373
+154,1960,Mexico,MEX,christianity,34271000,0.9435
+155,1965,Mexico,MEX,christianity,36828500,0.9566
+156,1970,Mexico,MEX,christianity,47914284,0.9470000000000001
+157,1975,Mexico,MEX,christianity,63095110,0.9336
+158,1980,Mexico,MEX,christianity,65340680,0.9670000000000001
+159,1985,Mexico,MEX,christianity,73529400,0.9744
+160,1990,Mexico,MEX,christianity,80606800,0.9685
+161,1995,Mexico,MEX,christianity,87909596,0.9715
+162,2000,Mexico,MEX,christianity,95812392,0.9690000000000001
+163,2005,Mexico,MEX,christianity,97293942,0.9359999999999999
+164,2010,Mexico,MEX,christianity,108811290,0.9686
+165,1980,Belize,BLZ,christianity,132300,0.882
+166,1985,Belize,BLZ,christianity,144500,0.8705
+167,1990,Belize,BLZ,christianity,163920,0.8673
+168,1995,Belize,BLZ,christianity,186321,0.8626
+169,2000,Belize,BLZ,christianity,192222,0.7976
+170,2005,Belize,BLZ,christianity,208096,0.7127
+171,2010,Belize,BLZ,christianity,223972,0.7365
+172,1945,Guatemala,GUA,christianity,2317000,0.9496
+173,1950,Guatemala,GUA,christianity,2781134,0.9367
+174,1955,Guatemala,GUA,christianity,3065206,0.9408
+175,1960,Guatemala,GUA,christianity,3807000,0.9604
+176,1965,Guatemala,GUA,christianity,4306560,0.9428
+177,1970,Guatemala,GUA,christianity,4816793,0.9182
+178,1975,Guatemala,GUA,christianity,5447596,0.9045
+179,1980,Guatemala,GUA,christianity,6078400,0.8788
+180,1985,Guatemala,GUA,christianity,7243700,0.9097
+181,1990,Guatemala,GUA,christianity,8511300,0.9254
+182,1995,Guatemala,GUA,christianity,9576225,0.9599
+183,2000,Guatemala,GUA,christianity,11045250,0.9702
+184,2005,Guatemala,GUA,christianity,12065950,0.95
+185,2010,Guatemala,GUA,christianity,13133239,0.95
+186,1945,Honduras,HON,christianity,1197574,0.9505
+187,1950,Honduras,HON,christianity,1400000,0.9689
+188,1955,Honduras,HON,christianity,1614700,0.9698
+189,1960,Honduras,HON,christianity,1889000,0.9722
+190,1965,Honduras,HON,christianity,1994293,0.9824
+191,1970,Honduras,HON,christianity,2474700,0.9377
+192,1975,Honduras,HON,christianity,2976874,0.9625
+193,1980,Honduras,HON,christianity,3479050,0.9426
+194,1985,Honduras,HON,christianity,4295000,0.9824
+195,1990,Honduras,HON,christianity,4919650,0.9637
+196,1995,Honduras,HON,christianity,5624825,0.9449
+197,2000,Honduras,HON,christianity,6330000,0.9694
+198,2005,Honduras,HON,christianity,6587486,0.9269
+199,2010,Honduras,HON,christianity,7121814,0.89
+200,1945,El Salvador,SAL,christianity,1565906,0.8999
+201,1950,El Salvador,SAL,christianity,1693000,0.9107
+202,1955,El Salvador,SAL,christianity,1946500,0.9117
+203,1960,El Salvador,SAL,christianity,2400000,0.9309999999999999
+204,1965,El Salvador,SAL,christianity,2730140,0.9681
+205,1970,El Salvador,SAL,christianity,3462438,0.9798
+206,1975,El Salvador,SAL,christianity,3431933,0.9711
+207,1980,El Salvador,SAL,christianity,4392100,0.9743
+208,1985,El Salvador,SAL,christianity,4637480,0.955
+209,1990,El Salvador,SAL,christianity,4865340,0.9671
+210,1995,El Salvador,SAL,christianity,5288450,0.934
+211,2000,El Salvador,SAL,christianity,5711560,0.9101
+212,2005,El Salvador,SAL,christianity,5803034,0.9071
+213,2010,El Salvador,SAL,christianity,6209779,0.861
+214,1945,Nicaragua,NIC,christianity,912867,0.9890000000000001
+215,1950,Nicaragua,NIC,christianity,1052000,1.0
+216,1955,Nicaragua,NIC,christianity,1213000,0.9743
+217,1960,Nicaragua,NIC,christianity,1374000,0.9738
+218,1965,Nicaragua,NIC,christianity,1504181,0.9761
+219,1970,Nicaragua,NIC,christianity,1902333,0.9266
+220,1975,Nicaragua,NIC,christianity,2268816,0.9422
+221,1980,Nicaragua,NIC,christianity,2635300,0.951
+222,1985,Nicaragua,NIC,christianity,3224000,0.9853
+223,1990,Nicaragua,NIC,christianity,3716900,0.9602
+224,1995,Nicaragua,NIC,christianity,4307600,0.9490000000000001
+225,2000,Nicaragua,NIC,christianity,4898300,0.9467
+226,2005,Nicaragua,NIC,christianity,4907725,0.9005
+227,2010,Nicaragua,NIC,christianity,5242544,0.9005
+228,1945,Costa Rica,COS,christianity,680000,0.9714
+229,1950,Costa Rica,COS,christianity,773000,0.9663
+230,1955,Costa Rica,COS,christianity,985500,0.9587
+231,1960,Costa Rica,COS,christianity,1198000,0.9553
+232,1965,Costa Rica,COS,christianity,1236000,0.9712
+233,1970,Costa Rica,COS,christianity,1651066,0.956
+234,1975,Costa Rica,COS,christianity,1927108,0.9792
+235,1980,Costa Rica,COS,christianity,2205650,0.9825
+236,1985,Costa Rica,COS,christianity,2498000,0.9455
+237,1990,Costa Rica,COS,christianity,2620600,0.9343
+238,1995,Costa Rica,COS,christianity,3097950,0.9295
+239,2000,Costa Rica,COS,christianity,3771380,0.9375
+240,2005,Costa Rica,COS,christianity,4057108,0.951
+241,2010,Costa Rica,COS,christianity,3925741,0.8822
+242,1945,Panama,PAN,christianity,700400,0.9963
+243,1950,Panama,PAN,christianity,787000,0.9899
+244,1955,Panama,PAN,christianity,936540,0.99
+245,1960,Panama,PAN,christianity,1113440,0.9888
+246,1965,Panama,PAN,christianity,1256930,0.9646
+247,1970,Panama,PAN,christianity,1415422,0.9399
+248,1975,Panama,PAN,christianity,1605770,0.932
+249,1980,Panama,PAN,christianity,1877766,0.963
+250,1985,Panama,PAN,christianity,2063280,0.9521
+251,1990,Panama,PAN,christianity,2292500,0.956
+252,1995,Panama,PAN,christianity,2552070,0.97
+253,2000,Panama,PAN,christianity,2773500,0.9711
+254,2005,Panama,PAN,christianity,3161160,0.9793
+255,2010,Panama,PAN,christianity,4166894,0.9793
+256,1945,Colombia,COL,christianity,9293000,0.9049
+257,1950,Colombia,COL,christianity,10487280,0.9253
+258,1955,Colombia,COL,christianity,12698715,0.9641
+259,1960,Colombia,COL,christianity,15020452,0.9743
+260,1965,Colombia,COL,christianity,17546120,0.975
+261,1970,Colombia,COL,christianity,20203471,0.9842
+262,1975,Colombia,COL,christianity,22761920,0.9685
+263,1980,Colombia,COL,christianity,24946450,0.9635
+264,1985,Colombia,COL,christianity,28286950,0.9595
+265,1990,Colombia,COL,christianity,30980000,0.9591
+266,1995,Colombia,COL,christianity,33756907,0.9618
+267,2000,Colombia,COL,christianity,39996945,0.9451
+268,2005,Colombia,COL,christianity,41606496,0.9701
+269,2010,Colombia,COL,christianity,44910647,0.9701
+270,1945,Venezuela,VEN,christianity,3710000,0.8689
+271,1950,Venezuela,VEN,christianity,4466000,0.9
+272,1955,Venezuela,VEN,christianity,5662283,0.9285
+273,1960,Venezuela,VEN,christianity,6855000,0.9138
+274,1965,Venezuela,VEN,christianity,8131460,0.9323
+275,1970,Venezuela,VEN,christianity,9845202,0.9467
+276,1975,Venezuela,VEN,christianity,11762314,0.946
+277,1980,Venezuela,VEN,christianity,13679426,0.9832
+278,1985,Venezuela,VEN,christianity,16649719,0.9615
+279,1990,Venezuela,VEN,christianity,18614680,0.9632
+280,1995,Venezuela,VEN,christianity,20231080,0.9768
+281,2000,Venezuela,VEN,christianity,22762053,0.9417
+282,2005,Venezuela,VEN,christianity,25077176,0.9436
+283,2010,Venezuela,VEN,christianity,27392300,0.95
+284,1970,Guyana,GUY,christianity,376491,0.531
+285,1975,Guyana,GUY,christianity,419635,0.5373
+286,1980,Guyana,GUY,christianity,418500,0.5514
+287,1985,Guyana,GUY,christianity,438000,0.5523
+288,1990,Guyana,GUY,christianity,303900,0.4221
+289,1995,Guyana,GUY,christianity,367200,0.4996
+290,2000,Guyana,GUY,christianity,430500,0.574
+291,2005,Guyana,GUY,christianity,429477,0.5666
+292,2010,Guyana,GUY,christianity,427919,0.5575
+293,1975,Suriname,SUR,christianity,216774,0.5955
+294,1980,Suriname,SUR,christianity,218450,0.6154
+295,1985,Suriname,SUR,christianity,241000,0.6276
+296,1990,Suriname,SUR,christianity,235351,0.5855
+297,1995,Suriname,SUR,christianity,225995,0.5526
+298,2000,Suriname,SUR,christianity,234934,0.5634
+299,2005,Suriname,SUR,christianity,274703,0.5505
+300,2010,Suriname,SUR,christianity,271680,0.48
+301,1945,Ecuador,ECU,christianity,2502000,0.9
+302,1950,Ecuador,ECU,christianity,2903000,0.9002
+303,1955,Ecuador,ECU,christianity,3554658,0.9204
+304,1960,Ecuador,ECU,christianity,4106886,0.9252
+305,1965,Ecuador,ECU,christianity,4854560,0.9437
+306,1970,Ecuador,ECU,christianity,5871027,0.9834
+307,1975,Ecuador,ECU,christianity,6464010,0.9359
+308,1980,Ecuador,ECU,christianity,7662642,0.9625
+309,1985,Ecuador,ECU,christianity,8948500,0.9591
+310,1990,Ecuador,ECU,christianity,9874700,0.9621
+311,1995,Ecuador,ECU,christianity,8978500,0.9623
+312,2000,Ecuador,ECU,christianity,11477020,0.9076
+313,2005,Ecuador,ECU,christianity,12136581,0.9159999999999999
+314,2010,Ecuador,ECU,christianity,12830327,0.903
+315,1945,Peru,PER,christianity,6779700,0.93
+316,1950,Peru,PER,christianity,7668000,0.9622
+317,1955,Peru,PER,christianity,8170818,0.9296
+318,1960,Peru,PER,christianity,9561000,0.9627
+319,1965,Peru,PER,christianity,11021650,0.9612
+320,1970,Peru,PER,christianity,13001607,0.9855
+321,1975,Peru,PER,christianity,14552950,0.9599
+322,1980,Peru,PER,christianity,17048745,0.9841
+323,1985,Peru,PER,christianity,19003080,0.9749
+324,1990,Peru,PER,christianity,21346550,0.9897
+325,1995,Peru,PER,christianity,23290887,0.9898
+326,2000,Peru,PER,christianity,23532720,0.917
+327,2005,Peru,PER,christianity,26698560,0.96
+328,2010,Peru,PER,christianity,27579681,0.938
+329,1945,Brazil,BRA,christianity,45845588,0.992
+330,1950,Brazil,BRA,christianity,49349737,0.9501
+331,1955,Brazil,BRA,christianity,55564014,0.9163
+332,1960,Brazil,BRA,christianity,70935420,0.9772
+333,1965,Brazil,BRA,christianity,80576608,0.9559
+334,1970,Brazil,BRA,christianity,94526013,0.9862
+335,1975,Brazil,BRA,christianity,106775993,0.9884
+336,1980,Brazil,BRA,christianity,117027504,0.987
+337,1985,Brazil,BRA,christianity,129071456,0.978
+338,1990,Brazil,BRA,christianity,138033011,0.9538
+339,1995,Brazil,BRA,christianity,151406004,0.9717
+340,2000,Brazil,BRA,christianity,146447175,0.8609
+341,2005,Brazil,BRA,christianity,157380092,0.8582
+342,2010,Brazil,BRA,christianity,168313010,0.8823
+343,1945,Bolivia,BOL,christianity,2558000,0.8975
+344,1950,Bolivia,BOL,christianity,2604980,0.9598
+345,1955,Bolivia,BOL,christianity,3093159,0.9978
+346,1960,Bolivia,BOL,christianity,3166695,0.945
+347,1965,Bolivia,BOL,christianity,3541860,0.945
+348,1970,Bolivia,BOL,christianity,4001400,0.95
+349,1975,Bolivia,BOL,christianity,4672010,0.9817
+350,1980,Bolivia,BOL,christianity,5292850,0.9884
+351,1985,Bolivia,BOL,christianity,5728400,0.9717
+352,1990,Bolivia,BOL,christianity,6272300,0.9543
+353,1995,Bolivia,BOL,christianity,7300880,0.9847
+354,2000,Bolivia,BOL,christianity,7842641,0.9416
+355,2005,Bolivia,BOL,christianity,9033088,0.9582
+356,2010,Bolivia,BOL,christianity,9720100,0.9426
+357,1945,Paraguay,PAR,christianity,1121187,0.8969
+358,1950,Paraguay,PAR,christianity,1260070,0.9191
+359,1955,Paraguay,PAR,christianity,1539791,0.9127
+360,1960,Paraguay,PAR,christianity,1739655,0.9444
+361,1965,Paraguay,PAR,christianity,1939520,0.932
+362,1970,Paraguay,PAR,christianity,2232000,0.9498
+363,1975,Paraguay,PAR,christianity,2585900,0.9725
+364,1980,Paraguay,PAR,christianity,3033100,0.9740000000000001
+365,1985,Paraguay,PAR,christianity,3435000,0.9518
+366,1990,Paraguay,PAR,christianity,4142546,0.9819
+367,1995,Paraguay,PAR,christianity,4624128,0.9578
+368,2000,Paraguay,PAR,christianity,5329016,0.9696
+369,2005,Paraguay,PAR,christianity,5367889,0.91
+370,2010,Paraguay,PAR,christianity,6138983,0.951
+371,1945,Chile,CHL,christianity,5094592,0.9196
+372,1950,Chile,CHL,christianity,5554000,0.9118
+373,1955,Chile,CHL,christianity,6362928,0.9436
+374,1960,Chile,CHL,christianity,7478800,0.9822
+375,1965,Chile,CHL,christianity,8040827,0.9373
+376,1970,Chile,CHL,christianity,8929331,0.9395
+377,1975,Chile,CHL,christianity,9651000,0.9325
+378,1980,Chile,CHL,christianity,10471712,0.9396
+379,1985,Chile,CHL,christianity,11354910,0.9367
+380,1990,Chile,CHL,christianity,12353325,0.943
+381,1995,Chile,CHL,christianity,13585000,0.956
+382,2000,Chile,CHL,christianity,14197856,0.9334
+383,2005,Chile,CHL,christianity,14273550,0.8775
+384,2010,Chile,CHL,christianity,15587652,0.9128
+385,1945,Argentina,ARG,christianity,15150266,0.9838
+386,1950,Argentina,ARG,christianity,16191000,0.9441
+387,1955,Argentina,ARG,christianity,18155042,0.9095
+388,1960,Argentina,ARG,christianity,19623840,0.9519
+389,1965,Argentina,ARG,christianity,21420596,0.9613
+390,1970,Argentina,ARG,christianity,23217353,0.9689
+391,1975,Argentina,ARG,christianity,25007040,0.96
+392,1980,Argentina,ARG,christianity,26417319,0.9403
+393,1985,Argentina,ARG,christianity,28044812,0.9254
+394,1990,Argentina,ARG,christianity,29470753,0.9059999999999999
+395,1995,Argentina,ARG,christianity,31986560,0.92
+396,2000,Argentina,ARG,christianity,33280506,0.8987
+397,2005,Argentina,ARG,christianity,32627326,0.8454
+398,2010,Argentina,ARG,christianity,34400709,0.8515
+399,1945,Uruguay,URU,christianity,1413000,0.6793
+400,1950,Uruguay,URU,christianity,1580920,0.7199
+401,1955,Uruguay,URU,christianity,1783860,0.7536
+402,1960,Uruguay,URU,christianity,1986800,0.7828
+403,1965,Uruguay,URU,christianity,1986810,0.7378
+404,1970,Uruguay,URU,christianity,2172390,0.7736
+405,1975,Uruguay,URU,christianity,2118674,0.7489
+406,1980,Uruguay,URU,christianity,2064960,0.7086
+407,1985,Uruguay,URU,christianity,2075520,0.69
+408,1990,Uruguay,URU,christianity,2262800,0.7314
+409,1995,Uruguay,URU,christianity,2286480,0.7261
+410,2000,Uruguay,URU,christianity,2470035,0.7402
+411,2005,Uruguay,URU,christianity,2705243,0.8183
+412,2010,Uruguay,URU,christianity,2746709,0.8183
+413,1945,United Kingdom,UKG,christianity,46482480,0.9451
+414,1950,United Kingdom,UKG,christianity,47348064,0.9354
+415,1955,United Kingdom,UKG,christianity,47094083,0.9198
+416,1960,United Kingdom,UKG,christianity,47520102,0.9074
+417,1965,United Kingdom,UKG,christianity,48806121,0.898
+418,1970,United Kingdom,UKG,christianity,49292140,0.8859999999999999
+419,1975,United Kingdom,UKG,christianity,49263092,0.8762
+420,1980,United Kingdom,UKG,christianity,48834047,0.8669
+421,1985,United Kingdom,UKG,christianity,48605000,0.8575
+422,1990,United Kingdom,UKG,christianity,48498500,0.8426
+423,1995,United Kingdom,UKG,christianity,48904250,0.8345
+424,2000,United Kingdom,UKG,christianity,42458524,0.7217
+425,2005,United Kingdom,UKG,christianity,40989298,0.6805
+426,2010,United Kingdom,UKG,christianity,38957273,0.6263
+427,1945,Ireland,IRE,christianity,2939472,0.9964
+428,1950,Ireland,IRE,christianity,2964542,0.9985
+429,1955,Ireland,IRE,christianity,2904585,0.9944
+430,1960,Ireland,IRE,christianity,2816080,0.9944
+431,1965,Ireland,IRE,christianity,2854407,0.9925
+432,1970,Ireland,IRE,christianity,2915103,0.9788
+433,1975,Ireland,IRE,christianity,3131997,0.9858
+434,1980,Ireland,IRE,christianity,3348892,0.9847
+435,1985,Ireland,IRE,christianity,3333827,0.9682
+436,1990,Ireland,IRE,christianity,3335763,0.9461
+437,1995,Ireland,IRE,christianity,3486468,0.9682
+438,2000,Ireland,IRE,christianity,3529605,0.9463
+439,2005,Ireland,IRE,christianity,3855152,0.9332
+440,2010,Ireland,IRE,christianity,4150307,0.9299
+441,1955,Netherlands,NTH,christianity,9958686,0.9263
+442,1960,Netherlands,NTH,christianity,10476421,0.9126
+443,1965,Netherlands,NTH,christianity,10936461,0.8897
+444,1970,Netherlands,NTH,christianity,11212975,0.8604
+445,1975,Netherlands,NTH,christianity,11312510,0.8286
+446,1980,Netherlands,NTH,christianity,11419245,0.8074
+447,1985,Netherlands,NTH,christianity,11427907,0.789
+448,1990,Netherlands,NTH,christianity,11346000,0.7588
+449,1995,Netherlands,NTH,christianity,11215247,0.7255
+450,2000,Netherlands,NTH,christianity,10625781,0.6731
+451,2005,Netherlands,NTH,christianity,10570926,0.6477
+452,2010,Netherlands,NTH,christianity,9626041,0.5794
+453,1945,Belgium,BEL,christianity,8149719,0.9767
+454,1950,Belgium,BEL,christianity,8488651,0.9826
+455,1955,Belgium,BEL,christianity,8601056,0.9699
+456,1960,Belgium,BEL,christianity,8819423,0.9636
+457,1965,Belgium,BEL,christianity,9011675,0.9522
+458,1970,Belgium,BEL,christianity,8943266,0.9262
+459,1975,Belgium,BEL,christianity,8872452,0.9058
+460,1980,Belgium,BEL,christianity,8801639,0.8938
+461,1985,Belgium,BEL,christianity,8648544,0.8773
+462,1990,Belgium,BEL,christianity,8495449,0.8524
+463,1995,Belgium,BEL,christianity,8222233,0.8111
+464,2000,Belgium,BEL,christianity,7909604,0.7784
+465,2005,Belgium,BEL,christianity,8139550,0.7772
+466,2010,Belgium,BEL,christianity,7526165,0.6920000000000001
+467,1945,Luxembourg,LUX,christianity,279687,0.9883
+468,1950,Luxembourg,LUX,christianity,293857,0.9928
+469,1955,Luxembourg,LUX,christianity,302786,0.9927
+470,1960,Luxembourg,LUX,christianity,311714,0.9927
+471,1965,Luxembourg,LUX,christianity,322192,0.9705
+472,1970,Luxembourg,LUX,christianity,325050,0.9588
+473,1975,Luxembourg,LUX,christianity,343964,0.9581
+474,1980,Luxembourg,LUX,christianity,347660,0.9551
+475,1985,Luxembourg,LUX,christianity,349465,0.9522
+476,1990,Luxembourg,LUX,christianity,352790,0.9235
+477,1995,Luxembourg,LUX,christianity,376823,0.9191
+478,2000,Luxembourg,LUX,christianity,404690,0.9390000000000001
+479,2005,Luxembourg,LUX,christianity,436200,0.9381
+480,2010,Luxembourg,LUX,christianity,460637,0.9106
+481,1945,France,FRN,christianity,37239888,0.938
+482,1950,France,FRN,christianity,38511767,0.9227
+483,1955,France,FRN,christianity,38955930,0.897
+484,1960,France,FRN,christianity,39808773,0.8714
+485,1965,France,FRN,christianity,42091117,0.8633
+486,1970,France,FRN,christianity,43475937,0.8564
+487,1975,France,FRN,christianity,44111544,0.8370000000000001
+488,1980,France,FRN,christianity,44747150,0.8305
+489,1985,France,FRN,christianity,45233457,0.8182
+490,1990,France,FRN,christianity,44618413,0.7864
+491,1995,France,FRN,christianity,43939194,0.7558
+492,2000,France,FRN,christianity,42875006,0.7257
+493,2005,France,FRN,christianity,42399613,0.6951
+494,2010,France,FRN,christianity,44023361,0.7019
+495,1995,Monaco,MNC,christianity,29105,0.9095
+496,2000,Monaco,MNC,christianity,28250,0.8591
+497,2005,Monaco,MNC,christianity,27399,0.8536
+498,2010,Monaco,MNC,christianity,26550,0.802
+499,1990,Liechtenstein,LIE,christianity,27120,0.9352
+500,1995,Liechtenstein,LIE,christianity,28428,0.917
+501,2000,Liechtenstein,LIE,christianity,29285,0.8874
+502,2005,Liechtenstein,LIE,christianity,30158,0.8617
+503,2010,Liechtenstein,LIE,christianity,31031,0.8678
+504,1945,Switzerland,SWZ,christianity,4381213,0.993
+505,1950,Switzerland,SWZ,christianity,4662971,0.9934
+506,1955,Switzerland,SWZ,christianity,4936833,0.9913
+507,1960,Switzerland,SWZ,christianity,5308380,0.99
+508,1965,Switzerland,SWZ,christianity,5729956,0.9785
+509,1970,Switzerland,SWZ,christianity,6151533,0.9816
+510,1975,Switzerland,SWZ,christianity,6279141,0.9803
+511,1980,Switzerland,SWZ,christianity,5979500,0.9463
+512,1985,Switzerland,SWZ,christianity,6020800,0.9306
+513,1990,Switzerland,SWZ,christianity,6064100,0.8984
+514,1995,Switzerland,SWZ,christianity,6091621,0.8652
+515,2000,Switzerland,SWZ,christianity,6119143,0.8285
+516,2005,Switzerland,SWZ,christianity,6408536,0.8617
+517,2010,Switzerland,SWZ,christianity,6303993,0.8056
+518,1945,Spain,SPN,christianity,26316757,0.982
+519,1950,Spain,SPN,christianity,27866921,0.9949
+520,1955,Spain,SPN,christianity,28880553,0.9891
+521,1960,Spain,SPN,christianity,30029122,0.986
+522,1965,Spain,SPN,christianity,31510692,0.983
+523,1970,Spain,SPN,christianity,33118261,0.9804
+524,1975,Spain,SPN,christianity,34819831,0.9782
+525,1980,Spain,SPN,christianity,36748102,0.9789
+526,1985,Spain,SPN,christianity,37216775,0.9673
+527,1990,Spain,SPN,christianity,37464150,0.9616
+528,1995,Spain,SPN,christianity,37249500,0.95
+529,2000,Spain,SPN,christianity,34100000,0.8605
+530,2005,Spain,SPN,christianity,36380000,0.8383
+531,2010,Spain,SPN,christianity,37121529,0.8056
+532,1995,Andorra,AND,christianity,62680,0.9218
+533,2000,Andorra,AND,christianity,72946,0.9352
+534,2005,Andorra,AND,christianity,74445,0.9423
+535,2010,Andorra,AND,christianity,77546,0.907
+536,1945,Portugal,POR,christianity,7985663,0.992
+537,1950,Portugal,POR,christianity,8301840,0.9877
+538,1955,Portugal,POR,christianity,8493771,0.9865
+539,1960,Portugal,POR,christianity,8739903,0.9773
+540,1965,Portugal,POR,christianity,8730983,0.9564
+541,1970,Portugal,POR,christianity,8722040,0.9644
+542,1975,Portugal,POR,christianity,8714810,0.9584
+543,1980,Portugal,POR,christianity,9335680,0.9559
+544,1985,Portugal,POR,christianity,9525108,0.9515
+545,1990,Portugal,POR,christianity,9344537,0.9440000000000001
+546,1995,Portugal,POR,christianity,9263964,0.9342
+547,2000,Portugal,POR,christianity,8437963,0.8545
+548,2005,Portugal,POR,christianity,8780641,0.8324
+549,2010,Portugal,POR,christianity,9123319,0.8573
+550,1945,Germany,GMY,christianity,86109120,0.96
+551,1990,Germany,GMY,christianity,62557600,0.7879
+552,1995,Germany,GMY,christianity,60917960,0.746
+553,2000,Germany,GMY,christianity,56327135,0.6851
+554,2005,Germany,GMY,christianity,54399203,0.6597
+555,2010,Germany,GMY,christianity,57827992,0.7078
+556,1955,German Federal Republic,GFR,christianity,50138530,0.9575
+557,1960,German Federal Republic,GFR,christianity,53515733,0.9656
+558,1965,German Federal Republic,GFR,christianity,57075186,0.9667
+559,1970,German Federal Republic,GFR,christianity,57417016,0.9457
+560,1975,German Federal Republic,GFR,christianity,58136180,0.94
+561,1980,German Federal Republic,GFR,christianity,57645720,0.9367
+562,1985,German Federal Republic,GFR,christianity,56552000,0.9275
+563,1990,German Federal Republic,GFR,christianity,57550000,0.9098
+564,1955,German Democratic Republic,GDR,christianity,15121173,0.8427
+565,1960,German Democratic Republic,GDR,christianity,14251002,0.8266
+566,1965,German Democratic Republic,GDR,christianity,13380831,0.7862
+567,1970,German Democratic Republic,GDR,christianity,12341457,0.7235
+568,1975,German Democratic Republic,GDR,christianity,11432084,0.6785
+569,1980,German Democratic Republic,GDR,christianity,10998400,0.6571
+570,1985,German Democratic Republic,GDR,christianity,10415170,0.6258
+571,1945,Poland,POL,christianity,22731079,0.94
+572,1950,Poland,POL,christianity,23585121,0.9501
+573,1955,Poland,POL,christianity,25934561,0.9506
+574,1960,Poland,POL,christianity,28166330,0.9528
+575,1965,Poland,POL,christianity,30108152,0.9559
+576,1970,Poland,POL,christianity,31507995,0.9687
+577,1975,Poland,POL,christianity,32993696,0.9698
+578,1980,Poland,POL,christianity,34508703,0.9699
+579,1985,Poland,POL,christianity,35949899,0.9663
+580,1990,Poland,POL,christianity,37050000,0.972
+581,1995,Poland,POL,christianity,37293803,0.9665
+582,2000,Poland,POL,christianity,36631210,0.945
+583,2005,Poland,POL,christianity,35958000,0.9423
+584,2010,Poland,POL,christianity,34539629,0.9046
+585,1955,Austria,AUS,christianity,6644938,0.9565
+586,1960,Austria,AUS,christianity,6733738,0.9554
+587,1965,Austria,AUS,christianity,6907450,0.95
+588,1970,Austria,AUS,christianity,7128757,0.9547
+589,1975,Austria,AUS,christianity,7167587,0.9457
+590,1980,Austria,AUS,christianity,6821354,0.9029
+591,1985,Austria,AUS,christianity,7027742,0.9274
+592,1990,Austria,AUS,christianity,6433500,0.8324
+593,1995,Austria,AUS,christianity,6996880,0.8695
+594,2000,Austria,AUS,christianity,6445987,0.785
+595,2005,Austria,AUS,christianity,6285258,0.7634
+596,2010,Austria,AUS,christianity,6124531,0.73
+597,1945,Hungary,HUN,christianity,8107212,0.8984
+598,1950,Hungary,HUN,christianity,8392007,0.8984
+599,1955,Hungary,HUN,christianity,8727750,0.8883
+600,1960,Hungary,HUN,christianity,8765444,0.8779
+601,1965,Hungary,HUN,christianity,8773090,0.8641
+602,1970,Hungary,HUN,christianity,8697982,0.8414
+603,1975,Hungary,HUN,christianity,8552839,0.8121
+604,1980,Hungary,HUN,christianity,8424299,0.7868
+605,1985,Hungary,HUN,christianity,8295758,0.7842
+606,1990,Hungary,HUN,christianity,8053776,0.777
+607,1995,Hungary,HUN,christianity,7811791,0.7637
+608,2000,Hungary,HUN,christianity,7462967,0.7436
+609,2005,Hungary,HUN,christianity,7066031,0.7005
+610,2010,Hungary,HUN,christianity,6669095,0.6736
+611,1945,Czechoslovakia,CZE,christianity,10593255,0.7486
+612,1950,Czechoslovakia,CZE,christianity,10171330,0.821
+613,1955,Czechoslovakia,CZE,christianity,10280735,0.7852
+614,1960,Czechoslovakia,CZE,christianity,10446458,0.7651
+615,1965,Czechoslovakia,CZE,christianity,10552773,0.7453
+616,1970,Czechoslovakia,CZE,christianity,10866560,0.7581
+617,1975,Czechoslovakia,CZE,christianity,11183600,0.7555
+618,1980,Czechoslovakia,CZE,christianity,11550840,0.7544
+619,1985,Czechoslovakia,CZE,christianity,11406000,0.7359
+620,1990,Czechoslovakia,CZE,christianity,11078173,0.7074
+625,1995,Slovakia,SLO,christianity,3899119,0.7269
+626,2000,Slovakia,SLO,christianity,4519352,0.8389
+627,2005,Slovakia,SLO,christianity,4307433,0.7996
+628,2010,Slovakia,SLO,christianity,4101842,0.7548
+629,1945,Italy,ITA,christianity,44270236,0.9818
+630,1950,Italy,ITA,christianity,45424648,0.9643
+631,1955,Italy,ITA,christianity,45953201,0.9449
+632,1960,Italy,ITA,christianity,46481754,0.9259
+633,1965,Italy,ITA,christianity,47010307,0.9021
+634,1970,Italy,ITA,christianity,47538860,0.8833
+635,1975,Italy,ITA,christianity,48144033,0.8684
+636,1980,Italy,ITA,christianity,48759207,0.8640000000000001
+637,1985,Italy,ITA,christianity,48854380,0.855
+638,1990,Italy,ITA,christianity,48669553,0.8441
+639,1995,Italy,ITA,christianity,47718067,0.8328
+640,2000,Italy,ITA,christianity,48955835,0.8544
+641,2005,Italy,ITA,christianity,50346000,0.8590000000000001
+642,2010,Italy,ITA,christianity,48018881,0.7939
+643,1995,San Marino,SNM,christianity,22799,0.912
+644,2000,San Marino,SNM,christianity,25650,0.95
+645,2005,San Marino,SNM,christianity,29450,0.95
+646,2010,San Marino,SNM,christianity,28088,0.8631
+647,1965,Malta,MLT,christianity,317435,0.9951
+648,1970,Malta,MLT,christianity,301304,0.9944
+649,1975,Malta,MLT,christianity,301594,0.9921
+650,1980,Malta,MLT,christianity,320154,0.9881
+651,1985,Malta,MLT,christianity,334627,0.9842
+652,1990,Malta,MLT,christianity,350140,0.9891
+653,1995,Malta,MLT,christianity,365041,0.9839
+654,2000,Malta,MLT,christianity,371280,0.9544
+655,2005,Malta,MLT,christianity,387285,0.9586
+656,2010,Malta,MLT,christianity,401633,0.9727
+671,2010,Montenegro,MNG,christianity,478002,0.7593
+672,1995,Macedonia,MAC,christianity,1216107,0.6195
+673,2000,Macedonia,MAC,christianity,1318658,0.6515
+674,2005,Macedonia,MAC,christianity,1314733,0.645
+675,2010,Macedonia,MAC,christianity,1310808,0.6374
+676,1995,Croatia,CRO,christianity,4188925,0.8972
+677,2000,Croatia,CRO,christianity,4154923,0.9289
+678,2005,Croatia,CRO,christianity,4098533,0.9227
+679,2010,Croatia,CRO,christianity,4042145,0.9137
+680,1945,Yugoslavia,YUG,christianity,11967671,0.8064
+681,1950,Yugoslavia,YUG,christianity,12701040,0.777
+682,1955,Yugoslavia,YUG,christianity,13123139,0.7491
+683,1960,Yugoslavia,YUG,christianity,13994835,0.7605
+684,1965,Yugoslavia,YUG,christianity,14949764,0.7672
+685,1970,Yugoslavia,YUG,christianity,15796983,0.7755
+686,1975,Yugoslavia,YUG,christianity,16458311,0.7708
+687,1980,Yugoslavia,YUG,christianity,17319639,0.7765
+688,1985,Yugoslavia,YUG,christianity,17437387,0.7541
+689,1990,Yugoslavia,YUG,christianity,17356386,0.7287
+690,1995,Yugoslavia,YUG,christianity,7885123,0.7476
+691,2000,Yugoslavia,YUG,christianity,9757747,0.9171
+692,2005,Yugoslavia,YUG,christianity,7134892,0.9171
+693,2010,Yugoslavia,YUG,christianity,6652741,0.9122
+694,1995,Bosnia and Herzegovina,BOS,christianity,2286840,0.51
+695,2000,Bosnia and Herzegovina,BOS,christianity,1986000,0.5
+696,2005,Bosnia and Herzegovina,BOS,christianity,1987185,0.5171
+697,2010,Bosnia and Herzegovina,BOS,christianity,1988372,0.52
+699,1995,Slovenia,SLV,christianity,1780836,0.8958
+700,2000,Slovenia,SLV,christianity,1580712,0.7959
+701,2005,Slovenia,SLV,christianity,1478349,0.7388
+702,2010,Slovenia,SLV,christianity,1375987,0.67
+703,1945,Greece,GRC,christianity,7218442,0.9888
+704,1950,Greece,GRC,christianity,7439871,0.9833
+705,1955,Greece,GRC,christianity,7843845,0.9847
+706,1960,Greece,GRC,christianity,8204821,0.9853
+707,1965,Greece,GRC,christianity,8416821,0.9844
+708,1970,Greece,GRC,christianity,8648876,0.9836
+709,1975,Greece,GRC,christianity,8867546,0.9802
+710,1980,Greece,GRC,christianity,9467466,0.9818
+711,1985,Greece,GRC,christianity,9635980,0.97
+712,1990,Greece,GRC,christianity,9754560,0.96
+713,1995,Greece,GRC,christianity,10021758,0.9587
+714,2000,Greece,GRC,christianity,10176670,0.956
+715,2005,Greece,GRC,christianity,10580420,0.9528
+716,2010,Greece,GRC,christianity,10682948,0.9438
+717,1960,Cyprus,CYP,christianity,452000,0.7888
+718,1965,Cyprus,CYP,christianity,474000,0.802
+719,1970,Cyprus,CYP,christianity,458383,0.7589
+720,1975,Cyprus,CYP,christianity,471111,0.7723
+721,1980,Cyprus,CYP,christianity,481510,0.7881
+722,1985,Cyprus,CYP,christianity,494760,0.7647
+723,1990,Cyprus,CYP,christianity,505680,0.7426
+724,1995,Cyprus,CYP,christianity,519135,0.7082
+725,2000,Cyprus,CYP,christianity,559042,0.7112
+726,2005,Cyprus,CYP,christianity,576604,0.7226
+727,2010,Cyprus,CYP,christianity,606674,0.7453
+728,1945,Bulgaria,BUL,christianity,5948011,0.8571
+729,1950,Bulgaria,BUL,christianity,6063779,0.8363
+730,1955,Bulgaria,BUL,christianity,5989532,0.7987
+731,1960,Bulgaria,BUL,christianity,6011123,0.7641
+732,1965,Bulgaria,BUL,christianity,5853578,0.7138
+733,1970,Bulgaria,BUL,christianity,5997430,0.7064
+734,1975,Bulgaria,BUL,christianity,6304622,0.7229
+735,1980,Bulgaria,BUL,christianity,6719485,0.7582
+736,1985,Bulgaria,BUL,christianity,6521083,0.7278
+737,1990,Bulgaria,BUL,christianity,6884000,0.7657
+738,1995,Bulgaria,BUL,christianity,6629941,0.7887
+739,2000,Bulgaria,BUL,christianity,6876100,0.836
+740,2005,Bulgaria,BUL,christianity,6403059,0.8273
+741,2010,Bulgaria,BUL,christianity,6206119,0.8227
+742,1995,Moldova,MLD,christianity,4122440,0.9481
+743,2000,Moldova,MLD,christianity,4125000,0.9418
+744,2005,Moldova,MLD,christianity,3318141,0.8686
+745,2010,Moldova,MLD,christianity,2925500,0.8213
+746,1945,Romania,ROM,christianity,12996000,0.95
+747,1950,Romania,ROM,christianity,15516103,0.9513
+748,1955,Romania,ROM,christianity,16266101,0.9389
+749,1960,Romania,ROM,christianity,17016099,0.9246
+750,1965,Romania,ROM,christianity,17631097,0.9266
+751,1970,Romania,ROM,christianity,18516094,0.9142
+752,1975,Romania,ROM,christianity,19180047,0.9028
+753,1980,Romania,ROM,christianity,19798540,0.8918
+754,1985,Romania,ROM,christianity,20641540,0.9083
+755,1990,Romania,ROM,christianity,21180551,0.9127
+756,1995,Romania,ROM,christianity,21446333,0.9456
+757,2000,Romania,ROM,christianity,21984877,0.9847
+758,2005,Romania,ROM,christianity,21407729,0.982
+759,2010,Romania,ROM,christianity,20899522,0.9751
+771,2000,Russia,RUS,christianity,105985210,0.7213
+772,2005,Russia,RUS,christianity,103229800,0.7213
+773,2010,Russia,RUS,christianity,105697556,0.7423
+778,1995,Latvia,LAT,christianity,1359175,0.5402
+779,2000,Latvia,LAT,christianity,1285590,0.5454
+780,2005,Latvia,LAT,christianity,1324373,0.5756
+781,2010,Latvia,LAT,christianity,1772369,0.7902
+782,1995,Lithuania,LIT,christianity,3172884,0.8541
+783,2000,Lithuania,LIT,christianity,3115606,0.8489
+784,2005,Lithuania,LIT,christianity,2935356,0.8598
+785,2010,Lithuania,LIT,christianity,2755107,0.8296
+786,1995,Ukraine,UKR,christianity,39860991,0.7774
+787,2000,Ukraine,UKR,christianity,41626200,0.825
+788,2005,Ukraine,UKR,christianity,39703750,0.8303
+789,2010,Ukraine,UKR,christianity,39196664,0.852
+790,1995,Belarus,BLR,christianity,7159892,0.6964
+791,2000,Belarus,BLR,christianity,5989515,0.5851
+792,2005,Belarus,BLR,christianity,4892500,0.5005
+793,2010,Belarus,BLR,christianity,5394257,0.5684
+794,1995,Armenia,ARM,christianity,3288527,0.8748
+795,2000,Armenia,ARM,christianity,3416610,0.9706
+796,2005,Armenia,ARM,christianity,3054651,0.9492
+797,2010,Armenia,ARM,christianity,3086654,0.951
+798,1995,Georgia,GRG,christianity,4581948,0.8458
+799,2000,Georgia,GRG,christianity,4406616,0.887
+800,2005,Georgia,GRG,christianity,3851060,0.8558
+801,2010,Georgia,GRG,christianity,3553010,0.7979999999999999
+806,1945,Finland,FIN,christianity,3738694,0.9787
+807,1950,Finland,FIN,christianity,3888684,0.97
+808,1955,Finland,FIN,christianity,4031299,0.9519
+809,1960,Finland,FIN,christianity,4169858,0.9413
+810,1965,Finland,FIN,christianity,4308416,0.9440000000000001
+811,1970,Finland,FIN,christianity,4323418,0.9386
+812,1975,Finland,FIN,christianity,4342197,0.9217
+813,1980,Finland,FIN,christianity,4367880,0.9138
+814,1985,Finland,FIN,christianity,4410722,0.8998
+815,1990,Finland,FIN,christianity,4437525,0.89
+816,1995,Finland,FIN,christianity,4444851,0.8702
+817,2000,Finland,FIN,christianity,4468908,0.8634
+818,2005,Finland,FIN,christianity,4422378,0.843
+819,2010,Finland,FIN,christianity,4258941,0.794
+820,1945,Sweden,SWD,christianity,6404458,0.9645
+821,1950,Sweden,SWD,christianity,6657000,0.9447
+822,1955,Sweden,SWD,christianity,6923500,0.9534
+823,1960,Sweden,SWD,christianity,7211000,0.9640000000000001
+824,1965,Sweden,SWD,christianity,7406710,0.9577
+825,1970,Sweden,SWD,christianity,7610420,0.9462
+826,1975,Sweden,SWD,christianity,7664397,0.9355
+827,1980,Sweden,SWD,christianity,7714093,0.9283
+828,1985,Sweden,SWD,christianity,7739016,0.9268
+829,1990,Sweden,SWD,christianity,7833833,0.9153
+830,1995,Sweden,SWD,christianity,7933826,0.8984
+831,2000,Sweden,SWD,christianity,7734793,0.8681
+832,2005,Sweden,SWD,christianity,7630100,0.845
+833,2010,Sweden,SWD,christianity,7133814,0.7606
+834,1945,Norway,NOR,christianity,3051167,0.9922
+835,1950,Norway,NOR,christianity,3240433,0.9925
+836,1955,Norway,NOR,christianity,3333509,0.9727
+837,1960,Norway,NOR,christianity,3426585,0.9569
+838,1965,Norway,NOR,christianity,3519138,0.9452
+839,1970,Norway,NOR,christianity,3590168,0.9259999999999999
+840,1975,Norway,NOR,christianity,3623033,0.9042
+841,1980,Norway,NOR,christianity,3655897,0.8947
+842,1985,Norway,NOR,christianity,3713291,0.8941
+843,1990,Norway,NOR,christianity,3819633,0.9006
+844,1995,Norway,NOR,christianity,3962924,0.9091
+845,2000,Norway,NOR,christianity,3956900,0.8862
+846,2005,Norway,NOR,christianity,4168814,0.9018
+847,2010,Norway,NOR,christianity,4103723,0.8401
+848,1945,Denmark,DEN,christianity,3986493,0.9868
+849,1950,Denmark,DEN,christianity,4232956,0.9913
+850,1955,Denmark,DEN,christianity,4384058,0.9876
+851,1960,Denmark,DEN,christianity,4522160,0.9872
+852,1965,Denmark,DEN,christianity,4676866,0.9829
+853,1970,Denmark,DEN,christianity,4824090,0.9787
+854,1975,Denmark,DEN,christianity,4804803,0.9496
+855,1980,Denmark,DEN,christianity,4783315,0.9337
+856,1985,Denmark,DEN,christianity,4780328,0.9348
+857,1990,Denmark,DEN,christianity,4777340,0.9294
+858,1995,Denmark,DEN,christianity,4703433,0.8997
+859,2000,Denmark,DEN,christianity,4551334,0.8599
+860,2005,Denmark,DEN,christianity,4544945,0.8392
+861,2010,Denmark,DEN,christianity,4527237,0.8172
+862,1945,Iceland,ICE,christianity,126571,0.9812
+863,1950,Iceland,ICE,christianity,140694,0.9839
+864,1955,Iceland,ICE,christianity,155678,0.9853
+865,1960,Iceland,ICE,christianity,173900,0.9881
+866,1965,Iceland,ICE,christianity,188324,0.9809
+867,1970,Iceland,ICE,christianity,200685,0.9838
+868,1975,Iceland,ICE,christianity,214986,0.9862
+869,1980,Iceland,ICE,christianity,224507,0.9847
+870,1985,Iceland,ICE,christianity,234000,0.971
+871,1990,Iceland,ICE,christianity,246069,0.965
+872,1995,Iceland,ICE,christianity,257027,0.9626
+873,2000,Iceland,ICE,christianity,268427,0.9553
+874,2005,Iceland,ICE,christianity,277615,0.9379
+875,2010,Iceland,ICE,christianity,290063,0.9155
+876,1975,Cape Verde,CAP,christianity,292500,0.9848
+877,1980,Cape Verde,CAP,christianity,289800,0.9791
+878,1985,Cape Verde,CAP,christianity,325900,0.9787
+879,1990,Cape Verde,CAP,christianity,327320,0.9599
+880,1995,Cape Verde,CAP,christianity,368620,0.955
+881,2000,Cape Verde,CAP,christianity,406199,0.9491
+882,2005,Cape Verde,CAP,christianity,438406,0.9531
+883,2010,Cape Verde,CAP,christianity,450220,0.9478
+884,1975,Sao Tome and Principe,STP,christianity,76950,0.9271
+885,1980,Sao Tome and Principe,STP,christianity,91340,0.9717
+886,1985,Sao Tome and Principe,STP,christianity,98980,0.9704
+887,1990,Sao Tome and Principe,STP,christianity,110000,0.9565
+888,1995,Sao Tome and Principe,STP,christianity,116795,0.9573
+889,2000,Sao Tome and Principe,STP,christianity,129632,0.8819
+890,2005,Sao Tome and Principe,STP,christianity,139070,0.9334
+891,2010,Sao Tome and Principe,STP,christianity,153810,0.9441
+900,1970,Equatorial Guinea,EQG,christianity,256908,0.8828
+901,1975,Equatorial Guinea,EQG,christianity,197199,0.8764
+902,1980,Equatorial Guinea,EQG,christianity,190770,0.8791
+903,1985,Equatorial Guinea,EQG,christianity,284570,0.9121
+904,1990,Equatorial Guinea,EQG,christianity,318600,0.9155
+905,1995,Equatorial Guinea,EQG,christianity,339545,0.8959
+906,2000,Equatorial Guinea,EQG,christianity,394530,0.8709
+907,2005,Equatorial Guinea,EQG,christianity,526785,0.865
+908,2010,Equatorial Guinea,EQG,christianity,622914,0.892
+949,2000,Benin,BEN,christianity,2635093,0.4322
+950,2005,Benin,BEN,christianity,3161071,0.4275
+951,2010,Benin,BEN,christianity,3514394,0.4
+984,2010,Ivory Coast,CDI,christianity,8029336,0.375
+1018,2000,Liberia,LBR,christianity,1230057,0.39
+1019,2005,Liberia,LBR,christianity,2281310,0.6843
+1020,2010,Liberia,LBR,christianity,3542240,0.85
+1031,1960,Ghana,GHA,christianity,2981878,0.44
+1032,1965,Ghana,GHA,christianity,3668638,0.4685
+1033,1970,Ghana,GHA,christianity,4403670,0.5101
+1034,1975,Ghana,GHA,christianity,5100000,0.519
+1035,1980,Ghana,GHA,christianity,5800000,0.5366
+1036,1985,Ghana,GHA,christianity,7100000,0.5583
+1037,1990,Ghana,GHA,christianity,8280300,0.5514
+1038,1995,Ghana,GHA,christianity,10150510,0.5854
+1039,2000,Ghana,GHA,christianity,10986230,0.5435
+1040,2005,Ghana,GHA,christianity,12666130,0.5935
+1041,2010,Ghana,GHA,christianity,16879326,0.7034
+1048,1990,Togo,TOG,christianity,1467000,0.4163
+1049,1995,Togo,TOG,christianity,1777899,0.4352
+1051,2005,Togo,TOG,christianity,2513727,0.47100000000000003
+1052,2010,Togo,TOG,christianity,2797212,0.48
+1056,1975,Cameroon,CAO,christianity,3270910,0.4346
+1057,1980,Cameroon,CAO,christianity,3935900,0.4629
+1058,1985,Cameroon,CAO,christianity,5077980,0.4995
+1059,1990,Cameroon,CAO,christianity,6038000,0.5258
+1060,1995,Cameroon,CAO,christianity,7036810,0.53
+1061,2000,Cameroon,CAO,christianity,7566370,0.5016
+1062,2005,Cameroon,CAO,christianity,8938935,0.5015
+1063,2010,Cameroon,CAO,christianity,9868484,0.4952
+1064,1960,Nigeria,NIG,christianity,16521997,0.3905
+1068,1980,Nigeria,NIG,christianity,33291760,0.4622
+1070,1990,Nigeria,NIG,christianity,44038540,0.45799999999999996
+1075,1960,Gabon,GAB,christianity,286740,0.59
+1076,1965,Gabon,GAB,christianity,311640,0.6745
+1077,1970,Gabon,GAB,christianity,362200,0.7187
+1078,1975,Gabon,GAB,christianity,471871,0.7957
+1079,1980,Gabon,GAB,christianity,525000,0.7598
+1080,1985,Gabon,GAB,christianity,685540,0.8537
+1081,1990,Gabon,GAB,christianity,806600,0.8627
+1082,1995,Gabon,GAB,christianity,946880,0.88
+1083,2000,Gabon,GAB,christianity,936379,0.7638
+1084,2005,Gabon,GAB,christianity,963099,0.7335
+1085,2010,Gabon,GAB,christianity,1047752,0.7472
+1088,1970,Central African Republic,CEN,christianity,909406,0.4863
+1089,1975,Central African Republic,CEN,christianity,1116773,0.5458
+1090,1980,Central African Republic,CEN,christianity,1395400,0.6043
+1091,1985,Central African Republic,CEN,christianity,1677360,0.6432
+1092,1990,Central African Republic,CEN,christianity,1853000,0.6326
+1093,1995,Central African Republic,CEN,christianity,2159140,0.6597
+1094,2000,Central African Republic,CEN,christianity,1662483,0.4599
+1095,2005,Central African Republic,CEN,christianity,2017690,0.49200000000000005
+1096,2010,Central African Republic,CEN,christianity,2215305,0.49200000000000005
+1108,1960,Congo,CON,christianity,869440,0.88
+1109,1965,Congo,CON,christianity,980470,0.8825
+1110,1970,Congo,CON,christianity,1157682,0.9166
+1111,1975,Congo,CON,christianity,1308114,0.904
+1112,1980,Congo,CON,christianity,1535010,0.9197
+1113,1985,Congo,CON,christianity,1730390,0.8994
+1114,1990,Congo,CON,christianity,1976040,0.8853
+1115,1995,Congo,CON,christianity,2243564,0.8652
+1116,2000,Congo,CON,christianity,2430640,0.8259
+1117,2005,Congo,CON,christianity,2865567,0.8413
+1118,2010,Congo,CON,christianity,3228666,0.8063
+1119,1960,Democratic Republic of the Congo,DRC,christianity,11222901,0.7956
+1120,1965,Democratic Republic of the Congo,DRC,christianity,14667439,0.8440000000000001
+1121,1970,Democratic Republic of the Congo,DRC,christianity,19439860,0.8984
+1122,1975,Democratic Republic of the Congo,DRC,christianity,20532249,0.9092
+1123,1980,Democratic Republic of the Congo,DRC,christianity,24665560,0.9351
+1124,1985,Democratic Republic of the Congo,DRC,christianity,29078300,0.9386
+1125,1990,Democratic Republic of the Congo,DRC,christianity,33302540,0.9365
+1126,1995,Democratic Republic of the Congo,DRC,christianity,43148540,0.9493
+1127,2000,Democratic Republic of the Congo,DRC,christianity,47010884,0.9101
+1128,2005,Democratic Republic of the Congo,DRC,christianity,54270480,0.9186
+1129,2010,Democratic Republic of the Congo,DRC,christianity,63127199,0.9302
+1130,1965,Uganda,UGA,christianity,5232118,0.6502
+1131,1970,Uganda,UGA,christianity,6674128,0.6806
+1132,1975,Uganda,UGA,christianity,8253563,0.7147
+1133,1980,Uganda,UGA,christianity,9903000,0.7548
+1134,1985,Uganda,UGA,christianity,11555000,0.7828
+1135,1990,Uganda,UGA,christianity,13556620,0.8143
+1136,1995,Uganda,UGA,christianity,15511805,0.8053
+1137,2000,Uganda,UGA,christianity,17829965,0.8187
+1138,2005,Uganda,UGA,christianity,21257472,0.8023
+1139,2010,Uganda,UGA,christianity,25921856,0.833
+1140,1965,Kenya,KEN,christianity,5667984,0.5814
+1141,1970,Kenya,KEN,christianity,6954849,0.6184
+1142,1975,Kenya,KEN,christianity,8716385,0.6498
+1143,1980,Kenya,KEN,christianity,11452100,0.6871
+1144,1985,Kenya,KEN,christianity,14886320,0.7321
+1145,1990,Kenya,KEN,christianity,18867000,0.7851
+1146,1995,Kenya,KEN,christianity,24049800,0.7879
+1147,2000,Kenya,KEN,christianity,23881200,0.7939
+1148,2005,Kenya,KEN,christianity,29036215,0.8233
+1149,2010,Kenya,KEN,christianity,32402646,0.8063
+1151,1970,United Republic of Tanzania,TAZ,christianity,4683698,0.3529
+1152,1975,United Republic of Tanzania,TAZ,christianity,6093348,0.3979
+1153,1980,United Republic of Tanzania,TAZ,christianity,7863000,0.4232
+1154,1985,United Republic of Tanzania,TAZ,christianity,9992400,0.4598
+1155,1990,United Republic of Tanzania,TAZ,christianity,12378600,0.4829
+1156,1995,United Republic of Tanzania,TAZ,christianity,15624860,0.515
+1157,2000,United Republic of Tanzania,TAZ,christianity,16989531,0.5069
+1158,2005,United Republic of Tanzania,TAZ,christianity,18595935,0.4975
+1159,2010,United Republic of Tanzania,TAZ,christianity,20574501,0.4777
+1160,1965,Burundi,BUI,christianity,2342275,0.7297
+1161,1970,Burundi,BUI,christianity,2601642,0.7341
+1162,1975,Burundi,BUI,christianity,2852678,0.7617
+1163,1980,Burundi,BUI,christianity,3363420,0.8168
+1164,1985,Burundi,BUI,christianity,4025690,0.8533
+1165,1990,Burundi,BUI,christianity,4891200,0.8962
+1166,1995,Burundi,BUI,christianity,5424155,0.9067
+1167,2000,Burundi,BUI,christianity,5623798,0.84
+1168,2005,Burundi,BUI,christianity,6632591,0.8777
+1169,2010,Burundi,BUI,christianity,7641386,0.889
+1170,1965,Rwanda,RWA,christianity,1826997,0.5837
+1171,1970,Rwanda,RWA,christianity,2256319,0.6115
+1172,1975,Rwanda,RWA,christianity,2726858,0.6503
+1173,1980,Rwanda,RWA,christianity,3603000,0.698
+1174,1985,Rwanda,RWA,christianity,4475220,0.7395
+1175,1990,Rwanda,RWA,christianity,5702750,0.7941
+1176,1995,Rwanda,RWA,christianity,4359705,0.841
+1177,2000,Rwanda,RWA,christianity,6779963,0.8768
+1178,2005,Rwanda,RWA,christianity,8064826,0.8969
+1179,2010,Rwanda,RWA,christianity,9252868,0.8945
+1198,1945,Ethiopia,ETH,christianity,8110359,0.4715
+1199,1950,Ethiopia,ETH,christianity,8487851,0.4337
+1200,1955,Ethiopia,ETH,christianity,8882912,0.4651
+1201,1960,Ethiopia,ETH,christianity,10232470,0.4943
+1202,1965,Ethiopia,ETH,christianity,11249499,0.4956
+1203,1970,Ethiopia,ETH,christianity,12798354,0.5197
+1204,1975,Ethiopia,ETH,christianity,15382676,0.5676
+1205,1980,Ethiopia,ETH,christianity,17967000,0.5784
+1206,1985,Ethiopia,ETH,christianity,24156800,0.5459
+1207,1990,Ethiopia,ETH,christianity,29253960,0.5660000000000001
+1208,1995,Ethiopia,ETH,christianity,32575450,0.5748
+1209,2000,Ethiopia,ETH,christianity,38159809,0.6099
+1210,2005,Ethiopia,ETH,christianity,42171769,0.5773
+1211,2010,Ethiopia,ETH,christianity,50654152,0.6156
+1215,2010,Eritrea,ERI,christianity,3009808,0.575
+1216,1975,Angola,ANG,christianity,5287242,0.8635
+1217,1980,Angola,ANG,christianity,6252750,0.8908
+1218,1985,Angola,ANG,christianity,7285380,0.9103
+1219,1990,Angola,ANG,christianity,9307500,0.9289
+1220,1995,Angola,ANG,christianity,9875230,0.9129999999999999
+1221,2000,Angola,ANG,christianity,10839535,0.8417
+1222,2005,Angola,ANG,christianity,15029280,0.9044
+1223,2010,Angola,ANG,christianity,17034849,0.8912
+1228,1995,Mozambique,MZM,christianity,7432920,0.4266
+1229,2000,Mozambique,MZM,christianity,7571947,0.3848
+1230,2005,Mozambique,MZM,christianity,8746666,0.4504
+1231,2010,Mozambique,MZM,christianity,10340024,0.4734
+1232,1965,Zambia,ZAM,christianity,2358273,0.6382
+1233,1970,Zambia,ZAM,christianity,2837354,0.6695
+1234,1975,Zambia,ZAM,christianity,3468156,0.7088
+1235,1980,Zambia,ZAM,christianity,4122960,0.7185
+1236,1985,Zambia,ZAM,christianity,4900000,0.7286
+1237,1990,Zambia,ZAM,christianity,6080800,0.7532
+1238,1995,Zambia,ZAM,christianity,6410000,0.7932
+1239,2000,Zambia,ZAM,christianity,7513167,0.8194
+1240,2005,Zambia,ZAM,christianity,9953669,0.87
+1241,2010,Zambia,ZAM,christianity,11344499,0.87
+1243,1970,Zimbabwe,ZIM,christianity,2773506,0.5223
+1244,1975,Zimbabwe,ZIM,christianity,3490253,0.5558
+1245,1980,Zimbabwe,ZIM,christianity,4347000,0.6126
+1246,1985,Zimbabwe,ZIM,christianity,5447857,0.6502
+1247,1990,Zimbabwe,ZIM,christianity,6548714,0.6990000000000001
+1248,1995,Zimbabwe,ZIM,christianity,8271850,0.7177
+1249,2000,Zimbabwe,ZIM,christianity,7563983,0.6482
+1250,2005,Zimbabwe,ZIM,christianity,9865000,0.7974
+1251,2010,Zimbabwe,ZIM,christianity,9961179,0.8188
+1252,1965,Malawi,MAW,christianity,2199998,0.5629
+1253,1970,Malawi,MAW,christianity,2709383,0.5882
+1254,1975,Malawi,MAW,christianity,3264691,0.6235
+1255,1980,Malawi,MAW,christianity,3900000,0.6451
+1256,1985,Malawi,MAW,christianity,4488350,0.6358
+1257,1990,Malawi,MAW,christianity,5352920,0.6458
+1258,1995,Malawi,MAW,christianity,6730375,0.6876
+1259,2000,Malawi,MAW,christianity,6890909,0.6307
+1260,2005,Malawi,MAW,christianity,8664396,0.7021
+1261,2010,Malawi,MAW,christianity,10452600,0.7228
+1262,1945,South Africa,SAF,christianity,6397701,0.5679
+1263,1950,South Africa,SAF,christianity,8179873,0.6146
+1264,1955,South Africa,SAF,christianity,9904406,0.6642
+1265,1960,South Africa,SAF,christianity,12518374,0.7311
+1266,1965,South Africa,SAF,christianity,14669841,0.7482
+1267,1970,South Africa,SAF,christianity,17146838,0.7635
+1268,1975,South Africa,SAF,christianity,19751186,0.7695
+1269,1980,South Africa,SAF,christianity,22598100,0.7747
+1270,1985,South Africa,SAF,christianity,25537066,0.7728
+1271,1990,South Africa,SAF,christianity,28864199,0.7787
+1272,1995,South Africa,SAF,christianity,35332102,0.8567
+1273,2000,South Africa,SAF,christianity,31630111,0.7834
+1274,2005,South Africa,SAF,christianity,37919459,0.8011
+1275,2010,South Africa,SAF,christianity,40488807,0.8094
+1276,1990,Namibia,NAM,christianity,1248000,0.9231
+1277,1995,Namibia,NAM,christianity,1400596,0.9118
+1278,2000,Namibia,NAM,christianity,1471479,0.8525
+1279,2005,Namibia,NAM,christianity,1693277,0.8652
+1280,2010,Namibia,NAM,christianity,1865944,0.87
+1281,1970,Lesotho,LES,christianity,867092,0.8149
+1282,1975,Lesotho,LES,christianity,1029295,0.8671
+1283,1980,Lesotho,LES,christianity,1191500,0.8898
+1284,1985,Lesotho,LES,christianity,1362730,0.9067
+1285,1990,Lesotho,LES,christianity,1612530,0.9044
+1286,1995,Lesotho,LES,christianity,1824570,0.9001
+1287,2000,Lesotho,LES,christianity,1907000,0.8857
+1288,2005,Lesotho,LES,christianity,1842825,0.9237
+1289,2010,Lesotho,LES,christianity,1972951,0.9418
+1293,1985,Botswana,BOT,christianity,544000,0.5
+1294,1990,Botswana,BOT,christianity,704700,0.5421
+1295,1995,Botswana,BOT,christianity,835638,0.5739
+1296,2000,Botswana,BOT,christianity,874624,0.5392
+1297,2005,Botswana,BOT,christianity,1138738,0.6667
+1298,2010,Botswana,BOT,christianity,1250799,0.6920000000000001
+1299,1970,Swaziland,SWA,christianity,281835,0.6726
+1300,1975,Swaziland,SWA,christianity,349974,0.7306
+1301,1980,Swaziland,SWA,christianity,418110,0.7602
+1302,1985,Swaziland,SWA,christianity,498000,0.7806
+1303,1990,Swaziland,SWA,christianity,649410,0.8445
+1304,1995,Swaziland,SWA,christianity,767567,0.8453
+1305,2000,Swaziland,SWA,christianity,861218,0.8544
+1306,2005,Swaziland,SWA,christianity,915600,0.8131
+1307,2010,Swaziland,SWA,christianity,957312,0.7843
+1310,1970,Madagascar,MAG,christianity,3455264,0.5037
+1312,1980,Madagascar,MAG,christianity,4510880,0.4972
+1313,1985,Madagascar,MAG,christianity,5009750,0.5017
+1314,1990,Madagascar,MAG,christianity,5896410,0.5266
+1315,1995,Madagascar,MAG,christianity,8113115,0.5455
+1316,2000,Madagascar,MAG,christianity,9825986,0.6164
+1317,2005,Madagascar,MAG,christianity,10372048,0.585
+1318,2010,Madagascar,MAG,christianity,12031782,0.5858
+1336,1980,Seychelles,SEY,christianity,61480,0.9759
+1337,1985,Seychelles,SEY,christianity,63080,0.9705
+1338,1990,Seychelles,SEY,christianity,67950,0.9707
+1339,1995,Seychelles,SEY,christianity,72574,0.9677
+1340,2000,Seychelles,SEY,christianity,72320,0.9392
+1341,2005,Seychelles,SEY,christianity,76719,0.9243
+1342,2010,Seychelles,SEY,christianity,81121,0.9365
+1470,1945,Lebanon,LEB,christianity,601357,0.5202
+1471,1950,Lebanon,LEB,christianity,721500,0.5
+1472,1955,Lebanon,LEB,christianity,851750,0.5281
+1473,1960,Lebanon,LEB,christianity,982000,0.5288
+1474,1965,Lebanon,LEB,christianity,1169975,0.5439
+1475,1970,Lebanon,LEB,christianity,1357950,0.55
+1476,1975,Lebanon,LEB,christianity,1402925,0.507
+1477,1980,Lebanon,LEB,christianity,1447900,0.5425
+1478,1985,Lebanon,LEB,christianity,1334000,0.5
+1880,1950,Philippines,PHI,christianity,18822682,0.9284
+1881,1955,Philippines,PHI,christianity,21937059,0.9308
+1882,1960,Philippines,PHI,christianity,25233478,0.9315
+1883,1965,Philippines,PHI,christianity,29701787,0.9316
+1884,1970,Philippines,PHI,christianity,34409552,0.938
+1885,1975,Philippines,PHI,christianity,39122878,0.9299
+1886,1980,Philippines,PHI,christianity,45065360,0.9327
+1887,1985,Philippines,PHI,christianity,50587120,0.9254
+1888,1990,Philippines,PHI,christianity,56991959,0.927
+1889,1995,Philippines,PHI,christianity,63749979,0.9073
+1890,2000,Philippines,PHI,christianity,70508000,0.9216
+1891,2005,Philippines,PHI,christianity,76584168,0.9091
+1892,2010,Philippines,PHI,christianity,84493445,0.9174
+1904,2005,East Timor,ETM,christianity,972160,0.98
+1905,2010,East Timor,ETM,christianity,1105222,0.98
+1906,1945,Australia,AUL,christianity,7079273,0.9577
+1907,1950,Australia,AUL,christianity,7804437,0.9542
+1908,1955,Australia,AUL,christianity,8723353,0.9482
+1909,1960,Australia,AUL,christianity,9747250,0.9486
+1910,1965,Australia,AUL,christianity,10696019,0.9392
+1911,1970,Australia,AUL,christianity,11624696,0.9295
+1912,1975,Australia,AUL,christianity,12364770,0.89
+1913,1980,Australia,AUL,christianity,12732700,0.8665
+1914,1985,Australia,AUL,christianity,13256330,0.8396
+1915,1990,Australia,AUL,christianity,14059050,0.8239
+1916,1995,Australia,AUL,christianity,14418100,0.7978
+1917,2000,Australia,AUL,christianity,14578660,0.7719
+1918,2005,Australia,AUL,christianity,14609098,0.7163
+1919,2010,Australia,AUL,christianity,13150670,0.6145
+1920,1975,Papua New Guinea,PNG,christianity,2615347,0.9701
+1921,1980,Papua New Guinea,PNG,christianity,2849420,0.9568
+1922,1985,Papua New Guinea,PNG,christianity,3183795,0.9541
+1923,1990,Papua New Guinea,PNG,christianity,3513400,0.9501
+1924,1995,Papua New Guinea,PNG,christianity,3891350,0.9552
+1925,2000,Papua New Guinea,PNG,christianity,4614720,0.96
+1926,2005,Papua New Guinea,PNG,christianity,5873280,0.96
+1927,2010,Papua New Guinea,PNG,christianity,6611410,0.96
+1928,1945,New Zealand,NEW,christianity,1680548,0.9725
+1929,1950,New Zealand,NEW,christianity,1859593,0.9746
+1930,1955,New Zealand,NEW,christianity,2069282,0.9688
+1931,1960,New Zealand,NEW,christianity,2264441,0.9547
+1932,1965,New Zealand,NEW,christianity,2507639,0.9542
+1933,1970,New Zealand,NEW,christianity,2681122,0.9538
+1934,1975,New Zealand,NEW,christianity,2873329,0.932
+1935,1980,New Zealand,NEW,christianity,2836440,0.9112
+1936,1985,New Zealand,NEW,christianity,2852040,0.8784
+1937,1990,New Zealand,NEW,christianity,2830080,0.8418
+1938,1995,New Zealand,NEW,christianity,2698123,0.7618
+1939,2000,New Zealand,NEW,christianity,2535249,0.6565
+1940,2005,New Zealand,NEW,christianity,2235307,0.5407
+1941,2010,New Zealand,NEW,christianity,2361557,0.5407
+1942,1985,Vanuatu,VAN,christianity,123960,0.9115
+1943,1990,Vanuatu,VAN,christianity,130480,0.9061
+1944,1995,Vanuatu,VAN,christianity,149450,0.9058
+1945,2000,Vanuatu,VAN,christianity,165300,0.87
+1946,2005,Vanuatu,VAN,christianity,179580,0.82
+1947,2010,Vanuatu,VAN,christianity,205190,0.85
+1948,1980,Solomon Islands,SOL,christianity,216760,0.9549
+1949,1985,Solomon Islands,SOL,christianity,253800,0.94
+1950,1990,Solomon Islands,SOL,christianity,304000,0.95
+1951,1995,Solomon Islands,SOL,christianity,358780,0.9492
+1952,2000,Solomon Islands,SOL,christianity,408480,0.92
+1953,2005,Solomon Islands,SOL,christianity,447270,0.9128
+1954,2010,Solomon Islands,SOL,christianity,482878,0.9
+1955,2000,Kiribati,KIR,christianity,97970,0.97
+1956,2005,Kiribati,KIR,christianity,88320,0.96
+1957,2010,Kiribati,KIR,christianity,98880,0.96
+1958,2000,Tuvalu,TUV,christianity,10450,0.95
+1959,2005,Tuvalu,TUV,christianity,9700,0.97
+1960,2010,Tuvalu,TUV,christianity,9764,0.9699
+1961,1970,Fiji,FIJ,christianity,262522,0.5049
+1962,1975,Fiji,FIJ,christianity,288710,0.5074
+1963,1980,Fiji,FIJ,christianity,315460,0.4976
+1964,1985,Fiji,FIJ,christianity,350700,0.5032
+1965,1990,Fiji,FIJ,christianity,415840,0.5689
+1966,1995,Fiji,FIJ,christianity,485735,0.6102
+1967,2000,Fiji,FIJ,christianity,449482,0.5502
+1968,2005,Fiji,FIJ,christianity,448500,0.5436
+1969,2010,Fiji,FIJ,christianity,549963,0.64
+1970,2000,Tonga,TON,christianity,89100,0.81
+1971,2005,Tonga,TON,christianity,91044,0.81
+1972,2010,Tonga,TON,christianity,98745,0.9421
+1973,2000,Nauru,NAU,christianity,12870,0.99
+1974,2005,Nauru,NAU,christianity,12610,0.97
+1975,2010,Nauru,NAU,christianity,9638,0.9699
+1976,1995,Marshall Islands,MSI,christianity,53240,0.9507
+1977,2000,Marshall Islands,MSI,christianity,57400,0.8969
+1978,2005,Marshall Islands,MSI,christianity,51347,0.9509
+1979,2010,Marshall Islands,MSI,christianity,50971,0.9341
+1980,1995,Palau,PAL,christianity,12470,0.7335
+1981,2000,Palau,PAL,christianity,15570,0.8195
+1982,2005,Palau,PAL,christianity,18100,0.8227
+1983,2010,Palau,PAL,christianity,18391,0.8606
+1984,1995,Federated States of Micronesia,FSM,christianity,97966,0.9329999999999999
+1985,2000,Federated States of Micronesia,FSM,christianity,100952,0.8483
+1986,2005,Federated States of Micronesia,FSM,christianity,90100,0.8266
+1987,2010,Federated States of Micronesia,FSM,christianity,96000,0.8651
+1988,1980,Samoa,WSM,christianity,151290,0.9698
+1989,1985,Samoa,WSM,christianity,152325,0.9702
+1990,1990,Samoa,WSM,christianity,159500,0.9726
+1991,1995,Samoa,WSM,christianity,161677,0.9799
+1992,2000,Samoa,WSM,christianity,174600,0.97
+1993,2005,Samoa,WSM,christianity,177510,0.97
+1994,2010,Samoa,WSM,christianity,180140,0.9538
+1327,1970,Mauritius,MAS,hinduism,383305,0.4624
+1328,1975,Mauritius,MAS,hinduism,401400,0.45
+1329,1980,Mauritius,MAS,hinduism,434700,0.45
+1330,1985,Mauritius,MAS,hinduism,459450,0.45
+1331,1990,Mauritius,MAS,hinduism,465960,0.44
+1332,1995,Mauritius,MAS,hinduism,493680,0.44
+1333,2000,Mauritius,MAS,hinduism,561300,0.4847
+1334,2005,Mauritius,MAS,hinduism,610000,0.4907
+1335,2010,Mauritius,MAS,hinduism,622238,0.4859
+1707,1950,India,IND,hinduism,285839680,0.7978
+1708,1955,India,IND,hinduism,312119200,0.8
+1709,1960,India,IND,hinduism,341835376,0.79
+1710,1965,India,IND,hinduism,378198687,0.7838
+1711,1970,India,IND,hinduism,431738720,0.778
+1712,1975,India,IND,hinduism,458088480,0.76
+1713,1980,India,IND,hinduism,507774904,0.7541
+1714,1985,India,IND,hinduism,569292341,0.7581
+1715,1990,India,IND,hinduism,622022768,0.7452
+1716,1995,India,IND,hinduism,679818545,0.7422
+1717,2000,India,IND,hinduism,827578868,0.8045
+1718,2005,India,IND,hinduism,894489961,0.802
+1719,2010,India,IND,hinduism,961401054,0.8045
+1785,1945,Nepal,NEP,hinduism,5181132,0.7287
+1786,1950,Nepal,NEP,hinduism,5700977,0.7251
+1787,1955,Nepal,NEP,hinduism,6225980,0.7345
+1788,1960,Nepal,NEP,hinduism,6854620,0.74
+1789,1965,Nepal,NEP,hinduism,7572905,0.7416
+1790,1970,Nepal,NEP,hinduism,8345190,0.7368
+1791,1975,Nepal,NEP,hinduism,9470900,0.7379
+1792,1980,Nepal,NEP,hinduism,10529160,0.7195
+1793,1985,Nepal,NEP,hinduism,11753280,0.72
+1794,1990,Nepal,NEP,hinduism,13039920,0.72
+1795,1995,Nepal,NEP,hinduism,14833760,0.6914
+1796,2000,Nepal,NEP,hinduism,18952560,0.792
+1797,2005,Nepal,NEP,hinduism,20350000,0.8029999999999999
+1798,2010,Nepal,NEP,hinduism,21551492,0.8134
+657,1945,Albania,ALB,islam,744990,0.664
+658,1950,Albania,ALB,islam,799500,0.6579999999999999
+659,1955,Albania,ALB,islam,857998,0.6222
+660,1960,Albania,ALB,islam,916497,0.5689
+661,1965,Albania,ALB,islam,974995,0.5214
+662,1970,Albania,ALB,islam,1033493,0.4838
+663,1975,Albania,ALB,islam,1091992,0.4548
+664,1980,Albania,ALB,islam,1150490,0.4309
+665,1985,Albania,ALB,islam,1271510,0.43
+666,1990,Albania,ALB,islam,1367520,0.42
+667,1995,Albania,ALB,islam,1948860,0.54
+668,2000,Albania,ALB,islam,2051467,0.659
+669,2005,Albania,ALB,islam,1931812,0.6148
+670,2010,Albania,ALB,islam,2013180,0.63
+698,2010,Kosovo,KOS,islam,1657720,0.9561
+802,1995,Azerbaijan,AZE,islam,6738299,0.9
+803,2000,Azerbaijan,AZE,islam,6960600,0.9
+804,2005,Azerbaijan,AZE,islam,8056320,0.96
+805,2010,Azerbaijan,AZE,islam,8595234,0.95
+909,1965,Gambia,GAM,islam,330000,0.8168
+910,1970,Gambia,GAM,islam,385214,0.8338
+911,1975,Gambia,GAM,islam,438160,0.8362
+912,1980,Gambia,GAM,islam,506850,0.8433
+913,1985,Gambia,GAM,islam,667500,0.8613
+914,1990,Gambia,GAM,islam,790760,0.8586
+915,1995,Gambia,GAM,islam,990900,0.8919
+916,2000,Gambia,GAM,islam,1174500,0.9
+917,2005,Gambia,GAM,islam,1299360,0.9048
+918,2010,Gambia,GAM,islam,1548362,0.9
+919,1960,Mali,MLI,islam,3310500,0.7567
+920,1965,Mali,MLI,islam,3703200,0.7957
+921,1970,Mali,MLI,islam,4400377,0.8024
+922,1975,Mali,MLI,islam,5000000,0.8906
+923,1980,Mali,MLI,islam,6312550,0.8897
+924,1985,Mali,MLI,islam,6630740,0.8764
+925,1990,Mali,MLI,islam,7163200,0.8783
+926,1995,Mali,MLI,islam,9557550,0.8854
+927,2000,Mali,MLI,islam,10080350,0.8973
+928,2005,Mali,MLI,islam,10607200,0.9041
+929,2010,Mali,MLI,islam,12754822,0.94
+930,1960,Senegal,SEN,islam,2611939,0.73
+931,1965,Senegal,SEN,islam,2939249,0.75
+932,1970,Senegal,SEN,islam,3646780,0.8296
+933,1975,Senegal,SEN,islam,4277639,0.86
+934,1980,Senegal,SEN,islam,4952910,0.87
+935,1985,Senegal,SEN,islam,6118120,0.8857
+936,1990,Senegal,SEN,islam,6407000,0.8779
+937,1995,Senegal,SEN,islam,7328829,0.878
+938,2000,Senegal,SEN,islam,8852140,0.9337
+939,2005,Senegal,SEN,islam,10159120,0.9365
+940,2010,Senegal,SEN,islam,11346069,0.9389
+952,1960,Mauritania,MAA,islam,981090,0.99
+953,1965,Mauritania,MAA,islam,1085040,0.99
+954,1970,Mauritania,MAA,islam,1212494,0.993
+955,1975,Mauritania,MAA,islam,1343580,0.98
+956,1980,Mauritania,MAA,islam,1519980,0.98
+957,1985,Mauritania,MAA,islam,1730680,0.98
+958,1990,Mauritania,MAA,islam,1972970,0.985
+959,1995,Mauritania,MAA,islam,2261160,0.99
+960,2000,Mauritania,MAA,islam,2597000,0.9727
+961,2005,Mauritania,MAA,islam,2789760,0.96
+962,2010,Mauritania,MAA,islam,3212166,0.97
+963,1960,Niger,NIR,islam,2180160,0.72
+964,1965,Niger,NIR,islam,2770270,0.7886
+965,1970,Niger,NIR,islam,3400711,0.8451
+966,1975,Niger,NIR,islam,3956000,0.86
+967,1980,Niger,NIR,islam,4915680,0.88
+968,1985,Niger,NIR,islam,5881120,0.89
+969,1990,Niger,NIR,islam,6970000,0.9016
+970,1995,Niger,NIR,islam,8450430,0.9234
+971,2000,Niger,NIR,islam,9817950,0.915
+972,2005,Niger,NIR,islam,11590000,0.9178
+973,2010,Niger,NIR,islam,13714412,0.915
+980,1990,Ivory Coast,CDI,islam,4530943,0.3867
+981,1995,Ivory Coast,CDI,islam,5399999,0.3795
+982,2000,Ivory Coast,CDI,islam,5719537,0.3868
+983,2005,Ivory Coast,CDI,islam,7337488,0.3913
+985,1960,Guinea,GUI,islam,1620000,0.4951
+987,1970,Guinea,GUI,islam,2173980,0.5574
+988,1975,Guinea,GUI,islam,2657017,0.6404
+989,1980,Guinea,GUI,islam,2978870,0.6678
+990,1985,Guinea,GUI,islam,3122870,0.67
+991,1990,Guinea,GUI,islam,3847000,0.6685
+992,1995,Guinea,GUI,islam,4997320,0.68
+993,2000,Guinea,GUI,islam,6315500,0.85
+994,2005,Guinea,GUI,islam,7837850,0.85
+995,2010,Guinea,GUI,islam,8702832,0.85
+1001,1985,Burkina Faso,BFO,islam,3691592,0.4681
+1002,1990,Burkina Faso,BFO,islam,4376500,0.4862
+1003,1995,Burkina Faso,BFO,islam,5100000,0.5
+1004,2000,Burkina Faso,BFO,islam,6804090,0.57
+1005,2005,Burkina Faso,BFO,islam,7425160,0.58
+1006,2010,Burkina Faso,BFO,islam,9023117,0.579
+1026,1990,Sierra Leone,SIE,islam,1798650,0.45
+1027,1995,Sierra Leone,SIE,islam,2433100,0.58
+1028,2000,Sierra Leone,SIE,islam,2813860,0.5797
+1029,2005,Sierra Leone,SIE,islam,3147566,0.5717
+1030,2010,Sierra Leone,SIE,islam,3396544,0.5532
+1065,1965,Nigeria,NIG,islam,18983640,0.39
+1066,1970,Nigeria,NIG,islam,22617710,0.4107
+1067,1975,Nigeria,NIG,islam,27642855,0.4404
+1069,1985,Nigeria,NIG,islam,47758800,0.4991
+1071,1995,Nigeria,NIG,islam,52361000,0.4687
+1072,2000,Nigeria,NIG,islam,60000000,0.5
+1073,2005,Nigeria,NIG,islam,66214665,0.495
+1074,2010,Nigeria,NIG,islam,78284656,0.508
+1097,1960,Chad,CHA,islam,1750000,0.5711
+1098,1965,Chad,CHA,islam,1800000,0.5438
+1099,1970,Chad,CHA,islam,1808053,0.4967
+1100,1975,Chad,CHA,islam,1888026,0.4685
+1101,1980,Chad,CHA,islam,1968000,0.4396
+1102,1985,Chad,CHA,islam,2208800,0.44
+1103,1990,Chad,CHA,islam,2672890,0.47
+1104,1995,Chad,CHA,islam,3167500,0.5
+1105,2000,Chad,CHA,islam,4124505,0.5391
+1106,2005,Chad,CHA,islam,5530260,0.552
+1107,2010,Chad,CHA,islam,6347232,0.552
+1180,1960,Somalia,SOM,islam,3765000,0.9947
+1181,1965,Somalia,SOM,islam,4209000,0.9929
+1182,1970,Somalia,SOM,islam,4778000,0.9973
+1183,1975,Somalia,SOM,islam,5401000,0.9872
+1184,1980,Somalia,SOM,islam,6695000,0.9973
+1185,1985,Somalia,SOM,islam,7805000,0.9911
+1186,1990,Somalia,SOM,islam,8573000,0.9942
+1187,1995,Somalia,SOM,islam,9401000,0.9905
+1188,2000,Somalia,SOM,islam,10046515,0.995
+1189,2005,Somalia,SOM,islam,8303876,0.9940000000000001
+1190,2010,Somalia,SOM,islam,9283692,0.995
+1191,1980,Djibouti,DJI,islam,330875,0.932
+1192,1985,Djibouti,DJI,islam,404000,0.9395
+1193,1990,Djibouti,DJI,islam,484500,0.9371
+1194,1995,Djibouti,DJI,islam,564940,0.94
+1195,2000,Djibouti,DJI,islam,622050,0.975
+1196,2005,Djibouti,DJI,islam,784875,0.975
+1197,2010,Djibouti,DJI,islam,860869,0.975
+1212,1995,Eritrea,ERI,islam,1542000,0.4863
+1213,2000,Eritrea,ERI,islam,1925000,0.5
+1214,2005,Eritrea,ERI,islam,2370690,0.53
+1319,1975,Comoros,COM,islam,309680,0.98
+1320,1980,Comoros,COM,islam,375340,0.98
+1321,1985,Comoros,COM,islam,439040,0.98
+1322,1990,Comoros,COM,islam,512540,0.98
+1323,1995,Comoros,COM,islam,601259,0.9824
+1324,2000,Comoros,COM,islam,680512,0.9806
+1325,2005,Comoros,COM,islam,588339,0.9806
+1326,2010,Comoros,COM,islam,666746,0.9806
+1343,1955,Morocco,MOR,islam,9698640,0.92
+1344,1960,Morocco,MOR,islam,11081000,0.9522
+1345,1965,Morocco,MOR,islam,12534300,0.95
+1346,1970,Morocco,MOR,islam,14623270,0.9766
+1347,1975,Morocco,MOR,islam,16770000,0.9861
+1348,1980,Morocco,MOR,islam,19138680,0.99
+1349,1985,Morocco,MOR,islam,21417690,0.9808
+1350,1990,Morocco,MOR,islam,23923175,0.977
+1351,1995,Morocco,MOR,islam,26102400,0.9893
+1352,2000,Morocco,MOR,islam,28002800,0.9877
+1353,2005,Morocco,MOR,islam,29843108,0.9891
+1354,2010,Morocco,MOR,islam,31430015,0.9891
+1355,1965,Algeria,ALG,islam,10770700,0.9034
+1356,1970,Algeria,ALG,islam,13611705,0.9902
+1357,1975,Algeria,ALG,islam,15861508,0.9902
+1358,1980,Algeria,ALG,islam,18479340,0.99
+1359,1985,Algeria,ALG,islam,21631500,0.99
+1360,1990,Algeria,ALG,islam,24146000,0.965
+1361,1995,Algeria,ALG,islam,27208500,0.9697
+1362,2000,Algeria,ALG,islam,30865165,0.9807
+1363,2005,Algeria,ALG,islam,32576940,0.99
+1364,2010,Algeria,ALG,islam,35309660,0.99
+1365,1955,Tunisia,TUN,islam,3496810,0.89
+1366,1960,Tunisia,TUN,islam,3930000,0.9311
+1367,1965,Tunisia,TUN,islam,4500000,0.9719
+1368,1970,Tunisia,TUN,islam,5074740,0.99
+1369,1975,Tunisia,TUN,islam,5330450,0.95
+1370,1980,Tunisia,TUN,islam,6407320,0.9758
+1371,1985,Tunisia,TUN,islam,7117006,0.9802
+1372,1990,Tunisia,TUN,islam,8070750,0.9898
+1373,1995,Tunisia,TUN,islam,8823630,0.985
+1374,2000,Tunisia,TUN,islam,9490140,0.99
+1375,2005,Tunisia,TUN,islam,9928710,0.99
+1376,2010,Tunisia,TUN,islam,10443506,0.99
+1377,1950,Libya,LIB,islam,950947,0.9323
+1378,1955,Libya,LIB,islam,1072543,0.9525
+1379,1960,Libya,LIB,islam,1121000,0.8623
+1380,1965,Libya,LIB,islam,1471774,0.9392
+1381,1970,Libya,LIB,islam,1769350,0.9538
+1382,1975,Libya,LIB,islam,2098000,0.9408
+1383,1980,Libya,LIB,islam,2589160,0.9439
+1384,1985,Libya,LIB,islam,3271490,0.9696
+1385,1990,Libya,LIB,islam,4026470,0.97
+1386,1995,Libya,LIB,islam,5144790,0.9515
+1387,2000,Libya,LIB,islam,5436850,0.97
+1388,2005,Libya,LIB,islam,5745310,0.97
+1389,2010,Libya,LIB,islam,6310833,0.9695
+1390,1960,Sudan,SUD,islam,8000000,0.7165
+1391,1965,Sudan,SUD,islam,8685300,0.7028
+1392,1970,Sudan,SUD,islam,9649200,0.6962
+1393,1975,Sudan,SUD,islam,11202000,0.7123
+1394,1980,Sudan,SUD,islam,13637130,0.73
+1395,1985,Sudan,SUD,islam,16075066,0.7271
+1396,1990,Sudan,SUD,islam,17384983,0.6751
+1397,1995,Sudan,SUD,islam,18694900,0.7
+1398,2000,Sudan,SUD,islam,20053200,0.68
+1399,2005,Sudan,SUD,islam,24777900,0.7
+1400,2010,Sudan,SUD,islam,28488914,0.71
+1401,1945,Iran,IRN,islam,15012850,0.9867
+1402,1950,Iran,IRN,islam,15454430,0.9495
+1403,1955,Iran,IRN,islam,18016628,0.9832
+1404,1960,Iran,IRN,islam,20654000,0.9634
+1405,1965,Iran,IRN,islam,25222354,0.978
+1406,1970,Iran,IRN,islam,27727000,0.9659
+1407,1975,Iran,IRN,islam,32358422,0.986
+1408,1980,Iran,IRN,islam,37694000,0.9594
+1409,1985,Iran,IRN,islam,46694000,0.9765
+1410,1990,Iran,IRN,islam,53089900,0.9742
+1411,1995,Iran,IRN,islam,65965072,0.9649
+1412,2000,Iran,IRN,islam,66686470,0.985
+1413,2005,Iran,IRN,islam,68805000,0.99
+1414,2010,Iran,IRN,islam,73332824,0.99
+1415,1945,Turkey,TUR,islam,18397800,0.9823
+1416,1950,Turkey,TUR,islam,20415800,0.9829
+1417,1955,Turkey,TUR,islam,23536893,0.9867
+1418,1960,Turkey,TUR,islam,27251539,0.9907
+1419,1965,Turkey,TUR,islam,30800000,0.9888
+1420,1970,Turkey,TUR,islam,34910321,0.9884
+1421,1975,Turkey,TUR,islam,39455160,0.9857
+1422,1980,Turkey,TUR,islam,44000000,0.9901
+1423,1985,Turkey,TUR,islam,48579300,0.9657
+1424,1990,Turkey,TUR,islam,55450432,0.9885
+1425,1995,Turkey,TUR,islam,61019340,0.9899
+1426,2000,Turkey,TUR,islam,65759180,0.9875
+1427,2005,Turkey,TUR,islam,71087650,0.9864
+1428,2010,Turkey,TUR,islam,75699756,0.9858
+1429,1945,Iraq,IRQ,islam,4327039,0.9384
+1430,1950,Iraq,IRQ,islam,4786119,0.9208
+1431,1955,Iraq,IRQ,islam,5308381,0.8905
+1432,1960,Iraq,IRQ,islam,6056999,0.8797
+1433,1965,Iraq,IRQ,islam,7781364,0.9670000000000001
+1434,1970,Iraq,IRQ,islam,9062399,0.96
+1435,1975,Iraq,IRQ,islam,10567800,0.95
+1436,1980,Iraq,IRQ,islam,12436100,0.9394
+1437,1985,Iraq,IRQ,islam,15273189,0.98
+1438,1990,Iraq,IRQ,islam,17354880,0.96
+1439,1995,Iraq,IRQ,islam,19693100,0.98
+1440,2000,Iraq,IRQ,islam,21959250,0.95
+1441,2005,Iraq,IRQ,islam,26984295,0.965
+1442,2010,Iraq,IRQ,islam,30210000,0.95
+1443,1945,Egypt,EGY,islam,15428230,0.8358
+1444,1950,Egypt,EGY,islam,16778020,0.82
+1445,1955,Egypt,EGY,islam,20039010,0.8716
+1446,1960,Egypt,EGY,islam,23300000,0.8932
+1447,1965,Egypt,EGY,islam,27050000,0.9204
+1448,1970,Egypt,EGY,islam,28933990,0.8754
+1449,1975,Egypt,EGY,islam,34271694,0.9263
+1450,1980,Egypt,EGY,islam,35387450,0.8721
+1451,1985,Egypt,EGY,islam,41152450,0.8855
+1452,1990,Egypt,EGY,islam,45800000,0.8598
+1453,1995,Egypt,EGY,islam,47770094,0.8066
+1454,2000,Egypt,EGY,islam,60253600,0.88
+1455,2005,Egypt,EGY,islam,63117840,0.8641
+1456,2010,Egypt,EGY,islam,70248701,0.8643
+1457,1950,Syria,SYR,islam,2947658,0.8434
+1458,1955,Syria,SYR,islam,3534318,0.8909
+1459,1960,Syria,SYR,islam,4125689,0.9168
+1460,1965,Syria,SYR,islam,4717060,0.8858
+1461,1970,Syria,SYR,islam,5611450,0.89
+1462,1975,Syria,SYR,islam,6450000,0.8740000000000001
+1463,1980,Syria,SYR,islam,7847700,0.8669
+1464,1985,Syria,SYR,islam,9202490,0.8963
+1465,1990,Syria,SYR,islam,11003964,0.9082
+1466,1995,Syria,SYR,islam,12767400,0.9
+1467,2000,Syria,SYR,islam,14512500,0.9
+1468,2005,Syria,SYR,islam,16505580,0.91
+1469,2010,Syria,SYR,islam,18372466,0.902
+1479,1990,Lebanon,LEB,islam,1355000,0.5303
+1480,1995,Lebanon,LEB,islam,1782299,0.5923
+1481,2000,Lebanon,LEB,islam,1870739,0.57
+1482,2005,Lebanon,LEB,islam,2204280,0.54
+1483,2010,Lebanon,LEB,islam,2203740,0.54
+1484,1945,Jordan,JOR,islam,966540,0.89
+1485,1950,Jordan,JOR,islam,1162770,0.94
+1486,1955,Jordan,JOR,islam,1330000,0.9255
+1487,1960,Jordan,JOR,islam,1590000,0.9381
+1488,1965,Jordan,JOR,islam,1795000,0.9403
+1489,1970,Jordan,JOR,islam,2138060,0.93
+1490,1975,Jordan,JOR,islam,2512860,0.93
+1491,1980,Jordan,JOR,islam,2722640,0.9315
+1492,1985,Jordan,JOR,islam,3582840,0.9347
+1493,1990,Jordan,JOR,islam,4043700,0.9494
+1494,1995,Jordan,JOR,islam,4973140,0.9256
+1495,2000,Jordan,JOR,islam,6468930,0.97
+1496,2005,Jordan,JOR,islam,5308810,0.97
+1497,2010,Jordan,JOR,islam,5928782,0.97
+1511,1945,Saudi Arabia,SAU,islam,2830000,0.9874
+1512,1950,Saudi Arabia,SAU,islam,3145000,0.9825
+1513,1955,Saudi Arabia,SAU,islam,3550000,0.988
+1514,1960,Saudi Arabia,SAU,islam,4035000,0.9902
+1515,1965,Saudi Arabia,SAU,islam,4581000,0.9558
+1516,1970,Saudi Arabia,SAU,islam,5687550,0.99
+1517,1975,Saudi Arabia,SAU,islam,7039500,0.9708
+1518,1980,Saudi Arabia,SAU,islam,9400000,0.9788
+1519,1985,Saudi Arabia,SAU,islam,12151000,0.9606
+1520,1990,Saudi Arabia,SAU,islam,14103600,0.9485
+1521,1995,Saudi Arabia,SAU,islam,17695000,0.9693
+1522,2000,Saudi Arabia,SAU,islam,19351440,0.93
+1523,2005,Saudi Arabia,SAU,islam,21051150,0.9106
+1524,2010,Saudi Arabia,SAU,islam,24477606,0.9382
+1525,1945,Yemen Arab Republic,YAR,islam,2589285,0.8363
+1526,1950,Yemen Arab Republic,YAR,islam,3000000,0.9025
+1527,1955,Yemen Arab Republic,YAR,islam,3500000,0.96
+1528,1960,Yemen Arab Republic,YAR,islam,4000000,0.9903
+1529,1965,Yemen Arab Republic,YAR,islam,4416500,0.9832
+1530,1970,Yemen Arab Republic,YAR,islam,4833000,0.9996
+1531,1975,Yemen Arab Republic,YAR,islam,5314000,0.9996
+1532,1980,Yemen Arab Republic,YAR,islam,6353663,0.9995
+1533,1985,Yemen Arab Republic,YAR,islam,7610999,0.9987
+1534,1990,Yemen Arab Republic,YAR,islam,8560000,0.9308
+1535,1990,Yemen,YEM,islam,11225000,0.9952
+1536,1995,Yemen,YEM,islam,15327560,0.9973
+1537,2000,Yemen,YEM,islam,18118000,1.0
+1538,2005,Yemen,YEM,islam,20743664,0.9999
+1539,2010,Yemen,YEM,islam,23369328,0.99
+1540,1970,Yemen People's Republic,YPR,islam,1436000,1.0
+1541,1975,Yemen People's Republic,YPR,islam,1674000,1.0
+1542,1980,Yemen People's Republic,YPR,islam,1902000,0.9995
+1543,1985,Yemen People's Republic,YPR,islam,2116000,0.9778
+1544,1990,Yemen People's Republic,YPR,islam,2333000,0.9484
+1545,1960,Kuwait,KUW,islam,341077,0.9319
+1546,1965,Kuwait,KUW,islam,437000,0.92
+1547,1970,Kuwait,KUW,islam,672300,0.9
+1548,1975,Kuwait,KUW,islam,936510,0.93
+1549,1980,Kuwait,KUW,islam,1274100,0.93
+1550,1985,Kuwait,KUW,islam,1599600,0.93
+1551,1990,Kuwait,KUW,islam,1919999,0.8968
+1552,1995,Kuwait,KUW,islam,1507350,0.8914
+1553,2000,Kuwait,KUW,islam,1591600,0.8071
+1554,2005,Kuwait,KUW,islam,2035048,0.9065
+1555,2010,Kuwait,KUW,islam,2478497,0.9195
+1556,1970,Bahrain,BAH,islam,206000,0.945
+1557,1975,Bahrain,BAH,islam,252000,0.9618
+1558,1980,Bahrain,BAH,islam,305309,0.9141
+1559,1985,Bahrain,BAH,islam,367000,0.8635
+1560,1990,Bahrain,BAH,islam,434354,0.8635
+1561,1995,Bahrain,BAH,islam,546500,0.9455
+1562,2000,Bahrain,BAH,islam,559513,0.9068
+1563,2005,Bahrain,BAH,islam,782844,0.8808
+1564,2010,Bahrain,BAH,islam,1106174,0.8959999999999999
+1565,1970,Qatar,QAT,islam,120000,1.0
+1566,1975,Qatar,QAT,islam,169290,0.99
+1567,1980,Qatar,QAT,islam,210580,0.9196
+1568,1985,Qatar,QAT,islam,323500,0.9036
+1569,1990,Qatar,QAT,islam,416600,0.8572
+1570,1995,Qatar,QAT,islam,500600,0.9135
+1571,2000,Qatar,QAT,islam,281530,0.47
+1572,2005,Qatar,QAT,islam,553335,0.7437
+1573,2010,Qatar,QAT,islam,798733,0.47
+1574,1970,United Arab Emirates,UAE,islam,419300,0.8303
+1575,1975,United Arab Emirates,UAE,islam,452259,0.8956
+1576,1980,United Arab Emirates,UAE,islam,931399,0.9176
+1577,1985,United Arab Emirates,UAE,islam,1473440,0.9494
+1578,1990,United Arab Emirates,UAE,islam,1790000,0.9318
+1579,1995,United Arab Emirates,UAE,islam,2221440,0.96
+1580,2000,United Arab Emirates,UAE,islam,1582317,0.6482
+1581,2005,United Arab Emirates,UAE,islam,2566912,0.6425
+1582,2010,United Arab Emirates,UAE,islam,4208337,0.6748
+1583,1970,Oman,OMA,islam,745000,1.0
+1584,1975,Oman,OMA,islam,841000,1.0
+1585,1980,Oman,OMA,islam,1091000,0.9655
+1586,1985,Oman,OMA,islam,1338000,0.9389
+1587,1990,Oman,OMA,islam,1710525,0.8553
+1588,1995,Oman,OMA,islam,2139556,0.8915
+1589,2000,Oman,OMA,islam,2376959,0.9309
+1590,2005,Oman,OMA,islam,2412319,0.9278
+1591,2010,Oman,OMA,islam,2678195,0.8987
+1592,1945,Afghanistan,AFG,islam,8391998,0.9933
+1593,1950,Afghanistan,AFG,islam,8910175,0.9947
+1594,1955,Afghanistan,AFG,islam,9658503,0.9922
+1595,1960,Afghanistan,AFG,islam,10537389,0.9779
+1596,1965,Afghanistan,AFG,islam,11825320,0.9796
+1597,1970,Afghanistan,AFG,islam,13477012,0.9893
+1598,1975,Afghanistan,AFG,islam,14021540,0.9118
+1599,1980,Afghanistan,AFG,islam,16771500,0.9695
+1600,1985,Afghanistan,AFG,islam,15070645,0.9711
+1601,1990,Afghanistan,AFG,islam,15295070,0.9709
+1602,1995,Afghanistan,AFG,islam,19026255,0.9677
+1603,2000,Afghanistan,AFG,islam,22162133,0.9754
+1604,2005,Afghanistan,AFG,islam,25497000,0.9807
+1605,2010,Afghanistan,AFG,islam,26880000,0.9956
+1606,1995,Turkmenistan,TKM,islam,4013010,0.89
+1607,2000,Turkmenistan,TKM,islam,3968510,0.89
+1608,2005,Turkmenistan,TKM,islam,4688520,0.89
+1609,2010,Turkmenistan,TKM,islam,4998243,0.89
+1610,1995,Tajikistan,TAJ,islam,4960600,0.85
+1611,2000,Tajikistan,TAJ,islam,5878600,0.95
+1612,2005,Tajikistan,TAJ,islam,6507500,0.95
+1613,2010,Tajikistan,TAJ,islam,6692802,0.9
+1614,1995,Kyrgyzstan,KYR,islam,3263300,0.7229
+1615,2000,Kyrgyzstan,KYR,islam,3760200,0.8002
+1616,2005,Kyrgyzstan,KYR,islam,4116294,0.8002
+1617,2010,Kyrgyzstan,KYR,islam,4132536,0.7702
+1618,1995,Uzbekistan,UZB,islam,19967200,0.88
+1619,2000,Uzbekistan,UZB,islam,21399840,0.88
+1620,2005,Uzbekistan,UZB,islam,23811970,0.91
+1621,2010,Uzbekistan,UZB,islam,26189329,0.93
+1622,1995,Kazakhstan,KZK,islam,7551000,0.47
+1623,2000,Kazakhstan,KZK,islam,7569340,0.4666
+1624,2005,Kazakhstan,KZK,islam,7750583,0.5117
+1625,2010,Kazakhstan,KZK,islam,9678983,0.5932
+1728,1950,Pakistan,PAK,islam,67158000,0.9
+1729,1955,Pakistan,PAK,islam,76809460,0.91
+1730,1960,Pakistan,PAK,islam,90308040,0.9146
+1731,1965,Pakistan,PAK,islam,105146730,0.93
+1732,1970,Pakistan,PAK,islam,124130072,0.9643
+1733,1975,Pakistan,PAK,islam,67121350,0.9449
+1734,1980,Pakistan,PAK,islam,79277760,0.96
+1735,1985,Pakistan,PAK,islam,92013120,0.9538
+1736,1990,Pakistan,PAK,islam,106633800,0.9487
+1737,1995,Pakistan,PAK,islam,124026804,0.955
+1738,2000,Pakistan,PAK,islam,149741271,0.9569
+1739,2005,Pakistan,PAK,islam,147326963,0.9569
+1740,2010,Pakistan,PAK,islam,161189415,0.9569
+1741,1975,Bangladesh,BNG,islam,67432694,0.8540000000000001
+1742,1980,Bangladesh,BNG,islam,77149860,0.87
+1743,1985,Bangladesh,BNG,islam,87036177,0.8753
+1744,1990,Bangladesh,BNG,islam,96922495,0.883
+1745,1995,Bangladesh,BNG,islam,105238920,0.8901
+1746,2000,Bangladesh,BNG,islam,115722880,0.8959999999999999
+1747,2005,Bangladesh,BNG,islam,123921312,0.8941
+1748,2010,Bangladesh,BNG,islam,132119746,0.897
+1775,1965,Maldives,MAD,islam,108000,0.9908
+1776,1970,Maldives,MAD,islam,111000,0.9174
+1777,1975,Maldives,MAD,islam,128690,0.9824
+1778,1980,Maldives,MAD,islam,155420,0.9837
+1779,1985,Maldives,MAD,islam,172000,0.9348
+1780,1990,Maldives,MAD,islam,214230,0.9918
+1781,1995,Maldives,MAD,islam,241460,0.9506
+1782,2000,Maldives,MAD,islam,280280,0.98
+1783,2005,Maldives,MAD,islam,288120,0.98
+1784,2010,Maldives,MAD,islam,311056,0.98
+1854,1965,Malaysia,MAL,islam,3952400,0.4291
+1855,1970,Malaysia,MAL,islam,5195285,0.5
+1856,1975,Malaysia,MAL,islam,5963000,0.5
+1857,1980,Malaysia,MAL,islam,6923000,0.503
+1858,1985,Malaysia,MAL,islam,7840500,0.5
+1859,1990,Malaysia,MAL,islam,10409703,0.586
+1860,1995,Malaysia,MAL,islam,12317727,0.5954
+1861,2000,Malaysia,MAL,islam,13243537,0.5954
+1862,2005,Malaysia,MAL,islam,15480000,0.6
+1863,2010,Malaysia,MAL,islam,17263000,0.61
+1874,1985,Brunei,BRU,islam,132980,0.61
+1875,1990,Brunei,BRU,islam,154330,0.61
+1876,1995,Brunei,BRU,islam,177600,0.6
+1877,2000,Brunei,BRU,islam,219760,0.67
+1878,2005,Brunei,BRU,islam,254600,0.67
+1879,2010,Brunei,BRU,islam,335000,0.8129
+1893,1950,Indonesia,INS,islam,57207360,0.7192
+1894,1955,Indonesia,INS,islam,63182960,0.73
+1895,1960,Indonesia,INS,islam,73107440,0.76
+1896,1965,Indonesia,INS,islam,83189320,0.787
+1897,1970,Indonesia,INS,islam,94301600,0.8
+1898,1975,Indonesia,INS,islam,101793120,0.78
+1899,1990,Indonesia,INS,islam,151124692,0.8420000000000001
+1900,1995,Indonesia,INS,islam,165377245,0.8359
+1901,2000,Indonesia,INS,islam,179629800,0.8309
+1902,2005,Indonesia,INS,islam,190589900,0.8385
+1903,2010,Indonesia,INS,islam,201550000,0.8399
+1498,1950,Israel,ISR,judaism,1101173,0.8753
+1499,1955,Israel,ISR,judaism,1524002,0.8719
+1500,1960,Israel,ISR,judaism,1812599,0.8562
+1501,1965,Israel,ISR,judaism,2269799,0.8856
+1502,1970,Israel,ISR,judaism,2543099,0.8551
+1503,1975,Israel,ISR,judaism,2959400,0.8566
+1504,1980,Israel,ISR,judaism,3282700,0.8465
+1505,1985,Israel,ISR,judaism,3517200,0.8309
+1506,1990,Israel,ISR,judaism,3681659,0.7901
+1507,1995,Israel,ISR,judaism,4549500,0.8205
+1508,2000,Israel,ISR,judaism,4914100,0.7904
+1509,2005,Israel,ISR,judaism,5275699,0.7613
+1510,2010,Israel,ISR,judaism,5573299,0.731
+621,1995,Czech Republic,CZR,noreligion,6818460,0.66
+622,2000,Czech Republic,CZR,noreligion,6048221,0.5904
+623,2005,Czech Republic,CZR,noreligion,7014110,0.6854
+624,2010,Czech Republic,CZR,noreligion,7980000,0.7575
+760,1945,Russia,RUS,noreligion,85877000,0.4844
+761,1950,Russia,RUS,noreligion,86668696,0.4813
+762,1955,Russia,RUS,noreligion,95989444,0.4893
+763,1960,Russia,RUS,noreligion,106310192,0.496
+764,1965,Russia,RUS,noreligion,115630940,0.5007
+765,1970,Russia,RUS,noreligion,124951688,0.5147
+766,1975,Russia,RUS,noreligion,136526617,0.5365
+767,1980,Russia,RUS,noreligion,148101547,0.5579
+768,1985,Russia,RUS,noreligion,159676476,0.5758
+769,1990,Russia,RUS,noreligion,171251405,0.6087
+770,1995,Russia,RUS,noreligion,93097620,0.63
+774,1995,Estonia,EST,noreligion,794845,0.5356
+775,2000,Estonia,EST,noreligion,760000,0.5444
+776,2005,Estonia,EST,noreligion,842500,0.6259
+777,2010,Estonia,EST,noreligion,925000,0.6903
+1632,1975,China,CHN,noreligion,428850560,0.4622
+1633,1980,China,CHN,noreligion,434404805,0.4349
+1634,1985,China,CHN,noreligion,435087488,0.4066
+1635,1990,China,CHN,noreligion,444546380,0.3848
+1640,1945,Mongolia,MON,noreligion,344380,0.4567
+1642,1955,Mongolia,MON,noreligion,380560,0.4552
+1643,1960,Mongolia,MON,noreligion,466180,0.4897
+1644,1965,Mongolia,MON,noreligion,588600,0.54
+1645,1970,Mongolia,MON,noreligion,741691,0.5943
+1646,1975,Mongolia,MON,noreligion,650700,0.45
+1669,1960,North Korea,PRK,noreligion,5367750,0.51
+1670,1965,North Korea,PRK,noreligion,6633550,0.55
+1671,1970,North Korea,PRK,noreligion,9128320,0.64
+1672,1975,North Korea,PRK,noreligion,11084680,0.68
+1673,1980,North Korea,PRK,noreligion,13072840,0.74
+1674,1985,North Korea,PRK,noreligion,14964180,0.79
+1675,1990,North Korea,PRK,noreligion,16086770,0.79
+1676,1995,North Korea,PRK,noreligion,17235660,0.78
+1677,2000,North Korea,PRK,noreligion,15461884,0.6432
+1678,2005,North Korea,PRK,noreligion,15282432,0.6432
+1679,2010,North Korea,PRK,noreligion,15690406,0.6432
+1687,1985,South Korea,ROK,noreligion,23216356,0.5689
+1688,1990,South Korea,ROK,noreligion,22584835,0.5268
+1689,1995,South Korea,ROK,noreligion,21953315,0.4868
+1690,2000,South Korea,ROK,noreligion,21909247,0.4677
+1691,2005,South Korea,ROK,noreligion,21865180,0.4542
+1692,2010,South Korea,ROK,noreligion,22199939,0.4542
+1837,1955,Vietnam,DRV,noreligion,9485000,0.7
+1838,1960,Vietnam,DRV,noreligion,10800000,0.6708
+1839,1965,Vietnam,DRV,noreligion,13010000,0.6847
+1840,1970,Vietnam,DRV,noreligion,14382000,0.68
+1841,1975,Vietnam,DRV,noreligion,15450080,0.6429
+1842,1980,Vietnam,DRV,noreligion,39836320,0.7414
+1843,1985,Vietnam,DRV,noreligion,44305280,0.74
+1844,1990,Vietnam,DRV,noreligion,47687760,0.72
+1845,1995,Vietnam,DRV,noreligion,54082680,0.7329
+1693,1945,Japan,JPN,shinto,55228775,0.7655
+1694,1950,Japan,JPN,shinto,65452839,0.7655
+1695,1955,Japan,JPN,shinto,68145114,0.7655
+1696,1960,Japan,JPN,shinto,71357167,0.7655
+1697,1965,Japan,JPN,shinto,74982591,0.7655
+1698,1970,Japan,JPN,shinto,79155350,0.7655
+1699,1975,Japan,JPN,shinto,85409513,0.7655
+1700,1980,Japan,JPN,shinto,89416158,0.7655
+1701,1985,Japan,JPN,shinto,92501136,0.7655
+1702,1990,Japan,JPN,shinto,94522831,0.7655
+1703,1995,Japan,JPN,shinto,96049245,0.7655
+1704,2000,Japan,JPN,shinto,97000000,0.7655
+1705,2005,Japan,JPN,shinto,107000000,0.8374
+1706,2010,Japan,JPN,shinto,108000000,0.8474
+1626,1945,China,CHN,syncretism,422411220,0.77
+1627,1950,China,CHN,syncretism,420034304,0.7345
+1628,1955,China,CHN,syncretism,371559884,0.6101
+1629,1960,China,CHN,syncretism,305005000,0.4639
+1630,1965,China,CHN,syncretism,337111044,0.4623
+1631,1970,China,CHN,syncretism,356136624,0.4287
+1636,1995,China,CHN,syncretism,475354557,0.3896
+1637,2000,China,CHN,syncretism,536574366,0.42
+1638,2005,China,CHN,syncretism,547562373,0.42
+1639,2010,China,CHN,syncretism,564973194,0.42
+1654,1950,Taiwan,TAW,syncretism,4330485,0.5831
+1655,1955,Taiwan,TAW,syncretism,5174460,0.57
+1656,1960,Taiwan,TAW,syncretism,6151440,0.57
+1657,1965,Taiwan,TAW,syncretism,7097960,0.5621
+1658,1970,Taiwan,TAW,syncretism,7925040,0.54
+1659,1975,Taiwan,TAW,syncretism,8559500,0.53
+1660,1980,Taiwan,TAW,syncretism,9432650,0.5298
+1661,1985,Taiwan,TAW,syncretism,10014160,0.52
+1662,1990,Taiwan,TAW,syncretism,10380030,0.51
+1663,1995,Taiwan,TAW,syncretism,11078080,0.52
+1664,2000,Taiwan,TAW,syncretism,8762000,0.4005
+1666,2010,Taiwan,TAW,syncretism,9120490,0.4005
+1853,1960,Malaysia,MAL,syncretism,4000000,0.4087
+1864,1965,Singapore,SIN,syncretism,934563,0.4953
+1865,1970,Singapore,SIN,syncretism,1124392,0.5419
+1866,1975,Singapore,SIN,syncretism,1222020,0.54
+1867,1980,Singapore,SIN,syncretism,1186640,0.52
+1868,1985,Singapore,SIN,syncretism,1167010,0.47
+1869,1990,Singapore,SIN,syncretism,1357200,0.45
+1870,1995,Singapore,SIN,syncretism,1525920,0.44
