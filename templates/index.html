@@ -58,13 +58,17 @@ path {
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Visualization Project</h3>
+            <h3>Correlating religions and social factors</h3>
         </div>
 
         <ul class="list-unstyled components">
-            <p>Tasks</p>
+            <p>Analytics</p>
             <li class="active">
-                <a href="/">Visualize Sampled Data</a>
+                <a href="/">World Map</a>
+                <a href="/">Histograms</a>
+                <a href="/">ScreePlots</a>
+                <a href="/">Scatter Matrices</a>
+                <a href="/">Others</a>
             </li>
 
         </ul>
@@ -152,7 +156,7 @@ path {
                     </span>`;
         });
 
-    let chart = (data, population) => {
+    let chart = (data, population, terror_attacks) => {
         const projection = d3.geoMercator()
             .scale(130)
             .translate([width / 2, height / 1.5]);
@@ -170,12 +174,11 @@ path {
 
         const populationById = {};
         population.forEach(function (d) {
-            populationById[d[3]] = {
-                "population": d[6],
-                "religion": d[5]
+            populationById[d[0]] = {
+                "population": d[2],
+                "religion": d[1]
             };
         });
-
         data.features.forEach(function (d) {
             if (populationById[d.properties.name] != null) {
                 d.population = populationById[d.properties.name].population;
@@ -229,6 +232,19 @@ path {
             .attr("class", "names")
             .attr("d", path);
 
+        console.log(terror_attacks);
+        svg.selectAll("circle")
+            .data(terror_attacks)
+            .enter().append("circle", ".pin")
+            .attr("r", "2px")
+            .attr("fill", "black")
+            .attr("transform", function (d) {
+                return "translate(" + projection([
+                    d[2],
+                    d[1]
+                ]) + ")";
+            });
+
         let legend = svg.selectAll("g.legend")
             .data(Object.values(religions))
             .enter().append("g")
@@ -263,14 +279,15 @@ path {
     const getData = async (year) => {
         let promises = [
             d3.json("static/data/world_countries.json"),
-            axios.get(`/map/${year}`)
+            axios.get(`/map/${year}`),
+            axios.get(`/terror_attacks/${year}`)
         ];
 
         return await Promise.all(promises);
     };
 
     getData(2010).then((data, err) => {
-        chart(data[0], data[1].data);
+        chart(data[0], data[1].data, data[2].data);
     });
 
     $(document).ready(function () {
