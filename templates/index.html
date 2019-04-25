@@ -25,8 +25,8 @@ path {
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous">
-<link rel="stylesheet" href={{ url_for('static', filename='style.css') }}
->
+<link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+<link rel="stylesheet" href={{ url_for('static', filename='css/worldMap.css') }}>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -46,6 +46,9 @@ path {
 
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="static/js/d3-tip.js"></script>
 
 <body>
 <div class="wrapper">
@@ -85,92 +88,135 @@ path {
 </div>
 
 <script>
-    /*
-    d3v5 example code below
-    const margin = ({top: 60, right: 20, bottom: 30, left: 40});
-    const width = 1000;
-    const height = 400;
+    const width = 960;
+    const height = 500;
 
-    let chart = (data, title) => {
-        data.x = "{{feature | safe}}";
-        data.y = "Count";
+    const religions = {
+        "christianity": "#9f5afd", "noreligion": "#FFC0CB", "islam": "#00b16a",
+        "animism":  "#fef160", "hinduism": "#e67e22", "judaism": "#0000FF",
+        "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
+    };
 
-        const x = d3.scaleLinear()
-                    .domain(d3.extent(data)).nice()
-                    .range([margin.left, width - margin.right])
+    const format = d3.format(",");
 
-        const histogram = d3.histogram()
-                            .domain(x.domain())
-                            .thresholds(x.ticks(40))
+    // Set tooltips
+    const tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function (d) {
+            return `<strong>Country: </strong>
+                    <span class='details'>
+                        ${d.properties.name}<br>
+                    </span>
+                    <strong>Religion: </strong>
+                    <span class='details'>
+                        ${d.religion}<br>
+                    </span>
+                    <strong>Population: </strong>
+                    <span class='details'>
+                        ${format(d.population)}
+                    </span>`;
+        });
 
-        const bins = histogram(data);
+    let chart = (data, population) => {
+        const projection = d3.geoMercator()
+            .scale(130)
+            .translate([width / 2, height / 1.5]);
 
-        const y = d3.scaleLinear()
-                    .domain([0, d3.max(bins, d => d.length)]).nice()
-                    .range([height - margin.bottom, margin.top])
+        const path = d3.geoPath().projection(projection);
 
-        const xAxis = (g) => g.attr("transform", `translate(0,${height - margin.bottom})`)
-                              .call(d3.axisBottom(x).tickSizeOuter(0))
-                              .call(g => g.append("text")
-                                          .attr("x", width - margin.right)
-                                          .attr("y", -10)
-                                          .attr("fill", "#000")
-                                          .attr("font-size", 14)
-                                          .attr("font-weight", "bold")
-                                          .attr("text-anchor", "end")
-                                          .text(data.x))
-
-        const yAxis = (g) => g.attr("transform", `translate(${margin.left},0)`)
-                              .call(d3.axisLeft(y))
-                              .call(g => g.select(".domain").remove())
-                              .call(g => g.select(".tick:last-of-type text").clone()
-                                          .attr("x", 4)
-                                          .attr("font-size", 14)
-                                          .attr("text-anchor", "start")
-                                          .attr("font-weight", "bold")
-                                          .text(data.y))
         const svg = d3.select('#content')
-                      .append('svg')
-                      .attr("width", width)
-                      .attr("height", height);
+            .append('svg')
+            .attr("width", width)
+            .attr("height", height)
+            .append('g')
+            .attr('class', 'map');
 
-        svg.append("text")
-           .attr("transform", "translate(400,0)")
-           .attr("x", 100)
-           .attr("y", 50)
-           .attr("font-size", "16px")
-           .text(`Board Game Data - ${title}`);
+        svg.call(tip);
 
-        const bar = svg.append("g")
-                       .attr("fill", "steelblue")
-                       .selectAll("rect")
-                       .data(bins)
-                       .join("rect")
-                       .attr("x", (i, d) => x(i.x0) + 1)
-                       .attr("width", d => Math.max(0, x(d.x1) - x(d.x0) - 1))
-                       .attr("y", d => y(d.length))
-                       .attr("height", d => y(0) - y(d.length));
+        const populationById = {};
+        population.forEach(function (d) {
+            populationById[d.state] = {
+                "population": d.majority_population,
+                "religion": d.majority_religion
+            };
+        });
+
+        data.features.forEach(function (d) {
+            if (populationById[d.properties.name] != null) {
+                d.population = populationById[d.properties.name].population;
+                d.religion = populationById[d.properties.name].religion;
+            } else {
+                d.population = 0;
+                d.religion = "No religion";
+            }
+        });
 
         svg.append("g")
-           .call(xAxis);
+            .attr("class", "countries")
+            .selectAll("path")
+            .data(data.features)
+            .enter().append("path")
+            .attr("d", path)
+            .style("fill", function (d) {
+                if (populationById[d.properties.name] != null) {
+                    return religions[populationById[d.properties.name].religion];
+                } else {
+                    return "white";
+                }
+            })
+            .style('stroke', 'white')
+            .style('stroke-width', 1.5)
+            .style("opacity", 0.8)
+            // tooltips
+            .style("stroke", "white")
+            .style('stroke-width', 0.3)
+            .on('mouseover', function (d) {
+                tip.show(d);
 
-        svg.append("g")
-           .call(yAxis);
+                d3.select(this)
+                    .style("opacity", 1)
+                    .style("stroke", "white")
+                    .style("stroke-width", 3);
+            })
+            .on('mouseout', function (d) {
+                tip.hide(d);
+
+                d3.select(this)
+                    .style("opacity", 0.8)
+                    .style("stroke", "white")
+                    .style("stroke-width", 0.3);
+            });
+
+        svg.append("path")
+            .datum(topojson.mesh(data.features, function (a, b) {
+                return a.code !== b.code;
+            }))
+            .attr("class", "names")
+            .attr("d", path);
 
         return svg.node();
-    }
+    };
 
-    var reg_data = {{ data.reg_chart_data | safe }};
-    chart(reg_data, "Regular Data");
+    const getData = async () => {
+        let promises = [
+            d3.json("static/data/world_countries.json"),
+            d3.csv("static/data/world-religions/national_majority_data.csv")
+        ];
 
-    var sample_data = {{ data.sample_chart_data | safe }};
-    chart(sample_data, "Sampled Data");
-    */
+        [data, population] = await Promise.all(promises);
+
+        return [data, population];
+    };
+
+    getData().then((data, err) => {
+        chart(data[0], data[1]);
+    });
 
     $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
     });
 
 </script>
