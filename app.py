@@ -1,8 +1,9 @@
-from flask import Flask, render_template
-from constants import MAJORITY_POP_FILE
+import json
 
 import pandas as pd
-import json
+from flask import Flask, render_template
+
+from constants import MAJORITY_POP_FILE
 
 app = Flask(__name__)
 
@@ -10,7 +11,7 @@ app = Flask(__name__)
 @app.route("/", methods=['POST', 'GET'])
 def index():
     df = pd.read_csv(MAJORITY_POP_FILE)
-    data = {'data'   : json.dumps(df.values.tolist(), indent=2)}
+    data = {'data': json.dumps(df.values.tolist(), indent=2)}
 
     return render_template("index.html",
                            data=data)
