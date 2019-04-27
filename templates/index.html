@@ -123,7 +123,7 @@ path {
         .on('onchange', val => {
             d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
             getData(d3.timeFormat('%Y')(val)).then((data, err) => {
-                chart(data[0], data[1].data);
+                chart(data[0], data[1].data, data[2].data);
             });
         });
 
@@ -232,10 +232,10 @@ path {
             .attr("class", "names")
             .attr("d", path);
 
-        console.log(terror_attacks);
         svg.selectAll("circle")
             .data(terror_attacks)
-            .enter().append("circle", ".pin")
+            .enter()
+            .append("circle", ".pin")
             .attr("r", "2px")
             .attr("fill", "black")
             .attr("transform", function (d) {
