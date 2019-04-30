@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+body {
+    font: 12px Arial;
+}
+
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+</style>
+<link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+<link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<body>
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Correlating religions and social factors</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Analytics</p>
+            <li class="active">
+                <a href="/">World Map</a>
+                <a href="/religion">Religion</a>
+                <a href="/">ScreePlots</a>
+                <a href="/">Scatter Matrices</a>
+                <a href="/">Others</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 0">
+            <div class="container-fluid">
+
+                <button class="btn btn-info" id="sidebarCollapse" type="button">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="btn btn-dark d-inline-block d-lg-none ml-auto" data-target="#navbarSupportedContent"
+                        data-toggle="collapse" type="button">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<script>
+    const margin = ({top: 60, right: 20, bottom: 50, left: 40});
+    const width = 1000;
+    const height = 400;
+
+    let chart = (data, binNames, column) => {
+        console.log(data);
+        const x = d3.scaleBand()
+                    .domain(binNames)
+                    .range([margin.left, width - margin.right])
+                    .padding(0.5);
+
+        const y = d3.scaleLinear()
+                    .domain([0, 10]).nice()
+                    .range([height - margin.bottom, margin.top]);
+
+        const xAxis = (g) => g.attr("transform", `translate(0,${height - margin.bottom})`)
+                              .call(d3.axisBottom(x).tickSizeOuter(0))
+                              .call(g => g.append("text")
+                                          .attr("x", (width - margin.right) / 2)
+                                          .attr("y", 40)
+                                          .attr("fill", "#000")
+                                          .attr("font-size", 14)
+                                          .attr("font-weight", "bold")
+                                          .attr("text-anchor", "end")
+                                          .text("Countries with majority religions"));
+
+        const yAxis = (g) => g.attr("transform", `translate(${margin.left},0)`)
+                              .call(d3.axisLeft(y))
+                              .call(g => g.select(".domain").remove())
+                              .call(g => g.select(".tick:last-of-type text").clone()
+                                          .attr("x", 4)
+                                          .attr("font-size", 14)
+                                          .attr("text-anchor", "start")
+                                          .attr("font-weight", "bold")
+                                          .text(column));
+        const svg = d3.select('#content')
+                      .append('svg')
+                      .attr("width", width)
+                      .attr("height", height);
+
+        svg.append("text")
+           .attr("transform", "translate(400,0)")
+           .attr("x", 100)
+           .attr("y", 50)
+           .attr("font-size", "16px")
+           .text(`Religious Personal Freedom across Countries Aggregated`);
+
+        svg.append("g")
+                       .attr("fill", "#3498db")
+                       .selectAll("rect")
+                       .data(data)
+                       .join("rect")
+                           .attr("x", d => x(d.religion))
+                           .attr("y", d => y(d[column]))
+                           .attr("width", d => x.bandwidth())
+                           .attr("height", d => y(0) - y(d[column]));
+
+        svg.append("g")
+           .call(xAxis);
+
+        svg.append("g")
+           .call(yAxis);
+
+        return svg.node();
+    };
+
+    let group_chart = (data, binNames) => {
+        const groupKey = 'religion';
+        const keys = ['pf_religion_estop', 'pf_religion_harrasment', 'pf_religion_restrictions'];
+
+        const x0 = d3.scaleBand()
+                     .domain(data.map(d => d[groupKey]))
+                     .rangeRound([margin.left, width - margin.right])
+                     .paddingInner(0.3);
+
+        const x1 = d3.scaleBand()
+                     .domain(keys)
+                     .rangeRound([0, x0.bandwidth()])
+                     .padding(0.05);
+
+        const y = d3.scaleLinear()
+                    .domain([0, d3.max(data, d => d3.max(keys, key => d[key]))]).nice()
+                    .rangeRound([height - margin.bottom, margin.top]);
+
+        const color = d3.scaleOrdinal()
+                        .range(["#a05d56", "#d0743c", "#ff8c00"]);
+
+        const xAxis = g => g
+                            .attr("transform", `translate(0,${height - margin.bottom})`)
+                            .call(d3.axisBottom(x0).tickSizeOuter(0))
+                            .call(g => g.select(".domain").remove());
+
+        const yAxis = g => g
+                            .attr("transform", `translate(${margin.left},0)`)
+                            .call(d3.axisLeft(y).ticks(null, "s"))
+                            .call(g => g.select(".domain").remove())
+                            .call(g => g.select(".tick:last-of-type text").clone()
+                            .attr("x", 3)
+                            .attr("text-anchor", "start")
+                            .attr("font-weight", "bold")
+                            .text("Score"));
+        const svg = d3.select('#content')
+                      .append('svg')
+                      .attr("width", width)
+                      .attr("height", height);
+
+        svg.append("g")
+            .selectAll("g")
+            .data(data)
+            .join("g")
+                .attr("transform", d => `translate(${x0(d[groupKey])},0)`)
+                .selectAll("rect")
+                .data(d => keys.map(key => ({key, value: d[key]})))
+                .join("rect")
+                    .attr("x", d => x1(d.key))
+                    .attr("y", d => y(d.value))
+                    .attr("width", x1.bandwidth())
+                    .attr("height", d => y(0) - y(d.value))
+                    .attr("fill", d => color(d.key));
+
+        svg.append("g")
+           .call(xAxis);
+
+        svg.append("g")
+           .call(yAxis);
+
+        return svg.node();
+    };
+
+    const getData = async (year) => {
+        let promises = [
+            axios.get(`/religious_freedom`),
+            axios.get(`/all_religions`),
+        ];
+
+        return await Promise.all(promises);
+    };
+
+    getData(2010).then((data, err) => {
+        chart(data[0].data, data[1].data, 'pf_religion');
+        group_chart(data[0].data, data[1].data);
+    });
+
+    $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+    });
+
+
+</script>
+</body>
