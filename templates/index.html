@@ -98,6 +98,7 @@ path {
 <script>
     const width = 960;
     const height = 500;
+    let selectedDate = "2010";
 
     const religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -121,10 +122,14 @@ path {
         .tickValues(dataTime)
         .default(new Date(2010, 10, 3))
         .on('onchange', val => {
-            d3.select('p#value-time').text(d3.timeFormat('%Y')(val));
-            getData(d3.timeFormat('%Y')(val)).then((data, err) => {
-                chart(data[0], data[1].data, data[2].data);
-            });
+            const year = d3.timeFormat('%Y')(val);
+            if (year !== selectedDate) {
+                d3.select('p#value-time').text(year);
+                getData(d3.timeFormat('%Y')(val)).then((data, err) => {
+                    chart(data[0], data[1].data, data[2].data);
+                });
+                selectedDate = year;
+            }
         });
 
     var gTime = d3
