@@ -248,7 +248,7 @@ path {
     const getData = async (year) => {
         let promises = [
             d3.json("static/data/world_countries.json"),
-            axios.get(`/map/interpolated/${year}`),
+            axios.get(`/map/${year}`),
             axios.get(`/happiness_score/${year}`)
         ];
 

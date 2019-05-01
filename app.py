@@ -3,7 +3,9 @@ import json
 import pandas as pd
 from flask import Flask, render_template
 
-from constants import MAJORITY_RELIGIOUS_POPULATION_DB, TERRORISM_DB, PF_RELIGIOUS_FREEDOM, HAPPINESS_DB
+from constants import (TERRORISM_DB,
+                       PF_RELIGIOUS_FREEDOM, HAPPINESS_DB,
+                       MAJ_INT_RELIGIOUS_POPULATION)
 
 app = Flask(__name__)
 
@@ -40,30 +42,7 @@ def get_past_5_years_attacks(year):
 
 @app.route("/map/<year>", methods=['POST', 'GET'])
 def get_religion_by_year(year):
-    df = pd.read_csv(MAJORITY_RELIGIOUS_POPULATION_DB)
-    year_df = df[df.year == int(year)].reset_index()
-    year_df = year_df[['state', 'majority_religion', 'majority_population']]
-    return json.dumps(year_df.values.tolist(), indent=2)
-
-
-@app.route("/map/interpolated/<year>", methods=['POST', 'GET'])
-def get_interpolated_religion_by_year(year):
-    year = 2010
-    df = pd.read_csv(MAJORITY_RELIGIOUS_POPULATION_DB)
-    # TODO: Interpolate here
-    # print(df.iloc[:10])
-    # df['year'] = pd.to_datetime(df['year']).dt.strftime('%Y')
-    # idx = pd.date_range('09-01-1945', '09-30-2017', freq='5A')
-    # idx = idx.strftime('%Y')
-    # print(idx)
-    # df = df.groupby(['year'], as_index=True).apply(
-    #     lambda x: x.reindex(idx,
-    #                         method='nearest')).reset_index(level=0, drop=True).sort_index()
-    # # for i in df['state']:
-    # #     df = df.append({'A': i}, ignore_index=True)
-    # print(df.iloc[:10])
-    df['majority_population'] = df.groupby(['state', 'majority_religion'])['majority_population'].apply(
-        lambda x: x.interpolate(method="spline", order=1, limit_direction="both"))
+    df = pd.read_csv(MAJ_INT_RELIGIOUS_POPULATION)
     year_df = df[df.year == int(year)].reset_index()
     year_df = year_df[['state', 'majority_religion', 'majority_population']]
     return json.dumps(year_df.values.tolist(), indent=2)
