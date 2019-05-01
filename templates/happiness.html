@@ -49,7 +49,6 @@ path {
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="static/js/d3-tip.js"></script>
-<script src="https://unpkg.com/d3-simple-slider"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <body>
@@ -91,7 +90,7 @@ path {
                 </button>
             </div>
         </nav>
-        <div id="slider-time"></div>
+        <div id="slider-time" style="height: 60px"></div>
         <svg id="map"></svg>
     </div>
 </div>
@@ -99,7 +98,6 @@ path {
 <script>
     const width = 960;
     const height = 500;
-    let selectedDate = "2010";
 
     const religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -108,40 +106,6 @@ path {
     };
 
     const format = d3.format(",");
-
-    const dataTime = d3.range(0, 10).map(function (d) {
-        return new Date(1965 + (d * 5), 10, 3);
-    });
-
-    const sliderTime = d3
-        .sliderBottom()
-        .min(d3.min(dataTime))
-        .max(d3.max(dataTime))
-        .step(5 * 1000 * 60 * 60 * 24 * 365)
-        .width(300)
-        .tickFormat(d3.timeFormat('%Y'))
-        .tickValues(dataTime)
-        .default(new Date(2010, 10, 3))
-        .on('onchange', val => {
-            const year = d3.timeFormat('%Y')(val);
-            if (year !== selectedDate) {
-                d3.select('p#value-time').text(year);
-                getData(d3.timeFormat('%Y')(val)).then((data, err) => {
-                    chart(data[0], data[1].data, data[2].data);
-                });
-                selectedDate = year;
-            }
-        });
-
-    var gTime = d3
-        .select('div#slider-time')
-        .append('svg')
-        .attr('width', 500)
-        .attr('height', 100)
-        .append('g')
-        .attr('transform', 'translate(30,30)');
-
-    gTime.call(sliderTime);
 
     // Set tooltips
     const tip = d3.tip()
@@ -156,13 +120,18 @@ path {
                     <span class='details'>
                         ${d.religion}<br>
                     </span>
+                    <strong>Happiness_score: </strong>
+                    <span class='details'>
+                        ${d.happiness_score}<br>
+                    </span>
                     <strong>Population: </strong>
                     <span class='details'>
                         ${format(d.population)}
                     </span>`;
         });
 
-    let chart = (data, population, terror_attacks) => {
+    let chart = (data, population, happiness_score) => {
+        console.log(happiness_score);
         const projection = d3.geoMercator()
             .scale(130)
             .translate([width / 2, height / 1.5]);
@@ -185,13 +154,20 @@ path {
                 "religion": d[1]
             };
         });
+        const h_scoreById = {};
+        happiness_score.forEach(function (d) {
+            h_scoreById[d[0]] = d[1];
+        });
+        console.log(h_scoreById);
         data.features.forEach(function (d) {
-            if (populationById[d.properties.name] != null) {
+            if (populationById[d.properties.name] != null && h_scoreById[d.properties.name] != null) {
                 d.population = populationById[d.properties.name].population;
                 d.religion = populationById[d.properties.name].religion;
+                d.happiness_score = h_scoreById[d.properties.name];
             } else {
                 d.population = 0;
                 d.religion = "No religion";
+                d.happiness_score = 0;
             }
         });
 
@@ -238,19 +214,6 @@ path {
             .attr("class", "names")
             .attr("d", path);
 
-        svg.selectAll("circle")
-            .data(terror_attacks)
-            .enter()
-            .append("circle", ".pin")
-            .attr("r", "2px")
-            .attr("fill", "black")
-            .attr("transform", function (d) {
-                return "translate(" + projection([
-                    d[2],
-                    d[1]
-                ]) + ")";
-            });
-
         let legend = svg.selectAll("g.legend")
             .data(Object.values(religions))
             .enter().append("g")
@@ -285,14 +248,14 @@ path {
     const getData = async (year) => {
         let promises = [
             d3.json("static/data/world_countries.json"),
-            axios.get(`/map/${year}`),
-            axios.get(`/terror_attacks/${year}`)
+            axios.get(`/map/interpolated/${year}`),
+            axios.get(`/happiness_score/${year}`)
         ];
 
         return await Promise.all(promises);
     };
 
-    getData(2010).then((data) => {
+    getData(2015).then((data) => {
         chart(data[0], data[1].data, data[2].data);
     });
 

@@ -3,7 +3,7 @@ import json
 import pandas as pd
 from flask import Flask, render_template
 
-from constants import MAJORITY_RELIGIOUS_POPULATION_DB, TERRORISM_DB, PF_RELIGIOUS_FREEDOM
+from constants import MAJORITY_RELIGIOUS_POPULATION_DB, TERRORISM_DB, PF_RELIGIOUS_FREEDOM, HAPPINESS_DB
 
 app = Flask(__name__)
 
@@ -46,9 +46,46 @@ def get_religion_by_year(year):
     return json.dumps(year_df.values.tolist(), indent=2)
 
 
+@app.route("/map/interpolated/<year>", methods=['POST', 'GET'])
+def get_interpolated_religion_by_year(year):
+    year = 2010
+    df = pd.read_csv(MAJORITY_RELIGIOUS_POPULATION_DB)
+    # TODO: Interpolate here
+    # print(df.iloc[:10])
+    # df['year'] = pd.to_datetime(df['year']).dt.strftime('%Y')
+    # idx = pd.date_range('09-01-1945', '09-30-2017', freq='5A')
+    # idx = idx.strftime('%Y')
+    # print(idx)
+    # df = df.groupby(['year'], as_index=True).apply(
+    #     lambda x: x.reindex(idx,
+    #                         method='nearest')).reset_index(level=0, drop=True).sort_index()
+    # # for i in df['state']:
+    # #     df = df.append({'A': i}, ignore_index=True)
+    # print(df.iloc[:10])
+    df['majority_population'] = df.groupby(['state', 'majority_religion'])['majority_population'].apply(
+        lambda x: x.interpolate(method="spline", order=1, limit_direction="both"))
+    year_df = df[df.year == int(year)].reset_index()
+    year_df = year_df[['state', 'majority_religion', 'majority_population']]
+    return json.dumps(year_df.values.tolist(), indent=2)
+
+
+@app.route("/happiness_score/<year>", methods=['POST', 'GET'])
+def get_happiness_score(year):
+    df = pd.read_csv(HAPPINESS_DB)
+    df = df[['Country', 'Happiness Score']]
+    df = df.round(3)
+    # TODO: Adaptive sampling by country
+    return json.dumps(df.values.tolist(), indent=2)
+
+
 @app.route("/religion", methods=['POST', 'GET'])
 def religion():
     return render_template("religion.html")
+
+
+@app.route("/happiness", methods=['POST', 'GET'])
+def happiness():
+    return render_template("happiness.html")
 
 
 @app.route("/", methods=['POST', 'GET'])
