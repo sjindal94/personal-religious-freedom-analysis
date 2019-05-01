@@ -5,12 +5,29 @@ from flask import Flask, render_template
 
 from constants import (TERRORISM_DB,
                        PF_RELIGIOUS_FREEDOM, HAPPINESS_DB,
-                       MAJ_INT_RELIGIOUS_POPULATION)
+                       MAJ_INT_RELIGIOUS_POPULATION,
+                       GROWTH_DATA)
 
 app = Flask(__name__)
 
 
-@app.route("/all_religions", methods=['POST', 'GET'])
+@app.route("/growth_data/<year>", methods=['POST', 'GET'])
+def get_growth_data(year):
+    df = pd.read_csv(GROWTH_DATA)
+    rel_df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
+    religions = rel_df.religion.values.tolist()[:-1]
+    religion_dict = {rel: idx for idx, rel in enumerate(religions)}
+    df = df[(df.year == int(year))]
+
+    res = []
+    for key, tbl in df.groupby('majority_religion'):
+        for val in tbl.growth.values:
+            res.append({'x': float(religion_dict[key]), 'y': float(val)})
+
+    return json.dumps(res, indent=2)
+
+
+@app.route("/all_religions")
 def all_religions():
     df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
 
@@ -55,6 +72,11 @@ def get_happiness_score(year):
     df = df.round(3)
     # TODO: Adaptive sampling by country
     return json.dumps(df.values.tolist(), indent=2)
+
+
+@app.route("/religion-growth", methods=['POST', 'GET'])
+def religion_growth():
+    return render_template("religion-growth.html")
 
 
 @app.route("/religion", methods=['POST', 'GET'])

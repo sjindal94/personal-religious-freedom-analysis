@@ -3,3 +3,4 @@ MAJ_INT_RELIGIOUS_POPULATION = 'data/world-religions/national_interpolated_data.
 TERRORISM_DB = 'data/terrorism_database/terrorism_db.csv'
 PF_RELIGIOUS_FREEDOM = 'data/human-freedom-index/religion_pf_freedom.csv'
 HAPPINESS_DB = 'data/world-happiness-report/2015_raw.csv'
+GROWTH_DATA = 'data/growth_data/religion_growth_data.csv'
