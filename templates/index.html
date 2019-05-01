@@ -163,6 +163,7 @@ path {
         });
 
     let chart = (data, population, terror_attacks) => {
+
         const projection = d3.geoMercator()
             .scale(130)
             .translate([width / 2, height / 1.5]);
@@ -179,6 +180,7 @@ path {
         svg.call(tip);
 
         const populationById = {};
+        console.log(population);
         population.forEach(function (d) {
             populationById[d[0]] = {
                 "population": d[2],

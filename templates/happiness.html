@@ -90,14 +90,13 @@ path {
                 </button>
             </div>
         </nav>
-        <div id="slider-time" style="height: 60px"></div>
         <svg id="map"></svg>
     </div>
 </div>
 
 <script>
     const width = 960;
-    const height = 500;
+    const height = 600;
 
     const religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -123,10 +122,6 @@ path {
                     <strong>Happiness_score: </strong>
                     <span class='details'>
                         ${d.happiness_score}<br>
-                    </span>
-                    <strong>Population: </strong>
-                    <span class='details'>
-                        ${format(d.population)}
                     </span>`;
         });
 
@@ -158,18 +153,24 @@ path {
         happiness_score.forEach(function (d) {
             h_scoreById[d[0]] = d[1];
         });
-        console.log(h_scoreById);
+
         data.features.forEach(function (d) {
-            if (populationById[d.properties.name] != null && h_scoreById[d.properties.name] != null) {
-                d.population = populationById[d.properties.name].population;
+            if (populationById[d.properties.name] != null) {
                 d.religion = populationById[d.properties.name].religion;
+            } else {
+                d.religion = "No religion";
+            }
+            if(h_scoreById[d.properties.name] != null) {
                 d.happiness_score = h_scoreById[d.properties.name];
             } else {
-                d.population = 0;
-                d.religion = "No religion";
                 d.happiness_score = 0;
             }
         });
+
+
+        const opacityScale = d3.scaleLinear()
+    	.domain([d3.min(Object.values(h_scoreById)), d3.max(Object.values(h_scoreById))])
+    	.range([0, 1]);
 
         svg.append("g")
             .attr("class", "countries")
@@ -184,6 +185,7 @@ path {
                     return "#dadfe1";
                 }
             })
+            .attr('fill-opacity', d => opacityScale(d.happiness_score))
             .style('stroke', 'white')
             .style('stroke-width', 1.5)
             .style("opacity", 0.8)
@@ -206,6 +208,13 @@ path {
                     .style("stroke", "white")
                     .style("stroke-width", 0.3);
             });
+
+        svg.append("text")
+           .attr("transform", "translate(400,0)")
+           .attr("x", -150)
+           .attr("y", 20)
+           .attr("font-size", "16px")
+           .text(`Happiness Score across Countries Aggregated`);
 
         svg.append("path")
             .datum(topojson.mesh(data.features, function (a, b) {
