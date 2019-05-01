@@ -176,7 +176,8 @@ body {
         const svg = d3.select('#box')
             .html("")
             .attr("width", width)
-            .attr("height", height);
+            .attr("height", height)
+            .attr("stroke-width", 2);
 
         svg.append("text")
            .attr("transform", "translate(400,0)")
@@ -192,6 +193,7 @@ body {
 
         g.append("path")
             .attr("stroke", (d, i) => (`${religion_colors[i]}`))
+            .attr("stroke-width", 2)
             .attr("d", d => {
                 console.log(d);
                 return `
