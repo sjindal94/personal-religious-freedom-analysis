@@ -55,6 +55,7 @@ body {
                 <a href="/religion">World Religions Data</a>
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
+                <a href="/religion-growth">Economic growth across Religions</a>
                 <a href="/">ScreePlots</a>
                 <a href="/">Scatter Matrices</a>
                 <a href="/">Others</a>
@@ -161,7 +162,7 @@ body {
             .rangeRound([margin.left, width - margin.right]);
 
         const y = d3.scaleLinear()
-            .domain([d3.min(bins, d => d.range[0]), d3.max(bins, d => d.range[1])]).nice()
+            .domain([-15, 30]).nice()
             .range([height - margin.bottom, margin.top]);
 
         const xAxis = (g) => g

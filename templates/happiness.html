@@ -66,6 +66,7 @@ path {
                 <a href="/religion">World Religions Data</a>
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
+                <a href="/religion-growth">Economic growth across Religions</a>
                 <a href="/">ScreePlots</a>
                 <a href="/">Scatter Matrices</a>
                 <a href="/">Others</a>
@@ -214,7 +215,7 @@ path {
            .attr("x", -150)
            .attr("y", 20)
            .attr("font-size", "16px")
-           .text(`Happiness Score across Countries Aggregated`);
+           .text(`Happiness Score Interpolated(2015) across Countries Aggregated`);
 
         svg.append("path")
             .datum(topojson.mesh(data.features, function (a, b) {
