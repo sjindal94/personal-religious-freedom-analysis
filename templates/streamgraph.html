@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    body {
+        font: 10px sans-serif;
+    }
+
+    .chart {
+        background: #fff;
+    }
+
+    p {
+        font: 12px helvetica;
+    }
+
+
+    .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2px;
+        shape-rendering: crispEdges;
+    }
+
+    button {
+        position: absolute;
+        right: 50px;
+        top: 10px;
+    }
+
+</style>
+<link crossorigin="anonymous"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      rel="stylesheet">
+<link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+
+<script crossorigin="anonymous"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script crossorigin="anonymous" defer
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+<script crossorigin="anonymous" defer
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<body>
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Correlating religions and social factors</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Analytics</p>
+            <li class="active">
+                <a href="/religion">World Religions Data</a>
+                <a href="/">Global Terrorism Data</a>
+                <a href="/happiness">World Happiness Report</a>
+                <a href="/religion-growth">Economic growth across Religions</a>
+                <a href="/religion_population">Streamgraph</a>
+                <a href="/">Scatter Matrices</a>
+                <a href="/">Others</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 0">
+            <div class="container-fluid">
+
+                <button class="btn btn-info" id="sidebarCollapse" type="button">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="btn btn-dark d-inline-block d-lg-none ml-auto" data-target="#navbarSupportedContent"
+                        data-toggle="collapse" type="button">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+        </nav>
+        <svg class="chart"></svg>
+    </div>
+</div>
+
+<script src="http://d3js.org/d3.v5.js"></script>
+
+
+<div class="chart">
+</div>
+
+<script>
+
+    const margin = ({top: 60, right: 20, bottom: 50, left: 40});
+    let width = 1000,
+        height = 500;
+
+    function chart(data) {
+
+        const religions = {
+            "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
+            "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
+            "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
+        };
+
+        let keys = Object.keys(religions);
+
+        let stack = d3.stack()
+            .keys(keys)
+            .order(d3.stackOrderNone)
+            .offset(d3.stackOffsetWiggle);
+
+        data.forEach(function (d) {
+            d['year'] = +d[0];
+            for (let i = 1; i < keys.length; i++) {
+                d[keys[i]] = +d[i];
+            }
+        });
+
+        let series = stack(data);
+
+        var datearray = [];
+
+        let x = d3.scaleLinear()
+            .domain(d3.extent(data, function (d) {
+                return d['year'];
+            }))
+            .rangeRound([margin.left, width - margin.right]);
+
+        const xAxis = (g) => g
+            .attr("transform", `translate(0,${height - margin.bottom})`)
+            .call(d3.axisBottom(x).tickSizeOuter(0));
+
+        let y = d3.scaleLinear()
+            .domain([0, d3.max(series, function (layer) {
+                return d3.max(layer, function (d) {
+                    return d[0] + d[1];
+                });
+            })])
+            //.range([height - margin.bottom, margin.top]);
+            .range([height, 0]);
+
+        const yAxis = (g) => g
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y).ticks(null, "s"));
+
+        let area = d3.area()
+            .x(function (d) {
+                return x(d.data.year);
+            })
+            .y0(function (d) {
+                return y(d[0]);
+            })
+            .y1(function (d) {
+                return y(d[1]);
+            })
+            .curve(d3.curveBasis);
+
+        const svg = d3.select('.chart')
+            .html("")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("stroke-width", 2);
+
+        svg.append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        svg.selectAll(".layer")
+            .data(series)
+            .enter().append("path")
+            .attr("class", "layer")
+            .attr("d", area)
+            .style("fill", function (d) {
+                return religions[d.key];
+            });
+
+        svg.append("svg")
+            .attr("class", "axis")
+            .attr("transform", "translate(0," + (height) + ")")
+            .call(xAxis);
+
+        svg.append("svg")
+            .attr("class", "y axis")
+            .attr("transform", "translate(" + width + ", 0)")
+            .call(yAxis);
+
+        let tooltip = d3.select("body")
+            .append("div")
+            .attr("class", "remove")
+            .style("position", "absolute")
+            .style("z-index", "20")
+            .style("visibility", "hidden")
+            .style("top", "30px")
+            .style("left", "55px");
+
+        svg.selectAll(".layer")
+            .attr("opacity", 1)
+            .on("mouseover", function (d, i) {
+                svg.selectAll(".layer").transition()
+                    .duration(250)
+                    .attr("opacity", function (d, j) {
+                        return j !== i ? 0.6 : 1;
+                    });
+            })
+
+            .on("mousemove", function (d) {
+                mousex = d3.mouse(this);
+                mousex = mousex[0];
+                let invertedx = x.invert(mousex);
+                invertedx = 5 * (Math.trunc(invertedx/5));
+                let years = (Object.values(d));
+                pro = years[d.index].data[d.key];
+                d3.select(this)
+                    .classed("hover", true)
+                    .attr("stroke", "black")
+                    .attr("stroke-width", "0.5px"),
+                    tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "visible");
+
+            })
+            .on("mouseout", function (d) {
+                svg.selectAll(".layer")
+                    .transition()
+                    .duration(250)
+                    .attr("opacity", "1");
+                d3.select(this)
+                    .classed("hover", false)
+                    .attr("stroke-width", "0px"), tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "hidden");
+            })
+
+        let vertical = d3.select(".chart")
+            .append("div")
+            .attr("class", "remove")
+            .style("position", "absolute")
+            .style("z-index", "19")
+            .style("width", "1px")
+            .style("height", "380px")
+            .style("top", "10px")
+            .style("bottom", "30px")
+            .style("left", "0px")
+            .style("background", "#fff");
+
+        d3.select(".chart")
+            .on("mousemove", function () {
+                mousex = d3.mouse(this);
+                mousex = mousex[0] + 5;
+                vertical.style("left", mousex + "px")
+            })
+            .on("mouseover", function () {
+                mousex = d3.mouse(this);
+                mousex = mousex[0] + 5;
+                vertical.style("left", mousex + "px")
+            });
+
+    }
+
+    const getData = async () => {
+        let promises = [
+            axios.get(`/population_by_religion`),
+        ];
+
+        return await Promise.all(promises);
+    };
+
+    getData().then((data, err) => {
+        chart(data[0].data);
+    });
+
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+
+</script>
+</body>

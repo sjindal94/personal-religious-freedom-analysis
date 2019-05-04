@@ -56,7 +56,7 @@ body {
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
                 <a href="/religion-growth">Economic growth across Religions</a>
-                <a href="/">ScreePlots</a>
+                <a href="/religion_population">Streamgraph</a>
                 <a href="/">Scatter Matrices</a>
                 <a href="/">Others</a>
             </li>
@@ -157,6 +157,7 @@ body {
             .domain([d3.min(bins, d => d.x0), d3.max(bins, d => d.x1)])
             .rangeRound([margin.left, width - margin.right]);
 
+        console.log(bins);
         const x1 = d3.scaleBand()
             .domain(religions)
             .rangeRound([margin.left, width - margin.right]);

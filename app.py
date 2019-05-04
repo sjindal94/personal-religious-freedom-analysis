@@ -6,7 +6,7 @@ from flask import Flask, render_template
 from constants import (TERRORISM_DB,
                        PF_RELIGIOUS_FREEDOM, HAPPINESS_DB,
                        MAJ_INT_RELIGIOUS_POPULATION,
-                       GROWTH_DATA)
+                       GROWTH_DATA, POPULATION_BY_RELIGION)
 
 app = Flask(__name__)
 
@@ -66,10 +66,20 @@ def get_religion_by_year(year):
 
 
 @app.route("/happiness_score/<year>", methods=['POST', 'GET'])
-def get_happiness_score(year):
+def get_happiness_score(year): #making it generic for now
     df = pd.read_csv(HAPPINESS_DB)
     df = df[['Country', 'Happiness Score']]
     df = df.round(3)
+    # TODO: Adaptive sampling by country
+    return json.dumps(df.values.tolist(), indent=2)
+
+
+@app.route("/population_by_religion/", methods=['POST', 'GET'])
+def get_world_population_by_religion():
+    df = pd.read_csv(POPULATION_BY_RELIGION)
+    df = df[['year', 'christianity_all', 'judaism_all', 'islam_all', 'buddhism_all', 'hinduism_all', 'shinto_all',
+             'syncretism_all', 'animism_all', 'noreligion_all', 'world_population']]
+
     # TODO: Adaptive sampling by country
     return json.dumps(df.values.tolist(), indent=2)
 
@@ -89,9 +99,19 @@ def happiness():
     return render_template("happiness.html")
 
 
+@app.route("/religion_population", methods=['POST', 'GET'])
+def streamgraph():
+    return render_template("streamgraph.html")
+
+
+# @app.route("/", methods=['POST', 'GET'])
+# def index():
+#     return render_template("index.html")
+
+
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    return render_template("index.html")
+    return render_template("temp.html")
 
 
 if __name__ == "__main__":
