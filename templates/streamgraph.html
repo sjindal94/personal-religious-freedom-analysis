@@ -106,99 +106,139 @@
 
 <script>
 
-    const margin = ({top: 60, right: 20, bottom: 50, left: 40});
+    const margin = ({top: 100, right: 100, bottom: 50, left: 40});
     let width = 1000,
         height = 500;
 
+    const religions = {
+        "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
+        "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
+        "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
+    };
+
+    //const colors = ["#0000FF", "#FF0000", ]
+
+    function multisum(entries) {
+        return multimap(entries, (p, v) => p + v, () => 0);
+    }
+
+    function multimap(entries, reducer = (p, v) => (p.push(v), p), initializer = () => []) {
+        const map = new Map();
+        for (const [key, value] of entries) {
+            map.set(key, reducer(map.has(key) ? map.get(key) : initializer(), value));
+        }
+        return map;
+    }
+
     function chart(data) {
+        const keys = ["christianity", "judaism", "islam", "buddhism", "hinduism", "shinto",
+            "syncretism", "animism", "noreligion"];
+        data = data.map(({series, count, year}) => (
+            {name: series, value: count, date: new Date(`${year}-01-01`)}
+        ));
 
-        const religions = {
-            "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
-            "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
-            "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
-        };
+        const top = [...multisum(data.map(d => [d.name, d.value]))]
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 9)
+            .map(d => d[0]);
 
-        let keys = Object.keys(religions);
+        const series = multimap(data.map(d => [d.name, d]));
+        data = [].concat(...top.map(name => series.get(name)));
 
-        let stack = d3.stack()
-            .keys(keys)
-            .order(d3.stackOrderNone)
-            .offset(d3.stackOffsetWiggle);
+        const stack = d3.stack()
+            .keys(top)
+            .value((d, key) => d.get(key).value)
+            (Array.from(
+                multimap(
+                    data.map(d => {
+                        return [+d.date, d]
+                    }),
+                    (p, v) => p.set(v.name, v),
+                    () => new Map
+                ).values()
+            ));
 
-        data.forEach(function (d) {
-            d['year'] = +d[0];
-            for (let i = 1; i < keys.length; i++) {
-                d[keys[i]] = +d[i];
+        for (const layer of stack) {
+            for (const d of layer) {
+                d.data.get(layer.key).values = [d[0], d[1]];
             }
-        });
+        }
 
-        let series = stack(data);
+        const area = d3.area()
+            .curve(d3.curveBasis)
+            .x(d => x(d.date))
+            .y0(d => y(d.values[0]))
+            .y1(d => y(d.values[1]));
 
-        var datearray = [];
 
-        let x = d3.scaleLinear()
-            .domain(d3.extent(data, function (d) {
-                return d['year'];
-            }))
-            .rangeRound([margin.left, width - margin.right]);
+        const color = d3.scaleOrdinal()
+            .domain(data.map(d => d.name))
+            .range([
+                "#9f5afd", "#00b16a", "#dadfe1", "#e67e22",
+                "#7CFC00",  "#96281b", "#999900", "#FF0000",
+                "#0000FF"]);
 
-        const xAxis = (g) => g
+        const x = d3.scaleTime()
+            .domain(d3.extent(data, d => d.date))
+            .range([margin.left, width - margin.right]);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.values[1])])
+            .range([height - margin.bottom, margin.top]);
+
+        const xAxis = g => g
             .attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(d3.axisBottom(x).tickSizeOuter(0));
+            .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
 
-        let y = d3.scaleLinear()
-            .domain([0, d3.max(series, function (layer) {
-                return d3.max(layer, function (d) {
-                    return d[0] + d[1];
-                });
-            })])
-            //.range([height - margin.bottom, margin.top]);
-            .range([height, 0]);
+        const yAxis = g => g
+            .attr("transform", `translate(${width - margin.right},0)`)
+            .call(d3.axisRight(y))
+            .call(g => g.select(".domain").remove());
 
-        const yAxis = (g) => g
-            .attr("transform", `translate(${margin.left},0)`)
-            .call(d3.axisLeft(y).ticks(null, "s"));
+        const legend = svg => {
+            const g = svg
+                .attr("transform", `translate(${margin.left + 1},${margin.top})`)
+                .attr("font-family", "sans-serif")
+                .attr("font-size", 10)
+                .selectAll("g")
+                .data(color.domain().slice().reverse())
+                .join("g")
+                .attr("transform", (d, i) => `translate(0,${i * 20})`);
 
-        let area = d3.area()
-            .x(function (d) {
-                return x(d.data.year);
-            })
-            .y0(function (d) {
-                return y(d[0]);
-            })
-            .y1(function (d) {
-                return y(d[1]);
-            })
-            .curve(d3.curveBasis);
+            g.append("rect")
+                .attr("width", 19)
+                .attr("height", 19)
+                .attr("fill", color);
+
+            g.append("text")
+                .attr("x", 24)
+                .attr("y", 9.5)
+                .attr("dy", "0.35em")
+                .text(d => d);
+        };
 
         const svg = d3.select('.chart')
             .html("")
             .attr("width", width)
-            .attr("height", height)
-            .attr("stroke-width", 2);
-
-        svg.append("svg")
-            .attr("width", width)
             .attr("height", height);
 
-        svg.selectAll(".layer")
-            .data(series)
-            .enter().append("path")
-            .attr("class", "layer")
-            .attr("d", area)
-            .style("fill", function (d) {
-                return religions[d.key];
-            });
+        svg.append("g")
+            .selectAll("path")
+            .data([...multimap(data.map(d => [d.name, d]))])
+            .join("path")
+            .attr("fill", ([name]) => religions[name])
+            .attr("d", ([, values]) => area(values))
+            .append("title")
+            .text(([name]) => name);
 
-        svg.append("svg")
-            .attr("class", "axis")
-            .attr("transform", "translate(0," + (height) + ")")
+        svg.append("g")
             .call(xAxis);
 
-        svg.append("svg")
-            .attr("class", "y axis")
-            .attr("transform", "translate(" + width + ", 0)")
+        svg.append("g")
             .call(yAxis);
+
+        svg.append("g")
+            .call(legend);
 
         let tooltip = d3.select("body")
             .append("div")
@@ -220,12 +260,12 @@
             })
 
             .on("mousemove", function (d) {
-                mousex = d3.mouse(this);
+                let mousex = d3.mouse(this);
                 mousex = mousex[0];
                 let invertedx = x.invert(mousex);
-                invertedx = 5 * (Math.trunc(invertedx/5));
+                invertedx = 5 * (Math.trunc(invertedx / 5));
                 let years = (Object.values(d));
-                pro = years[d.index].data[d.key];
+                let pro = years[d.index].data[d.key];
                 d3.select(this)
                     .classed("hover", true)
                     .attr("stroke", "black")
@@ -241,7 +281,7 @@
                 d3.select(this)
                     .classed("hover", false)
                     .attr("stroke-width", "0px"), tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "hidden");
-            })
+            });
 
         let vertical = d3.select(".chart")
             .append("div")
@@ -267,11 +307,85 @@
                 vertical.style("left", mousex + "px")
             });
 
+        return svg.node();
+
+        //     let stack = d3.stack()
+        //         .keys(keys)
+        //         .order(d3.stackOrderNone)
+        //         .offset(d3.stackOffsetNone);
+        //
+        //     const dates = [];
+        //     for (let row of data) {
+        //         dates.push(new Date(row.year, 1, 1));
+        //     }
+        //
+        //     let series = stack(data);
+        //
+        //     let x = d3.scaleTime()
+        //         .domain(d3.extent(dates))
+        //         .rangeRound([margin.left, width - margin.right]);
+        //
+        //     const xAxis = (g) => g
+        //         .attr("transform", `translate(0,${height - margin.bottom})`)
+        //         .call(d3.axisBottom(x).tickSizeOuter(0));
+        //
+        //     let y = d3.scaleLinear()
+        //         .domain([0, d3.max(series, (layer) => {
+        //             return d3.max(layer, (d) => {
+        //                 return d[0] + d[1];
+        //             });
+        //         })])
+        //         .range([height - margin.bottom, margin.top]);
+        //     // .range([height, 0]);
+        //
+        //     const yAxis = (g) => g
+        //         .attr("transform", `translate(${margin.left},0)`)
+        //         .call(d3.axisLeft(y).ticks(null, "s"));
+        //
+        //     let area = d3.area()
+        //         .x((d) => {
+        //             return x(d.data.year);
+        //         })
+        //         .y0((d) => {
+        //             return y(d[0]);
+        //         })
+        //         .y1((d) => {
+        //             return y(d[1]);
+        //         });
+        // .
+        //     curve(d3.curveBasis);
+        //
+        //     const svg = d3.select('.chart')
+        //         .html("")
+        //         .attr("width", width)
+        //         .attr("height", height);
+        //
+        //     svg.selectAll(".layer")
+        //         .data(series)
+        //         .enter().append("path")
+        //         .attr("class", "layer")
+        //         .attr("d", area)
+        //         .style("fill", function (d) {
+        //             return religions[d.key];
+        //         });
+
+
+        // svg.append("svg")
+        //     .attr("class", "axis")
+        //     .attr("transform", "translate(0," + (height) + ")")
+        //     .call(xAxis);
+        //
+        // svg.append("svg")
+        //     .attr("class", "y axis")
+        //     .attr("transform", "translate(" + width + ", 0)")
+        //     .call(yAxis);
+
+
     }
 
     const getData = async () => {
         let promises = [
-            axios.get(`/population_by_religion`),
+            axios.get(`/population_by_religion_dict`),
         ];
 
         return await Promise.all(promises);

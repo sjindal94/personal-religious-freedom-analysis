@@ -66,12 +66,34 @@ def get_religion_by_year(year):
 
 
 @app.route("/happiness_score/<year>", methods=['POST', 'GET'])
-def get_happiness_score(year): #making it generic for now
+def get_happiness_score(year):  # making it generic for now
     df = pd.read_csv(HAPPINESS_DB)
     df = df[['Country', 'Happiness Score']]
     df = df.round(3)
     # TODO: Adaptive sampling by country
     return json.dumps(df.values.tolist(), indent=2)
+
+
+@app.route("/population_by_religion_dict/", methods=['POST', 'GET'])
+def get_world_population_by_religion_dict():
+    df = pd.read_csv(POPULATION_BY_RELIGION)
+    df = df[['year', 'christianity_all', 'judaism_all', 'islam_all',
+             'buddhism_all', 'hinduism_all', 'shinto_all',
+             'syncretism_all', 'animism_all', 'noreligion_all', 'world_population']]
+
+    df.columns = ['year', "christianity", "judaism", "islam", "buddhism", "hinduism", "shinto",
+                  "syncretism", "animism", "noreligion", "world_population"]
+
+    pop_list = list(df.T.to_dict().values())
+
+    res = []
+    for row in pop_list:
+        print(row)
+        for key in df.columns[1:-1]:
+            res.append({'series': key, 'year': row['year'], 'count': row[key]})
+
+    # TODO: Adaptive sampling by country
+    return json.dumps(res, indent=2)
 
 
 @app.route("/population_by_religion/", methods=['POST', 'GET'])
@@ -104,14 +126,14 @@ def streamgraph():
     return render_template("streamgraph.html")
 
 
-# @app.route("/", methods=['POST', 'GET'])
-# def index():
-#     return render_template("index.html")
-
-
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    return render_template("temp.html")
+    return render_template("index.html")
+
+
+# @app.route("/", methods=['POST', 'GET'])
+# def index():
+#     return render_template("temp.html")
 
 
 if __name__ == "__main__":
