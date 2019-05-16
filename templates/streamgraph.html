@@ -226,6 +226,7 @@
             .selectAll("path")
             .data([...multimap(data.map(d => [d.name, d]))])
             .join("path")
+            .attr("class", "layer")
             .attr("fill", ([name]) => religions[name])
             .attr("d", ([, values]) => area(values))
             .append("title")
@@ -240,7 +241,7 @@
         svg.append("g")
             .call(legend);
 
-        let tooltip = d3.select("body")
+        let tooltip = d3.select(".chart")
             .append("div")
             .attr("class", "remove")
             .style("position", "absolute")
@@ -265,12 +266,12 @@
                 let invertedx = x.invert(mousex);
                 invertedx = 5 * (Math.trunc(invertedx / 5));
                 let years = (Object.values(d));
-                let pro = years[d.index].data[d.key];
+                let pro = d[1].data[d.key];
                 d3.select(this)
                     .classed("hover", true)
                     .attr("stroke", "black")
                     .attr("stroke-width", "0.5px"),
-                    tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "visible");
+                    tooltip.html("<p>" + d[0] + "<br>" + pro + "</p>").style("visibility", "visible");
 
             })
             .on("mouseout", function (d) {
@@ -297,12 +298,12 @@
 
         d3.select(".chart")
             .on("mousemove", function () {
-                mousex = d3.mouse(this);
+                let mousex = d3.mouse(this);
                 mousex = mousex[0] + 5;
                 vertical.style("left", mousex + "px")
             })
             .on("mouseover", function () {
-                mousex = d3.mouse(this);
+                let mousex = d3.mouse(this);
                 mousex = mousex[0] + 5;
                 vertical.style("left", mousex + "px")
             });
