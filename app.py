@@ -80,7 +80,7 @@ def get_past_5_years_attacks(year):
     year_df = year_df[['country_txt', 'latitude', 'longitude']]
     year_df = year_df[year_df['latitude'].notnull()]
     # TODO: Adaptive sampling by country
-    year_df = year_df.sample(n=500)
+    year_df = year_df.sample(n=1000)
     return json.dumps(year_df.values.tolist(), indent=2)
 
 
@@ -115,7 +115,6 @@ def get_world_population_by_religion_dict():
 
     res = []
     for row in pop_list:
-        print(row)
         for key in df.columns[1:-1]:
             res.append({'series': key, 'year': row['year'], 'count': row[key]})
 
@@ -149,8 +148,8 @@ def happiness():
 
 
 @app.route("/religion_population", methods=['POST', 'GET'])
-def streamgraph():
-    return render_template("streamgraph.html")
+def stacked_area_chart():
+    return render_template("stacked_area_chart.html")
 
 
 @app.route("/", methods=['POST', 'GET'])

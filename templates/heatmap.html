@@ -71,7 +71,7 @@
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
                 <a href="/religion-growth">Economic growth across Religions</a>
-                <a href="/religion_population">Streamgraph</a>
+                <a href="/religion_population">Stacked Area Chart</a>
                 <a href="/heatmap">Heat Map</a>
                 <a href="/">Others</a>
             </li>
@@ -83,15 +83,9 @@
     <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 0; box-shadow: none">
             <div class="container-fluid">
-
                 <button class="btn btn-info" id="sidebarCollapse" type="button">
                     <i class="fas fa-align-left"></i>
                     <span>Toggle Sidebar</span>
-                </button>
-                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-                        class="btn btn-dark d-inline-block d-lg-none ml-auto" data-target="#navbarSupportedContent"
-                        data-toggle="collapse" type="button">
-                    <i class="fas fa-align-justify"></i>
                 </button>
             </div>
         </nav>
@@ -133,9 +127,9 @@
 
 <script>
 
-    const margin = ({top: 100, right: 30, bottom: 200, left: 150});
-    let width = 800,
-        height = 800;
+    const margin = ({top: 10, right: 130, bottom: 130, left: 170});
+    let width = 850,
+        height = 510;
 
     const religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -165,8 +159,8 @@
             .range(['#1f3a93', '#ddd', '#d91e18']);
 
         const legendBins = [-1, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0];
-        const legendHeight = 20;
-        const legendElementWidth = 46;
+        const legendHeight = 34;
+        const legendElementWidth = 25;
 
         const xAxis = g => g
             .attr("transform", `translate(0,${height - margin.bottom + 10})`)
@@ -227,8 +221,8 @@
             .data(legendBins)
             .enter()
             .append("rect")
-            .attr("x", (d, i) => legendElementWidth * i)
-            .attr("y", height - (2 * legendHeight))
+            .attr("x", width - 230)
+            .attr("y", (d, i) => legendHeight * i + 10)
             .attr("width", legendElementWidth)
             .attr("height", legendHeight)
             .style("fill", d => z(d));
@@ -239,8 +233,8 @@
             .enter()
             .append("text")
             .text(d => (d).toFixed(1))
-            .attr("x", (d, i) => legendElementWidth * i)
-            .attr("y", height - (legendHeight / 2))
+            .attr("x", width - 190)
+            .attr("y", (d, i) => legendHeight * i + 35)
             .style("font-size", "9pt")
             .style("font-family", "Consolas, courier")
             .style("fill", "#aaa");

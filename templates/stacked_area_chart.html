@@ -70,7 +70,7 @@
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
                 <a href="/religion-growth">Economic growth across Religions</a>
-                <a href="/religion_population">Streamgraph</a>
+                <a href="/religion_population">Stacked Area Chart</a>
                 <a href="/heatmap">Heat Map</a>
                 <a href="/">Others</a>
             </li>
@@ -80,21 +80,15 @@
 
     <!-- Page Content -->
     <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 50">
             <div class="container-fluid">
-
                 <button class="btn btn-info" id="sidebarCollapse" type="button">
                     <i class="fas fa-align-left"></i>
                     <span>Toggle Sidebar</span>
                 </button>
-                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-                        class="btn btn-dark d-inline-block d-lg-none ml-auto" data-target="#navbarSupportedContent"
-                        data-toggle="collapse" type="button">
-                    <i class="fas fa-align-justify"></i>
-                </button>
             </div>
         </nav>
-        <svg class="chart"></svg>
+        <svg class="chart" style="margin-left: 35px"></svg>
     </div>
 </div>
 
@@ -106,9 +100,9 @@
 
 <script>
 
-    const margin = ({top: 100, right: 100, bottom: 50, left: 40});
-    let width = 1000,
-        height = 500;
+    const margin = ({top: 200, right: 80, bottom: 50, left: 40});
+    let width = 900,
+        height = 520;
 
     const religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -197,7 +191,7 @@
 
         const legend = svg => {
             const g = svg
-                .attr("transform", `translate(${margin.left + 1},${margin.top})`)
+                .attr("transform", `translate(${margin.left + 1},${margin.top - 100})`)
                 .attr("font-family", "sans-serif")
                 .attr("font-size", 10)
                 .selectAll("g")
