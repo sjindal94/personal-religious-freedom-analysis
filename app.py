@@ -1,4 +1,5 @@
 import json
+import numpy as np
 
 import pandas as pd
 from flask import Flask, render_template
@@ -6,9 +7,35 @@ from flask import Flask, render_template
 from constants import (TERRORISM_DB,
                        PF_RELIGIOUS_FREEDOM, HAPPINESS_DB,
                        MAJ_INT_RELIGIOUS_POPULATION,
-                       GROWTH_DATA, POPULATION_BY_RELIGION)
+                       GROWTH_DATA, POPULATION_BY_RELIGION,
+                       HEATMAP_DATA)
 
 app = Flask(__name__)
+
+
+@app.route("/heat_map_data/<religion>", methods=['POST', 'GET'])
+def get_heatmap_data(religion):
+    df = pd.read_csv(HEATMAP_DATA)
+    if religion != 'all':
+        if religion in ['shinto', 'noreligion', 'animism', 'judaism']:
+            df = df[(df['majority_religion'] == 'shinto') |
+                    (df['majority_religion'] == 'noreligion') |
+                    (df['majority_religion'] == 'judaism') |
+                    (df['majority_religion'] == 'animism')]
+        else:
+            df = df[df['majority_religion'] == religion]
+
+    df = df.drop('Unnamed: 0', axis=1)
+    columns = ['Majority Religion Pop', 'PF Religion', 'PF Expression', 'EF Trade', 'EF Legal',
+               'PF Movement', 'PF Law', 'PF Security & Safety', 'PF Associate & Assemble',
+               'PF Identity & Relationships', 'EF Money', 'EF Regulation', 'Growth',
+               'Happiness Score']
+
+    # data = np.column_stack((np.array(columns).reshape(14, 1), df.corr().values))
+
+    df = df.drop('majority_religion', axis=1)
+    df_corr = df.corr().replace(np.nan, 0)
+    return json.dumps({'data': df_corr.values.tolist(), 'columns': columns}, indent=2)
 
 
 @app.route("/growth_data/<year>", methods=['POST', 'GET'])
@@ -131,9 +158,9 @@ def index():
     return render_template("index.html")
 
 
-# @app.route("/", methods=['POST', 'GET'])
-# def index():
-#     return render_template("temp.html")
+@app.route("/heatmap", methods=['POST', 'GET'])
+def heatmap():
+    return render_template("heatmap.html")
 
 
 if __name__ == "__main__":

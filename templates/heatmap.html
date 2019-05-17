@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    body {
+        font: 10px sans-serif;
+    }
+
+    /*.chart {*/
+    /*    background: #fff;*/
+    /*}*/
+
+    p {
+        font: 12px helvetica;
+    }
+
+
+    .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2px;
+        shape-rendering: crispEdges;
+    }
+
+    #sidebarCollapse {
+        position: absolute;
+        right: 50px;
+        top: 10px;
+    }
+
+</style>
+<link crossorigin="anonymous"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      rel="stylesheet">
+<link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+
+<script crossorigin="anonymous"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script crossorigin="anonymous" defer
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+        src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+<script crossorigin="anonymous" defer
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+        src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+
+<body>
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Correlating religions and social factors</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Analytics</p>
+            <li class="active">
+                <a href="/religion">World Religions Data</a>
+                <a href="/">Global Terrorism Data</a>
+                <a href="/happiness">World Happiness Report</a>
+                <a href="/religion-growth">Economic growth across Religions</a>
+                <a href="/religion_population">Streamgraph</a>
+                <a href="/heatmap">Heat Map</a>
+                <a href="/">Others</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 0; box-shadow: none">
+            <div class="container-fluid">
+
+                <button class="btn btn-info" id="sidebarCollapse" type="button">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="btn btn-dark d-inline-block d-lg-none ml-auto" data-target="#navbarSupportedContent"
+                        data-toggle="collapse" type="button">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="dropdown" id="myDropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    Select Religion
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li class="dropdown-item" value="all">All</li>
+                    <li class="dropdown-item" value="christianity">Christianity</li>
+                    <li class="dropdown-item" value="noreligion">No Religion</li>
+                    <li class="dropdown-item" value="islam">Islam</li>
+                    <li class="dropdown-item" value="animism">Animism</li>
+                    <li class="dropdown-item" value="hinduism">Hinduism</li>
+                    <li class="dropdown-item" value="judaism">Judaism</li>
+                    <li class="dropdown-item" value="syncretism">Syncretism</li>
+                    <li class="dropdown-item" value="buddhism">Buddhism</li>
+                    <li class="dropdown-item" value="shinto">Shinto</li>
+                </div>
+
+            </div>
+            <svg class="chart"></svg>
+        </div>
+    </div>
+</div>
+
+<script src="http://d3js.org/d3.v5.js"></script>
+
+
+<div class="chart">
+</div>
+
+<script>
+
+    const margin = ({top: 100, right: 30, bottom: 200, left: 150});
+    let width = 800,
+        height = 800;
+
+    const religions = {
+        "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
+        "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
+        "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
+    };
+
+    function chart(data, bins) {
+        const series = d3
+            .entries(data);
+
+        console.log(bins);
+        const x = d3.scaleBand()
+            .domain(bins)
+            .range([margin.left, width - margin.right]);
+
+        const y = d3.scaleBand()
+            .domain(series.map(d => d.key))
+            .range([margin.top, height - margin.bottom]);
+
+        const y1 = d3.scaleBand()
+            .domain(series.map(d => bins[d.key]))
+            .range([margin.top, height - margin.bottom]);
+
+        const z = d3.scaleLinear()
+            .domain([-1, 0, 1])
+            .range(['#1f3a93', '#ddd', '#d91e18']);
+
+        const legendBins = [-1, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0];
+        const legendHeight = 20;
+        const legendElementWidth = 46;
+
+        const xAxis = g => g
+            .attr("transform", `translate(0,${height - margin.bottom + 10})`)
+            .call(d3.axisBottom(x).tickSize(0).tickPadding(4))
+            .call(g => g.select(".domain").remove())
+            .selectAll("text")
+            .attr("y", 0)
+            .attr("x", 0)
+            .attr("transform", "rotate(270)")
+            .style("text-anchor", "end")
+            .style("fill", "#777");
+
+        const yAxis = g => g
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y1).tickSize(0).tickPadding(4))
+            .call(g => g.select(".domain").remove())
+            .selectAll("text")
+            .style("fill", "#777");
+
+        const svg = d3.select('.chart')
+            .html("")
+            .attr("width", width)
+            .attr("height", height);
+
+        svg.append("g")
+            .call(xAxis);
+
+        svg.append("g")
+            .call(yAxis);
+
+        const serie = svg.append("g")
+            .selectAll("g")
+            .data(series)
+            .enter().append("g")
+            .attr("transform", d => `translate(0,${y(d.key) + 1})`);
+
+        const tip = d3.tip().attr('class', 'd3-tip').html(d => (d).toFixed(2));
+
+        svg.call(tip);
+
+        serie.append("g")
+            .selectAll("rect")
+            .data(d => d.value)
+            .enter().append("rect")
+            .attr("fill", d => z(d))
+            .attr("x", (d, i) => x(bins[i]))
+            .attr("y", 0)
+            .attr("height", y.bandwidth())
+            .attr("width", x.bandwidth())
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
+
+        const legend = svg.append("g")
+            .attr("transform", d => `translate(${margin.left},0)`);
+
+        legend
+            .selectAll("rect")
+            .data(legendBins)
+            .enter()
+            .append("rect")
+            .attr("x", (d, i) => legendElementWidth * i)
+            .attr("y", height - (2 * legendHeight))
+            .attr("width", legendElementWidth)
+            .attr("height", legendHeight)
+            .style("fill", d => z(d));
+
+        legend
+            .selectAll("text")
+            .data(legendBins)
+            .enter()
+            .append("text")
+            .text(d => (d).toFixed(1))
+            .attr("x", (d, i) => legendElementWidth * i)
+            .attr("y", height - (legendHeight / 2))
+            .style("font-size", "9pt")
+            .style("font-family", "Consolas, courier")
+            .style("fill", "#aaa");
+
+        return svg.node();
+    }
+
+    const getData = async (religion) => {
+        let promises = [
+            axios.get(`/heat_map_data/${religion}`),
+        ];
+
+        return await Promise.all(promises);
+    };
+
+    getData('all').then((data, err) => {
+        chart(data[0].data.data, data[0].data.columns);
+    });
+
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+
+    $(".dropdown-menu").on('click', 'li', function () {
+        let val = $(this)[0].attributes[1].nodeValue;
+        $(".btn:first-child").text($(this).text());
+        $(".btn:first-child").val(val);
+
+        getData(val).then((data, err) => {
+            console.log(data[0].data);
+            chart(data[0].data.data, data[0].data.columns);
+        });
+    });
+
+</script>
+</body>
