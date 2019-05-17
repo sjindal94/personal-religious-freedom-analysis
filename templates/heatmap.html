@@ -262,8 +262,8 @@
 
     $(".dropdown-menu").on('click', 'li', function () {
         let val = $(this)[0].attributes[1].nodeValue;
-        $(".btn:first-child").text($(this).text());
-        $(".btn:first-child").val(val);
+        $("#dropdownMenuButton").text($(this).text());
+        $("#dropdownMenuButton").val(val);
 
         getData(val).then((data, err) => {
             console.log(data[0].data);
