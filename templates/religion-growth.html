@@ -86,6 +86,12 @@ body {
     const height = 500;
     let selectedDate = "2010";
 
+    let religions = {
+        "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
+        "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
+        "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
+    };
+
     const dataTime = d3.range(0, 10).map(function (d) {
         return new Date(1965 + (d * 5), 10, 3);
     });
@@ -241,7 +247,10 @@ body {
     const getData = async (year) => {
         let promises = [
             axios.get(`/growth_data/${year}`),
-            axios.get(`/all_religions`),
+            axios.get(`/all_religions`, {
+                params:
+                    {religions: JSON.stringify(Object.keys(religions))},
+            }),
         ];
 
         return await Promise.all(promises);

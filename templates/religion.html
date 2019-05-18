@@ -89,6 +89,12 @@ path {
     const width = 1000;
     const height = 400;
 
+    const religions = {
+        "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
+        "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
+        "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
+    };
+
     let chart = (data, binNames, column) => {
         const x = d3.scaleBand()
                     .domain(binNames)
@@ -244,8 +250,14 @@ path {
 
     const getData = async (year) => {
         let promises = [
-            axios.get(`/religious_freedom`),
-            axios.get(`/all_religions`),
+            axios.get(`/religious_freedom`, {
+                params:
+                    {religions: JSON.stringify(Object.keys(religions))},
+            }),
+            axios.get(`/all_religions`, {
+                params:
+                    {religions: JSON.stringify(Object.keys(religions))},
+            }),
         ];
 
         return await Promise.all(promises);

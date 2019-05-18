@@ -244,7 +244,10 @@
 
     const getData = async (religion) => {
         let promises = [
-            axios.get(`/heat_map_data/${religion}`),
+            axios.get(`/heat_map_data/${religion}`, {
+                params:
+                    {religions: JSON.stringify(Object.keys(religions))},
+            }),
         ];
 
         return await Promise.all(promises);

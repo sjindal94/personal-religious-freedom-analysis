@@ -253,7 +253,10 @@ path {
     const getData = async (year) => {
         let promises = [
             d3.json("static/data/world_countries.json"),
-            axios.get(`/map/${year}`),
+            axios.get(`/map/${year}`, {
+                params:
+                    {religions: JSON.stringify(Object.keys(religions))},
+            }),
             axios.get(`/happiness_score/${year}`)
         ];
 

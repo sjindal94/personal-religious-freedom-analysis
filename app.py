@@ -1,8 +1,8 @@
 import json
-import numpy as np
 
+import numpy as np
 import pandas as pd
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 from constants import (TERRORISM_DB,
                        PF_RELIGIOUS_FREEDOM, HAPPINESS_DB,
@@ -15,7 +15,9 @@ app = Flask(__name__)
 
 @app.route("/heat_map_data/<religion>", methods=['POST', 'GET'])
 def get_heatmap_data(religion):
+    religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(HEATMAP_DATA)
+    df = df[df.majority_religion.isin(religions)]
     if religion != 'all':
         if religion in ['shinto', 'noreligion', 'animism', 'judaism']:
             df = df[(df['majority_religion'] == 'shinto') |
@@ -56,14 +58,18 @@ def get_growth_data(year):
 
 @app.route("/all_religions")
 def all_religions():
+    religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
+    df = df[df.religion.isin(religions + ['total_average'])]
 
     return json.dumps(df.religion.values.tolist(), indent=2)
 
 
 @app.route("/religious_freedom", methods=['POST', 'GET'])
 def get_religious_freedom():
+    religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
+    df = df[df.religion.isin(religions + ['total_average'])]
     res = list()
 
     for val in df.values:
@@ -86,7 +92,9 @@ def get_past_5_years_attacks(year):
 
 @app.route("/map/<year>", methods=['POST', 'GET'])
 def get_religion_by_year(year):
+    religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(MAJ_INT_RELIGIOUS_POPULATION)
+    df = df[df.majority_religion.isin(religions)]
     year_df = df[df.year == int(year)].reset_index()
     year_df = year_df[['state', 'majority_religion', 'majority_population']]
     return json.dumps(year_df.values.tolist(), indent=2)
@@ -103,13 +111,12 @@ def get_happiness_score(year):  # making it generic for now
 
 @app.route("/population_by_religion_dict/", methods=['POST', 'GET'])
 def get_world_population_by_religion_dict():
+    religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(POPULATION_BY_RELIGION)
-    df = df[['year', 'christianity_all', 'judaism_all', 'islam_all',
-             'buddhism_all', 'hinduism_all', 'shinto_all',
-             'syncretism_all', 'animism_all', 'noreligion_all', 'world_population']]
+    columns = ['year'] + [rel + '_all' for rel in religions] + ["world_population"]
+    df = df[columns]
 
-    df.columns = ['year', "christianity", "judaism", "islam", "buddhism", "hinduism", "shinto",
-                  "syncretism", "animism", "noreligion", "world_population"]
+    df.columns = ['year'] + religions + ["world_population"]
 
     pop_list = list(df.T.to_dict().values())
 
@@ -118,7 +125,6 @@ def get_world_population_by_religion_dict():
         for key in df.columns[1:-1]:
             res.append({'series': key, 'year': row['year'], 'count': row[key]})
 
-    # TODO: Adaptive sampling by country
     return json.dumps(res, indent=2)
 
 
@@ -128,7 +134,6 @@ def get_world_population_by_religion():
     df = df[['year', 'christianity_all', 'judaism_all', 'islam_all', 'buddhism_all', 'hinduism_all', 'shinto_all',
              'syncretism_all', 'animism_all', 'noreligion_all', 'world_population']]
 
-    # TODO: Adaptive sampling by country
     return json.dumps(df.values.tolist(), indent=2)
 
 
@@ -155,6 +160,11 @@ def stacked_area_chart():
 @app.route("/", methods=['POST', 'GET'])
 def index():
     return render_template("index.html")
+
+
+@app.route("/coordinated_view1", methods=['POST', 'GET'])
+def coordinated_view1():
+    return render_template("coordinated_view1.html")
 
 
 @app.route("/heatmap", methods=['POST', 'GET'])

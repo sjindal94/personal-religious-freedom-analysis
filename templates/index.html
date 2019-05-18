@@ -214,16 +214,14 @@ path {
             });
 
         svg.append("text")
-           .attr("transform", "translate(400,0)")
-           .attr("x", -150)
-           .attr("y", 20)
-           .attr("font-size", "16px")
-           .text(`Happiness Score across Countries Aggregated`);
+            .attr("transform", "translate(400,0)")
+            .attr("x", -150)
+            .attr("y", 20)
+            .attr("font-size", "16px")
+            .text(`Happiness Score across Countries Aggregated`);
 
         circle = svg.selectAll("circle")
             .data();
-
-        console.log("Map drawn");
     };
 
     let chart = (population, terror_attacks) => {
@@ -250,7 +248,7 @@ path {
             .enter().append("path")
             .attr("d", path)
             .style("fill", function (d) {
-                    if (populationById[d.properties.name] != null) {
+                if (populationById[d.properties.name] != null) {
                     return religions[populationById[d.properties.name].religion];
                 } else {
                     return "#dadfe1";
@@ -299,7 +297,10 @@ path {
 
     const getData = async (year) => {
         let promises = [
-            axios.get(`/map/${year}`),
+            axios.get(`/map/${year}`, {
+                params:
+                    {religions: JSON.stringify(Object.keys(religions))},
+            }),
             axios.get(`/terror_attacks/${year}`)
         ];
         return await Promise.all(promises);
