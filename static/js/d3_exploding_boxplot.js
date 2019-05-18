@@ -181,7 +181,6 @@ let exploding_boxplot = function (data, aes) {
         s.attr('class', 'd3-exploding-boxplot point')
             .attr('r', functorkey(aes.radius))
             .attr('fill', function (d) {
-                console.log(d);
                 return colorscale(functorkey(aes.color)(d))
             })
             .attr("fill-opacity", 0.5)
@@ -290,15 +289,13 @@ let exploding_boxplot = function (data, aes) {
             })
     };
     let hide_boxplot = function (g, i) {
-        let s = this;
-        console.log(this);
         g.select('rect.box')
             .attr('x', xscale.bandwidth() * 0.5)
             .attr('width', 0)
             .attr('y', function (d) {
                 return yscale(d.quartiles[1])
             })
-            .attr('height', 0)
+            .attr('height', 0);
         //median line
         g.selectAll('line')
             .attr('x1', xscale.bandwidth() * 0.5)
