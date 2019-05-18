@@ -50,15 +50,16 @@ body {
         </div>
 
         <ul class="list-unstyled components">
-            <a href="/coordinated_view1">Coordinated View 1</a>
-            <a href="/coordinated_view2">Coordinated View 2</a>
-            <a href="/donuts">General Religion Stats</a>
-            <a href="/religion">World Religions Data</a>
-            <a href="/">Global Terrorism Data</a>
-            <a href="/happiness">World Happiness Report</a>
-            <a href="/religion-growth">Economic growth across Religions</a>
-            <a href="/religion_population">Stacked Area Chart</a>
-            <a href="/heatmap">Heat Map</a>
+            <li class="active">
+                <a href="/coordinated_view1">Coordinated View 1</a>
+                <a href="/coordinated_view2">Coordinated View 2</a>
+                <a href="/religion">World Religions Data</a>
+                <a href="/">Global Terrorism Data</a>
+                <a href="/happiness">World Happiness Report</a>
+                <a href="/religion-growth">Economic growth across Religions</a>
+                <a href="/religion_population">Stacked Area Chart</a>
+                <a href="/heatmap">Heat Map</a>
+                <a href="/donuts">General Religion Stats</a>
             </li>
 
         </ul>
@@ -132,6 +133,7 @@ body {
     ];
 
     let chart = (data, religions) => {
+        console.log(data, religions);
         religions.splice(-1, 1);
         const bins = d3.histogram()
             .thresholds([1, 2, 3, 4, 5, 6, 7, 8, 9])
@@ -244,7 +246,10 @@ body {
 
     const getData = async (year) => {
         let promises = [
-            axios.get(`/growth_data/${year}`),
+            axios.get(`/growth_data/${year}`, {
+                params:
+                    {religions: JSON.stringify(Object.keys(religions))},
+            }),
             axios.get(`/all_religions`, {
                 params:
                     {religions: JSON.stringify(Object.keys(religions))},
@@ -254,7 +259,7 @@ body {
         return await Promise.all(promises);
     };
 
-    getData(2010).then((data, err) => {
+    getData(selectedYear).then((data, err) => {
         chart(data[0].data, data[1].data);
     });
 

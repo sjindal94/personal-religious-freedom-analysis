@@ -60,14 +60,14 @@ def get_growth_data2(year):
 
 @app.route("/growth_data/<year>", methods=['POST', 'GET'])
 def get_growth_data(year):
-    df = pd.read_csv(GROWTH_DATA)
-    rel_df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
-    religions = rel_df.religion.values.tolist()[:-1]
+    religions = json.loads(request.args.get('religions'))
     religion_dict = {rel: idx for idx, rel in enumerate(religions)}
+    df = pd.read_csv(GROWTH_DATA)
     df = df[(df.year == int(year))]
-
     res = []
     for key, tbl in df.groupby('majority_religion'):
+        if key not in religions:
+            continue
         for val in tbl.growth.values:
             res.append({'x': float(religion_dict[key]), 'y': float(val)})
 
@@ -149,12 +149,15 @@ def get_world_population_by_religion_dict():
 
 @app.route("/population_by_religion/<year>", methods=['POST', 'GET'])
 def get_world_population_by_religion(year):
+    religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(POPULATION_BY_RELIGION)
     df = df[['year', 'christianity_all', 'judaism_all', 'islam_all', 'buddhism_all', 'hinduism_all', 'shinto_all',
              'syncretism_all', 'animism_all', 'noreligion_all', 'world_population']]
     df.columns = ['year', "christianity", "judaism", "islam", "buddhism", "hinduism", "shinto",
                   "syncretism", "animism", "noreligion", "world_population"]
     df = df[df.year == int(year)].reset_index()
+    religions.extend(['year', 'world_population'])
+    df = df[religions]
     pop_list = list(df.T.to_dict().values())
 
     return json.dumps(pop_list[0], indent=2)

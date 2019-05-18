@@ -84,16 +84,16 @@ body {
         <div id="slider-time"></div>
         <table>
             <tr>
-                <td><input type="radio" name="religion" value="christianity" checked> christianity<br></td>
-                <td><input type="radio" name="religion" value="islam"> islam<br></td>
-                <td><input type="radio" name="religion" value="hinduism"> hinduism<br></td>
-                <td><input type="radio" name="religion" value="shinto"> shinto<br></td>
+                <td><input type="checkbox" name="religion" value="christianity" checked> christianity<br></td>
+                <td><input type="checkbox" name="religion" value="islam"> islam<br></td>
+                <td><input type="checkbox" name="religion" value="hinduism"> hinduism<br></td>
+                <td><input type="checkbox" name="religion" value="shinto"> shinto<br></td>
             </tr>
             <tr>
-                <td><input type="radio" name="religion" value="judaism"> judaism<br></td>
-                <td><input type="radio" name="religion" value="buddhism"> buddhism<br></td>
-                <td><input type="radio" name="religion" value="syncretism"> syncretism<br></td>
-                <td><input type="radio" name="religion" value="animism"> animism<br></td>
+                <td><input type="checkbox" name="religion" value="judaism"> judaism<br></td>
+                <td><input type="checkbox" name="religion" value="buddhism"> buddhism<br></td>
+                <td><input type="checkbox" name="religion" value="syncretism"> syncretism<br></td>
+                <td><input type="checkbox" name="religion" value="animism"> animism<br></td>
             </tr>
         </table>
         <svg id="map"></svg>
@@ -108,12 +108,25 @@ body {
     const radius = Math.min(width, height) / 4;
     let selectedYear = "2010";
     let selectedReligion = "christianity";
+    let checkedReligions = ["christianity"];
     const margin = ({top: 0, right: 20, bottom: 0, left: 0});
 
     const religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
         "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
         "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
+    };
+
+    const getCheckedReligions = () => {
+        let religions = [];
+        $(".religion:checkbox:checked").each(function () {
+            religions.push(this.value);
+        });
+        console.log("This", religions);
+        if (religions.length === 0)
+            religions = AllReligions;
+
+        return religions;
     };
 
     const format = d3.format(",");
@@ -145,12 +158,6 @@ body {
 
             }
         });
-
-    $('input[name=religion]').click(function () {
-        selectedReligion = $('input[name=religion]:checked').val();
-
-        chart();
-    });
 
     var gTime = d3
         .select('div#slider-time')
@@ -249,18 +256,54 @@ body {
             .text("Majority Population Size");
     }
 
-    const getData = async (year) => {
+    const AllReligions = ["christianity", "islam", "animism", "hinduism",
+        "judaism", "syncretism", "buddhism", "shinto", "noreligion"];
+
+    const getData = async () => {
+
         let promises = [
-            axios.get(`/population_by_religion/${year}`),
-        ];
+                axios.get(`/population_by_religion/${selectedYear}`, {
+                    params:
+                        {religions: JSON.stringify(checkedReligions)},
+                })
+            ];
 
         return await Promise.all(promises);
     };
 
-    getData(selectedYear).then((data, err) => {
+    getData().then((data, err) => {
         mData = data[0].data;
         chart();
     });
+
+    $('input[name=religion]').click(function () {
+        $('#all').prop('checked', false);
+        checkedReligions = getCheckedReligions();
+        console.log(checkedReligions);
+        getData().then((data, err) => {
+            mData = data[0].data;
+            chart();
+        });
+    });
+
+    {#$('#all').change(function () {#}
+    {#    const state = $(this).prop('checked');#}
+    {##}
+    {#    $('#christianity').prop('checked', state);#}
+    {#    $('#noreligion').prop('checked', state);#}
+    {#    $('#islam').prop('checked', state);#}
+    {#    $('#animism').prop('checked', state);#}
+    {#    $('#hinduism').prop('checked', state);#}
+    {#    $('#judaism').prop('checked', state);#}
+    {#    $('#syncretism').prop('checked', state);#}
+    {#    $('#buddhism').prop('checked', state);#}
+    {#    $('#shinto').prop('checked', state);#}
+    {##}
+    {#    getData().then((data, err) => {#}
+    {#        mData = data[0].data;#}
+    {#        chart();#}
+    {#    });#}
+    {#});#}
 
     $(document).ready(function () {
         $('#sidebarCollapse').on('click', function () {
