@@ -1,6 +1,6 @@
 import json
-
 import numpy as np
+
 import pandas as pd
 from flask import Flask, render_template, request
 
@@ -128,13 +128,20 @@ def get_world_population_by_religion_dict():
     return json.dumps(res, indent=2)
 
 
-@app.route("/population_by_religion/", methods=['POST', 'GET'])
-def get_world_population_by_religion():
+
+
+@app.route("/population_by_religion/<year>", methods=['POST', 'GET'])
+def get_world_population_by_religion(year):
     df = pd.read_csv(POPULATION_BY_RELIGION)
     df = df[['year', 'christianity_all', 'judaism_all', 'islam_all', 'buddhism_all', 'hinduism_all', 'shinto_all',
              'syncretism_all', 'animism_all', 'noreligion_all', 'world_population']]
-
-    return json.dumps(df.values.tolist(), indent=2)
+    df.columns = ['year', "christianity", "judaism", "islam", "buddhism", "hinduism", "shinto",
+                  "syncretism", "animism", "noreligion", "world_population"]
+    df = df[df.year == int(year)].reset_index()
+    pop_list = list(df.T.to_dict().values())
+    print(pop_list)
+    # TODO: Adaptive sampling by country
+    return json.dumps(pop_list[0], indent=2)
 
 
 @app.route("/religion-growth", methods=['POST', 'GET'])
@@ -171,6 +178,9 @@ def coordinated_view1():
 def heatmap():
     return render_template("heatmap.html")
 
+@app.route("/donuts", methods=['POST', 'GET'])
+def donut_chart():
+    return render_template("donutchart.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
