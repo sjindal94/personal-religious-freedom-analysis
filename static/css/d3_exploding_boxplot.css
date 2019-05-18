@@ -20,8 +20,8 @@ rect.d3-exploding-boxplot.box{
 line.d3-exploding-boxplot.line,
 rect.d3-exploding-boxplot.box
 {
-  stroke: #888;
-  stroke-width: 2px;
+  stroke: #555;
+  stroke-width: 3px;
 }
 
 line.d3-exploding-boxplot.vline{

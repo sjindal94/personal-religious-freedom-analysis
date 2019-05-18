@@ -89,7 +89,7 @@ body {
     const margin = {top: 60, right: 30, bottom: 50, left: 40};
     const width = 1000;
     const height = 500;
-    let selectedYear = "2010";
+    let selectedYear = "2000";
 
     let religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -109,7 +109,7 @@ body {
         .width(300)
         .tickFormat(d3.timeFormat('%Y'))
         .tickValues(dataTime)
-        .default(new Date(2010, 10, 3))
+        .default(new Date(2000, 10, 3))
         .on('onchange', val => {
             const year = d3.timeFormat('%Y')(val);
             if (year !== selectedYear) {
@@ -156,7 +156,7 @@ body {
         return await Promise.all(promises);
     };
 
-    getData(2010).then((data, err) => {
+    getData(2000).then((data, err) => {
         chart(data[0].data, data[1].data);
     });
 
