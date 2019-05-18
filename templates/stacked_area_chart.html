@@ -72,6 +72,7 @@
                 <a href="/religion-growth">Economic growth across Religions</a>
                 <a href="/religion_population">Stacked Area Chart</a>
                 <a href="/heatmap">Heat Map</a>
+                <a href="/donuts">General Religion Stats</a>
                 <a href="/">Others</a>
             </li>
 
@@ -80,8 +81,9 @@
 
     <!-- Page Content -->
     <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 50">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 0">
             <div class="container-fluid">
+
                 <button class="btn btn-info" id="sidebarCollapse" type="button">
                     <i class="fas fa-align-left"></i>
                     <span>Toggle Sidebar</span>
@@ -303,79 +305,6 @@
             });
 
         return svg.node();
-
-        //     let stack = d3.stack()
-        //         .keys(keys)
-        //         .order(d3.stackOrderNone)
-        //         .offset(d3.stackOffsetNone);
-        //
-        //     const dates = [];
-        //     for (let row of data) {
-        //         dates.push(new Date(row.year, 1, 1));
-        //     }
-        //
-        //     let series = stack(data);
-        //
-        //     let x = d3.scaleTime()
-        //         .domain(d3.extent(dates))
-        //         .rangeRound([margin.left, width - margin.right]);
-        //
-        //     const xAxis = (g) => g
-        //         .attr("transform", `translate(0,${height - margin.bottom})`)
-        //         .call(d3.axisBottom(x).tickSizeOuter(0));
-        //
-        //     let y = d3.scaleLinear()
-        //         .domain([0, d3.max(series, (layer) => {
-        //             return d3.max(layer, (d) => {
-        //                 return d[0] + d[1];
-        //             });
-        //         })])
-        //         .range([height - margin.bottom, margin.top]);
-        //     // .range([height, 0]);
-        //
-        //     const yAxis = (g) => g
-        //         .attr("transform", `translate(${margin.left},0)`)
-        //         .call(d3.axisLeft(y).ticks(null, "s"));
-        //
-        //     let area = d3.area()
-        //         .x((d) => {
-        //             return x(d.data.year);
-        //         })
-        //         .y0((d) => {
-        //             return y(d[0]);
-        //         })
-        //         .y1((d) => {
-        //             return y(d[1]);
-        //         });
-        // .
-        //     curve(d3.curveBasis);
-        //
-        //     const svg = d3.select('.chart')
-        //         .html("")
-        //         .attr("width", width)
-        //         .attr("height", height);
-        //
-        //     svg.selectAll(".layer")
-        //         .data(series)
-        //         .enter().append("path")
-        //         .attr("class", "layer")
-        //         .attr("d", area)
-        //         .style("fill", function (d) {
-        //             return religions[d.key];
-        //         });
-
-
-        // svg.append("svg")
-        //     .attr("class", "axis")
-        //     .attr("transform", "translate(0," + (height) + ")")
-        //     .call(xAxis);
-        //
-        // svg.append("svg")
-        //     .attr("class", "y axis")
-        //     .attr("transform", "translate(" + width + ", 0)")
-        //     .call(yAxis);
-
-
     }
 
     const getData = async () => {
