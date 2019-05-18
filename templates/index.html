@@ -64,6 +64,8 @@ path {
         <ul class="list-unstyled components">
             <p>Analytics</p>
             <li class="active">
+                <a href="/coordinated_view1">Coordinated View 1</a>
+                <a href="/coordinated_view2">Coordinated View 2</a>
                 <a href="/religion">World Religions Data</a>
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
@@ -71,7 +73,6 @@ path {
                 <a href="/religion_population">Stacked Area Chart</a>
                 <a href="/heatmap">Heat Map</a>
                 <a href="/donuts">General Religion Stats</a>
-                <a href="/">Others</a>
             </li>
 
         </ul>
@@ -96,7 +97,7 @@ path {
 <script>
     const width = 960;
     const height = 500;
-    let selectedDate = "2015";
+    let selectedYear = "2015";
 
     const religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -121,12 +122,12 @@ path {
         .default(new Date(2015, 10, 3))
         .on('onchange', val => {
             const year = d3.timeFormat('%Y')(val);
-            if (year !== selectedDate) {
+            if (year !== selectedYear) {
                 d3.select('p#value-time').text(year);
                 getData(d3.timeFormat('%Y')(val)).then((data) => {
                     chart(data[0].data, data[1].data);
                 });
-                selectedDate = year;
+                selectedYear = year;
             }
         });
 
@@ -164,7 +165,6 @@ path {
     let path;
     let svg;
     let projection;
-    let countries;
     let circle;
 
     let drawMap = (mapData) => {
@@ -273,9 +273,6 @@ path {
                     .style("stroke", "white")
                     .style("stroke-width", 0.3);
             });
-
-
-        console.log(terror_attacks)
 
         if ($('circle').length == 0) {
             svg.selectAll("circle")

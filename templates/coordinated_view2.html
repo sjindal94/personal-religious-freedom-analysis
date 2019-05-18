@@ -82,6 +82,7 @@
 
 
         <div class="filters">
+            <div id="slider-time" style="position: absolute; left: 600px; top: 5px"></div>
             <table>
             <tr>
             <td><div class="form-check form-check-inline">
@@ -160,6 +161,39 @@
         "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
         "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
     };
+
+    const dataTime = d3.range(0, 10).map(function (d) {
+        return new Date(1965 + (d * 5), 10, 3);
+    });
+
+    let selectedYear = "2010";
+
+    const sliderTime = d3
+        .sliderBottom()
+        .min(d3.min(dataTime))
+        .max(d3.max(dataTime))
+        .step(5 * 1000 * 60 * 60 * 24 * 365)
+        .width(400)
+        .tickFormat(d3.timeFormat('%Y'))
+        .tickValues(dataTime)
+        .default(new Date(2010, 10, 3))
+        .on('onchange', val => {
+            const year = d3.timeFormat('%Y')(val);
+            if (year !== selectedYear) {
+                selectedYear = year;
+                drawAllCharts(getCheckedReligions());
+            }
+        });
+
+    var gTime = d3
+        .select('div#slider-time')
+        .append('svg')
+        .attr('width', 500)
+        .attr('height', 100)
+        .append('g')
+        .attr('transform', 'translate(30,30)');
+
+    gTime.call(sliderTime);
 
     const constructChart1 = (checkedReligions) => {
         const margin = ({top: 30, right: 20, bottom: 30, left: 30});
@@ -654,6 +688,7 @@
     const constructChart4 = (checkedReligions) => {
         const width = 600;
         const height = 400;
+        const format = d3.format(",");
 
         // Set tooltips
         const tip = d3.tip()
@@ -664,24 +699,33 @@
                     <span class='details'>
                         ${d.properties.name}<br>
                     </span>
-                    <strong>Religion: </strong>
+                    <strong>Major-Religion: </strong>
                     <span class='details'>
                         ${d.religion}<br>
                     </span>
-                    <strong>Happiness_score: </strong>
+                    <strong>Major-Religion Population: </strong>
                     <span class='details'>
-                        ${d.happiness_score}<br>
+                        ${format(d.population)}
                     </span>`;
             });
 
-        let chart = (data, population, happiness_score) => {
-            const projection = d3.geoMercator()
+        let mMapData;
+        let path;
+        let svg;
+        let projection;
+        let countries;
+        let circle;
+
+        let drawMap = (mapData) => {
+
+            mMapData = mapData;
+            projection = d3.geoMercator()
                 .scale(100)
                 .translate([width / 2, height / 1.5]);
 
-            const path = d3.geoPath().projection(projection);
+            path = d3.geoPath().projection(projection);
 
-            const svg = d3.select('#chart4')
+            svg = d3.select('#chart4')
                 .html("")
                 .append("svg")
                 .attr("width", width)
@@ -690,87 +734,6 @@
                 .attr('class', 'map');
 
             svg.call(tip);
-
-            const populationById = {};
-            population.forEach(function (d) {
-                populationById[d[0]] = {
-                    "population": d[2],
-                    "religion": d[1]
-                };
-            });
-            const h_scoreById = {};
-            happiness_score.forEach(function (d) {
-                h_scoreById[d[0]] = d[1];
-            });
-
-            data.features.forEach(function (d) {
-                if (populationById[d.properties.name] != null) {
-                    d.religion = populationById[d.properties.name].religion;
-                } else {
-                    d.religion = "No religion";
-                }
-                if (h_scoreById[d.properties.name] != null) {
-                    d.happiness_score = h_scoreById[d.properties.name];
-                } else {
-                    d.happiness_score = 0;
-                }
-            });
-
-
-            const opacityScale = d3.scaleLinear()
-                .domain([d3.min(Object.values(h_scoreById)), d3.max(Object.values(h_scoreById))])
-                .range([0, 1]);
-
-            svg.append("g")
-                .attr("class", "countries")
-                .selectAll("path")
-                .data(data.features)
-                .enter().append("path")
-                .attr("d", path)
-                .style("fill", function (d) {
-                    if (populationById[d.properties.name] != null) {
-                        return religions[populationById[d.properties.name].religion];
-                    } else {
-                        return "#dadfe1";
-                    }
-                })
-                .attr('fill-opacity', d => opacityScale(d.happiness_score))
-                .style('stroke', 'white')
-                .style('stroke-width', 1.5)
-                .style("opacity", 0.8)
-                // tooltips
-                .style("stroke", "white")
-                .style('stroke-width', 0.3)
-                .on('mouseover', function (d) {
-                    tip.show(d);
-
-                    d3.select(this)
-                        .style("opacity", 1)
-                        .style("stroke", "white")
-                        .style("stroke-width", 3);
-                })
-                .on('mouseout', function (d) {
-                    tip.hide(d);
-
-                    d3.select(this)
-                        .style("opacity", 0.8)
-                        .style("stroke", "white")
-                        .style("stroke-width", 0.3);
-                });
-
-            svg.append("text")
-                .attr("transform", "translate(300,0)")
-                .attr("x", -150)
-                .attr("y", 20)
-                .style("font-size", "12px")
-                .text(`Happiness Score Interpolated(2015) across Countries Aggregated`);
-
-            svg.append("path")
-                .datum(topojson.mesh(data.features, function (a, b) {
-                    return a.code !== b.code;
-                }))
-                .attr("class", "names")
-                .attr("d", path);
 
             let legend = svg.selectAll("g.legend")
                 .data(Object.values(religions))
@@ -801,25 +764,128 @@
                     return Object.keys(religions)[i];
                 });
 
-            return svg.node();
+            svg.append("text")
+                .attr("transform", "translate(400,0)")
+                .attr("x", -150)
+                .attr("y", 380)
+                .attr("font-size", "16px")
+                .text(`Terrorist Attacks`);
+
+            circle = svg.selectAll("circle")
+                .data();
         };
+
+        let chart = (population, terror_attacks) => {
+            const populationById = {};
+            population.forEach(function (d) {
+                populationById[d[0]] = {
+                    "population": d[2],
+                    "religion": d[1]
+                };
+            });
+            mMapData.features.forEach(function (d) {
+                if (populationById[d.properties.name] != null) {
+                    d.population = populationById[d.properties.name].population;
+                    d.religion = populationById[d.properties.name].religion;
+                } else {
+                    d.population = 0;
+                    d.religion = "No religion";
+                }
+            });
+
+            svg.selectAll("path").remove();
+            svg.selectAll("path").data(mMapData.features)
+            .enter().append("path")
+            .attr("d", path)
+            .style("fill", function (d) {
+                if (populationById[d.properties.name] != null) {
+                    return religions[populationById[d.properties.name].religion];
+                } else {
+                    return "#dadfe1";
+                }
+            })
+            .style('stroke', 'white')
+            .style('stroke-width', 1.5)
+            .style("opacity", 0.8)
+            // tooltips
+            .style("stroke", "white")
+            .style('stroke-width', 0.3)
+            .on('mouseover', function (d) {
+                tip.show(d);
+                d3.select(this)
+                    .style("opacity", 1)
+                    .style("stroke", "white")
+                    .style("stroke-width", 3);
+            })
+            .on('mouseout', function (d) {
+                tip.hide(d);
+                d3.select(this)
+                    .style("opacity", 0.8)
+                    .style("stroke", "white")
+                    .style("stroke-width", 0.3);
+            });
+
+            if ($('circle').length == 0) {
+                svg.selectAll("circle")
+                .data(terror_attacks)
+                .enter()
+                .append("circle", ".pin")
+                .attr("r", "2px")
+                .attr("fill", "black")
+                .attr("transform", function (d) {
+                    return "translate(" + projection([
+                        d[2],
+                        d[1]
+                    ]) + ")";
+                });
+            }
+            else {
+                circle = svg.selectAll("circle")
+                    .data(terror_attacks);
+
+                circle.exit().remove();
+                circle.enter().append("circle", ".pin").attr("r", "0");
+
+                circle.transition()
+                    .duration(500)
+                    .attr("r", "2px")
+                    .attr("fill", "black")
+                    .attr("transform", function (d) {
+                        return "translate(" + projection([
+                            d[2],
+                            d[1]
+                        ]) + ")";
+                    });
+                }
+                svg.selectAll("circle").raise();
+            };
 
         const getData = async (year, checkedReligions) => {
             let promises = [
-                d3.json("static/data/world_countries.json"),
                 axios.get(`/map/${year}`, {
                     params:
                         {religions: JSON.stringify(checkedReligions)},
                 }),
-                axios.get(`/happiness_score/${year}`)
+                axios.get(`/terror_attacks/${year}`)
             ];
-
             return await Promise.all(promises);
         };
 
-        getData(2015, checkedReligions).then((data) => {
-            chart(data[0], data[1].data, data[2].data);
+        const getMapData = async () => {
+            let promises = [
+                d3.json("static/data/world_countries.json")
+            ];
+            return await Promise.all(promises);
+        };
+
+        getMapData().then((mapData) => {
+            drawMap(mapData[0]);
+            getData(selectedYear, checkedReligions).then((data) => {
+                console.log("This data", data);
+                chart(data[0].data, data[1].data);
+            });
         });
+
     };
 
     const drawAllCharts = (religions) => {

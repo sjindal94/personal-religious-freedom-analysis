@@ -172,6 +172,11 @@ def coordinated_view1():
     return render_template("coordinated_view1.html")
 
 
+@app.route("/coordinated_view2", methods=['POST', 'GET'])
+def coordinated_view2():
+    return render_template("coordinated_view2.html")
+
+
 @app.route("/heatmap", methods=['POST', 'GET'])
 def heatmap():
     return render_template("heatmap.html")
@@ -180,6 +185,11 @@ def heatmap():
 @app.route("/donuts", methods=['POST', 'GET'])
 def donut_chart():
     return render_template("donutchart.html")
+
+
+@app.route("/home", methods=['POST', 'GET'])
+def home():
+    return render_template("home.html")
 
 
 if __name__ == "__main__":

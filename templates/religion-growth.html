@@ -52,6 +52,8 @@ body {
        <ul class="list-unstyled components">
             <p>Analytics</p>
             <li class="active">
+                <a href="/coordinated_view1">Coordinated View 1</a>
+                <a href="/coordinated_view2">Coordinated View 2</a>
                 <a href="/religion">World Religions Data</a>
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
@@ -59,7 +61,6 @@ body {
                 <a href="/religion_population">Stacked Area Chart</a>
                 <a href="/heatmap">Heat Map</a>
                 <a href="/donuts">General Religion Stats</a>
-                <a href="/">Others</a>
             </li>
 
         </ul>
@@ -85,7 +86,7 @@ body {
     const margin = ({top: 60, right: 20, bottom: 50, left: 40});
     const width = 1000;
     const height = 500;
-    let selectedDate = "2010";
+    let selectedYear = "2010";
 
     let religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -108,12 +109,12 @@ body {
         .default(new Date(2010, 10, 3))
         .on('onchange', val => {
             const year = d3.timeFormat('%Y')(val);
-            if (year !== selectedDate) {
+            if (year !== selectedYear) {
                 d3.select('p#value-time').text(year);
                 getData(d3.timeFormat('%Y')(val)).then((data, err) => {
                     chart(data[0].data, data[1].data);
                 });
-                selectedDate = year;
+                selectedYear = year;
             }
         });
 
