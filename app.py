@@ -64,10 +64,10 @@ def get_growth_data(year):
     religion_dict = {rel: idx for idx, rel in enumerate(religions)}
     df = pd.read_csv(GROWTH_DATA)
     df = df[(df.year == int(year))]
+    df = df[df.majority_religion.isin(religions)]
+
     res = []
     for key, tbl in df.groupby('majority_religion'):
-        if key not in religions:
-            continue
         for val in tbl.growth.values:
             res.append({'x': float(religion_dict[key]), 'y': float(val)})
 
