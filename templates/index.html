@@ -96,7 +96,7 @@ path {
 <script>
     const width = 960;
     const height = 500;
-    let selectedDate = "2010";
+    let selectedDate = "2015";
 
     const religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -107,7 +107,7 @@ path {
     const format = d3.format(",");
 
     const dataTime = d3.range(0, 10).map(function (d) {
-        return new Date(1965 + (d * 5), 10, 3);
+        return new Date(1970 + (d * 5), 10, 3);
     });
 
     const sliderTime = d3
@@ -118,13 +118,12 @@ path {
         .width(400)
         .tickFormat(d3.timeFormat('%Y'))
         .tickValues(dataTime)
-        .default(new Date(2010, 10, 3))
+        .default(new Date(2015, 10, 3))
         .on('onchange', val => {
             const year = d3.timeFormat('%Y')(val);
             if (year !== selectedDate) {
                 d3.select('p#value-time').text(year);
-                getData(d3.timeFormat('%Y')(val)).then((data, err) => {
-                    console.log(d3.timeFormat('%Y')(val));
+                getData(d3.timeFormat('%Y')(val)).then((data) => {
                     chart(data[0].data, data[1].data);
                 });
                 selectedDate = year;
@@ -219,14 +218,13 @@ path {
             .attr("x", -150)
             .attr("y", 20)
             .attr("font-size", "16px")
-            .text(`Happiness Score across Countries Aggregated`);
+            .text(`Terrorist Attacks`);
 
         circle = svg.selectAll("circle")
             .data();
     };
 
     let chart = (population, terror_attacks) => {
-        console.log(population, terror_attacks);
         const populationById = {};
         population.forEach(function (d) {
             populationById[d[0]] = {
@@ -277,14 +275,13 @@ path {
             });
 
 
-        circle = svg.selectAll("circle")
-            .data(terror_attacks);
+        console.log(terror_attacks)
 
-        circle.exit().remove();
-        circle.enter().append("circle", ".pin").attr("r", "0");
-
-        circle.transition()
-            .duration(500)
+        if ($('circle').length == 0) {
+            svg.selectAll("circle")
+            .data(terror_attacks)
+            .enter()
+            .append("circle", ".pin")
             .attr("r", "2px")
             .attr("fill", "black")
             .attr("transform", function (d) {
@@ -293,6 +290,25 @@ path {
                     d[1]
                 ]) + ")";
             });
+        }
+        else {
+            circle = svg.selectAll("circle")
+                .data(terror_attacks);
+
+            circle.exit().remove();
+            circle.enter().append("circle", ".pin").attr("r", "0");
+
+            circle.transition()
+                .duration(500)
+                .attr("r", "2px")
+                .attr("fill", "black")
+                .attr("transform", function (d) {
+                    return "translate(" + projection([
+                        d[2],
+                        d[1]
+                    ]) + ")";
+                });
+        }
         svg.selectAll("circle").raise();
     };
 
@@ -316,8 +332,7 @@ path {
 
     getMapData().then((mapData) => {
         drawMap(mapData[0]);
-        getData(2010).then((data) => {
-            console.log(data);
+        getData(2015).then((data) => {
             chart(data[0].data, data[1].data);
         });
     });
