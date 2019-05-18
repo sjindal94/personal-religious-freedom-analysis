@@ -87,39 +87,39 @@
                 <label class="form-check-label" for="all">All</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="christianity" value="christianity">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="christianity" value="christianity">
                 <label class="form-check-label" for="christianity">Christianity</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="noreligion" value="noreligion">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="noreligion" value="noreligion">
                 <label class="form-check-label" for="noreligion">No Religion</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="islam" value="islam">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="islam" value="islam">
                 <label class="form-check-label" for="islam">Islam</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="animism" value="animism">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="animism" value="animism">
                 <label class="form-check-label" for="animism">Animism</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="hinduism" value="hinduism">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="hinduism" value="hinduism">
                 <label class="form-check-label" for="hinduism">Hinduism</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="judaism" value="judaism">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="judaism" value="judaism">
                 <label class="form-check-label" for="judaism">Judaism</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="syncretism" value="syncretism">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="syncretism" value="syncretism">
                 <label class="form-check-label" for="syncretism">Syncretism</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="buddhism" value="buddhism">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="buddhism" value="buddhism">
                 <label class="form-check-label" for="buddhism">Buddhism</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input religion" type="checkbox" id="shinto" value="shinto">
+                <input class="form-check-input religion" name="religion" type="checkbox" id="shinto" value="shinto">
                 <label class="form-check-label" for="shinto">Shinto</label>
             </div>
         </div>
@@ -864,66 +864,10 @@
         drawAllCharts(getCheckedReligions());
     });
 
-    $('#christianity').change(function () {
+     $('input[name=religion]').click(function () {
         $('#all').prop('checked', false);
         const religions = getCheckedReligions();
         drawAllCharts(religions);
     });
-
-    $('#noreligion').change(function () {
-        $('#all').prop('checked', false);
-        const religions = getCheckedReligions();
-        drawAllCharts(religions);
-    });
-
-    $('#islam').change(function () {
-        $('#all').prop('checked', false);
-        const religions = getCheckedReligions();
-        drawAllCharts(religions);
-    });
-
-    $('#animism').change(function () {
-        $('#all').prop('checked', false);
-        const religions = getCheckedReligions();
-        drawAllCharts(religions);
-    });
-
-    $('#hinduism').change(function () {
-        $('#all').prop('checked', false);
-        const religions = getCheckedReligions();
-        drawAllCharts(religions);
-    });
-
-    $('#judaism').change(function () {
-        $('#all').prop('checked', false);
-        const religions = getCheckedReligions();
-        drawAllCharts(religions);
-    });
-
-    $('#syncretism').change(function () {
-        $('#all').prop('checked', false);
-        const religions = getCheckedReligions();
-        drawAllCharts(religions);
-    });
-
-    $('#buddhism').change(function () {
-        $('#all').prop('checked', false);
-        const religions = getCheckedReligions();
-        drawAllCharts(religions);
-    });
-
-    $('#shinto').change(function () {
-        $('#all').prop('checked', false);
-        const religions = getCheckedReligions();
-        drawAllCharts(religions);
-    });
-
-    $(document).ready(function () {
-
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-    });
-
 </script>
 </body>
