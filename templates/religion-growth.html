@@ -49,18 +49,16 @@ body {
             <a href="/home" align=center><h3>HOME</h3></a>
         </div>
 
-       <ul class="list-unstyled components">
-
-            <li class="active">
-                <a href="/coordinated_view1">Coordinated View 1</a>
-                <a href="/coordinated_view2">Coordinated View 2</a>
-                <a href="/donuts">General Religion Stats</a>
-                <a href="/religion">World Religions Data</a>
-                <a href="/">Global Terrorism Data</a>
-                <a href="/happiness">World Happiness Report</a>
-                <a href="/religion-growth">Economic growth across Religions</a>
-                <a href="/religion_population">Stacked Area Chart</a>
-                <a href="/heatmap">Heat Map</a>
+        <ul class="list-unstyled components">
+            <a href="/coordinated_view1">Coordinated View 1</a>
+            <a href="/coordinated_view2">Coordinated View 2</a>
+            <a href="/donuts">General Religion Stats</a>
+            <a href="/religion">World Religions Data</a>
+            <a href="/">Global Terrorism Data</a>
+            <a href="/happiness">World Happiness Report</a>
+            <a href="/religion-growth">Economic growth across Religions</a>
+            <a href="/religion_population">Stacked Area Chart</a>
+            <a href="/heatmap">Heat Map</a>
             </li>
 
         </ul>
@@ -136,7 +134,7 @@ body {
     let chart = (data, religions) => {
         religions.splice(-1, 1);
         const bins = d3.histogram()
-            .thresholds(9)
+            .thresholds([1, 2, 3, 4, 5, 6, 7, 8, 9])
             .value(d => d.x)
             (data)
             .map(bin => {
@@ -160,7 +158,6 @@ body {
             .domain([d3.min(bins, d => d.x0), d3.max(bins, d => d.x1)])
             .rangeRound([margin.left, width - margin.right]);
 
-        console.log(bins);
         const x1 = d3.scaleBand()
             .domain(religions)
             .rangeRound([margin.left, width - margin.right]);
@@ -199,7 +196,6 @@ body {
             .attr("stroke", (d, i) => (`${religion_colors[i]}`))
             .attr("stroke-width", 2)
             .attr("d", d => {
-                console.log(d);
                 return `
                 M${x((d.x0 + d.x1) / 2)},${y(d.range[1])}
                 V${y(d.range[0])}

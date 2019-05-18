@@ -40,6 +40,24 @@ def get_heatmap_data(religion):
     return json.dumps({'data': df_corr.values.tolist(), 'columns': columns}, indent=2)
 
 
+@app.route("/growth_data1/<year>", methods=['POST', 'GET'])
+def get_growth_data2(year):
+    df = pd.read_csv(GROWTH_DATA)
+    color = {
+        "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
+        "animism": "#999900", "hinduism": "#e67e22", "judaism": "#0000FF",
+        "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
+    }
+    df = df[(df.year == int(year))]
+
+    res = []
+    for key, tbl in df.groupby('majority_religion'):
+        for val in tbl.growth.values:
+            res.append({'group': key, 'y': float(val), 'color': color[key], 'label': float(val)})
+
+    return json.dumps(res, indent=2)
+
+
 @app.route("/growth_data/<year>", methods=['POST', 'GET'])
 def get_growth_data(year):
     df = pd.read_csv(GROWTH_DATA)
@@ -144,7 +162,7 @@ def get_world_population_by_religion(year):
 
 @app.route("/religion-growth", methods=['POST', 'GET'])
 def religion_growth():
-    return render_template("religion-growth.html")
+    return render_template("religion-growth1.html")
 
 
 @app.route("/religion", methods=['POST', 'GET'])
