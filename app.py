@@ -52,8 +52,9 @@ def get_growth_data2(year):
 
     res = []
     for key, tbl in df.groupby('majority_religion'):
-        for val in tbl.growth.values:
-            res.append({'group': key, 'y': float(val), 'color': color[key], 'label': float(val)})
+        for growth, country in zip(tbl.growth.values, tbl.state.values):
+            res.append({'group': key, 'y': float(growth), 'color': color[key],
+                        'label': 'state: %s growth: %f' % (country, float(growth))})
 
     return json.dumps(res, indent=2)
 

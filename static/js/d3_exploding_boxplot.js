@@ -102,8 +102,8 @@ let exploding_boxplot = function (data, aes) {
 
     //default tool tip function
     let _tipFunction = function (d) {
-        return ' <span style="color:' + colorscale(functorkey(aes.color)(d)) + '">' +
-            functorkey(aes.label)(d) + '</span><span style="color:#DDDDDD;" > : ' + tickFormat(functorkey(aes.y)(d)) + '</span>';
+        return ' <span style="color: whitesmoke">' +
+            functorkey(aes.label)(d) + '</span><span style="color:#DDDDDD;" > ' + '</span>';
     }
 
 
