@@ -3,23 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <style>
+        .mainContainer {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .mainContainer, .jumbotron {
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .rows {
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        a {
+            color: white;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+            integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+            integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 
-<ul class="list-unstyled components">
-    <li class="active">
-        <a href="/coordinated_view1">Coordinated View 1</a>
-        <a href="/coordinated_view2">Coordinated View 2</a>
-        <a href="/donuts">General Religion Stats</a>
-        <a href="/religion">World Religions Data</a>
-        <a href="/">Global Terrorism Data</a>
-        <a href="/happiness">World Happiness Report</a>
-        <a href="/religion-growth">Economic growth across Religions</a>
-        <a href="/religion_population">Stacked Area Chart</a>
-        <a href="/heatmap">Heat Map</a>
-    </li>
+<div class="jumbotron">
 
-</ul>
+    <div class="mainContainer container">
+        <h2 style="text-align: center">Understanding the correlation between personal religious freedom and
+            socio-economic
+            backgrounds.</h2>
+        <div class="rows">
+            <button class="btn btn-info"><a href="/coordinated_view1">Coordinated View 1</a></button>
+            <button class="btn btn-info"><a href="/coordinated_view2">Coordinated View 2</a></button>
+        </div>
 
+        <div class=rows>
+            <button class="btn btn-info"><a href="/donuts">General Religion Stats</a></button>
+            <button class="btn btn-info"><a href="/religion">World Religions Data</a></button>
+            <button class="btn btn-info"><a href="/">Global Terrorism Data</a></button>
+        </div>
+
+        <div class=rows>
+            <button class="btn btn-info"><a href="/happiness">World Happiness Report</a></button>
+            <button class="btn btn-info"><a href="/religion-growth">Economic growth across Religions</a></button>
+        </div>
+        <div class=rows>
+
+            <button class="btn btn-info"><a href="/religion_population">Stacked Area Chart</a></button>
+            <button class="btn btn-info"><a href="/heatmap">Heat Map</a></button>
+        </div>
+    </div>
+</div>
 </body>
 </html>

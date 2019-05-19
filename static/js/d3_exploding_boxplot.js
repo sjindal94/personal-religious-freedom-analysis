@@ -58,7 +58,7 @@ let exploding_boxplot = function (data, aes, width, height, margin) {
     let xlab = typeof aes.group === "string" ? aes.group : "";
 
     let yscale = d3.scaleLinear()
-        .domain(d3.extent(data.map(functorkey(aes.y))))
+        .domain([-10, 25])
         .nice()
         .range([height - margin.top - margin.bottom, 0]);
 
@@ -117,6 +117,13 @@ let exploding_boxplot = function (data, aes, width, height, margin) {
             .style('opacity', 0)
             .on('dblclick', implode_boxplot);
 
+        svg.append("text")
+            .attr("transform", "translate(400,0)")
+            .attr("x", -150)
+            .attr("y", 20)
+            .attr("font-size", "16px")
+            .text(`Growth % across religions`);
+
 
         container = svg.append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
@@ -147,13 +154,13 @@ let exploding_boxplot = function (data, aes, width, height, margin) {
         //     .text(xlab);
 
         container.append('g')
-            .attr('class', 'd3-exploding-boxplot y axis')
             .call(yAxis)
             .append("text")
-            .attr("transform", "rotate(-90)")
             .attr("x", -margin.top - d3.mean(yscale.range()))
             .attr("dy", ".71em")
-            .attr('y', -margin.left + 5)
+            .attr('y', 0)
+            .style("background", "black")
+            .style("font-size", "12px")
             .style("text-anchor", "middle")
             .text("growth");
 
@@ -374,6 +381,7 @@ let exploding_boxplot = function (data, aes, width, height, margin) {
             .call(draw_boxplot)
 
     }
+
     chart.iqr = function (_) {
         if (!arguments.length) return iqr;
         iqr = _;

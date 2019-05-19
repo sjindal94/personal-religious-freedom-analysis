@@ -172,7 +172,8 @@
             </div>
 
             <div class="row1">
-                <div id="chart4"></div>
+                <div id="chart4">
+                </div>
                 <div id="chart3"></div>
             </div>
         </div>
@@ -192,8 +193,8 @@
     };
 
     const constructChart1 = (checkedReligions) => {
-        const margin = ({top: 30, right: 20, bottom: 30, left: 30});
-        const width = 500;
+        const margin = ({top: 30, right: 100, bottom: 30, left: 30});
+        const width = 650;
         const height = 200;
 
         let chart = (data, binNames, column) => {
@@ -222,10 +223,10 @@
                 .call(g => g.select(".domain").remove())
                 .call(g => g.select(".tick:last-of-type text").clone()
                     .attr("x", 4)
-                    .style("font-size", "8px")
                     .style("font-weight", "bold")
                     .attr("text-anchor", "start")
                     .text(column));
+
             const svg = d3.select('#chart1')
                 .html("")
                 .append('svg')
@@ -233,11 +234,11 @@
                 .attr("height", height);
 
             svg.append("text")
-                .attr("transform", "translate(400,0)")
+                .attr("transform", "translate(300,0)")
                 .attr("x", 100)
                 .attr("y", 50)
                 .attr("font-size", "10px")
-                .text(`Religious Personal Freedom across Countries Aggregated`);
+                .text(`Religious Freedom across Countries Aggregated`);
 
             svg.append("g")
                 .attr("fill", "#3498db")
@@ -297,7 +298,7 @@
 
             const legend = svg => {
                 const g = svg
-                    .attr("transform", `translate(${width + 10},0)`)
+                    .attr("transform", `translate(${width},0)`)
                     .attr("text-anchor", "end")
                     .attr("font-family", "sans-serif")
                     .style("font-size", 10)
@@ -352,11 +353,11 @@
 
         const getData = async (checkedReligions, year) => {
             let promises = [
-                axios.get(`/religious_freedom/${year}`, {
+                axios.get(`/religious_freedom1`, {
                     params:
                         {religions: JSON.stringify(checkedReligions)},
                 }),
-                axios.get(`/all_religions`, {
+                axios.get(`/all_religions1`, {
                     params:
                         {religions: JSON.stringify(checkedReligions)},
                 }),
@@ -550,7 +551,7 @@
     };
 
     const constructChart3 = (checkedReligions) => {
-        const margin = ({top: 10, right: 10, bottom: 170, left: 132});
+        const margin = ({top: 30, right: 10, bottom: 170, left: 132});
         let width = 600,
             height = 400;
 
@@ -713,6 +714,10 @@
 
             const svg = d3.select('#chart4')
                 .html("")
+                .append("text")
+                .style("font-size", "12px")
+                .text(`Happiness Score Interpolated(2015) across Countries Aggregated`)
+                .append("text")
                 .append("svg")
                 .attr("width", width)
                 .attr("height", height)
@@ -787,13 +792,6 @@
                         .style("stroke", "white")
                         .style("stroke-width", 0.3);
                 });
-
-            svg.append("text")
-                .attr("transform", "translate(300,0)")
-                .attr("x", -150)
-                .attr("y", 20)
-                .style("font-size", "12px")
-                .text(`Happiness Score Interpolated(2015) across Countries Aggregated`);
 
             svg.append("path")
                 .datum(topojson.mesh(data.features, function (a, b) {

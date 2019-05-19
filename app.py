@@ -61,6 +61,15 @@ def get_growth_data(year):
     return json.dumps(res, indent=2)
 
 
+@app.route("/all_religions1")
+def all_religions1():
+    religions = json.loads(request.args.get('religions'))
+    df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
+    df = df[df.religion.isin(religions + ['total_avg'])]
+
+    return json.dumps(df.religion.values.tolist(), indent=2)
+
+
 @app.route("/all_religions")
 def all_religions():
     religions = json.loads(request.args.get('religions'))
@@ -68,6 +77,20 @@ def all_religions():
     df = df[df.religion.isin(religions)]
 
     return json.dumps(df.religion.values.tolist(), indent=2)
+
+
+@app.route("/religious_freedom1", methods=['POST', 'GET'])
+def get_religious_freedom1():
+    religions = json.loads(request.args.get('religions'))
+    df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
+    df = df[df.religion.isin(religions + ['total_avg'])]
+    res = list()
+
+    for val in df.values:
+        res.append({'religion': val[1], 'pf_religion': val[2], 'pf_religion_estop': val[3],
+                    'pf_religion_harrasment': val[4], 'pf_religion_restrictions': val[5]})
+
+    return json.dumps(res, indent=2)
 
 
 @app.route("/religious_freedom/<year>", methods=['POST', 'GET'])
