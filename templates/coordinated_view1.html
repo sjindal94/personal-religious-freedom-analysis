@@ -229,22 +229,22 @@
             const xAxis = (g) => g.attr("transform", `translate(0,${height - margin.bottom})`)
                 .call(d3.axisBottom(x).tickSizeOuter(0))
                 .call(g => g.append("text")
-                    .attr("x", (width - margin.right) / 2)
-                    .attr("y", 40)
+                    .attr("x", 2 * (width - margin.right) / 3)
+                    .attr("y", 30)
                     .attr("fill", "#000")
                     .style("font-size", "8px")
-                    .style("font-weight", "bold")
+                    .attr("font-weight", "bold")
                     .attr("text-anchor", "end")
-                    .text("Countries with majority religions"));
+                    .text("Major religions"));
 
             const yAxis = (g) => g.attr("transform", `translate(${margin.left},0)`)
                 .call(d3.axisLeft(y))
-                .call(g => g.select(".domain").remove())
                 .call(g => g.select(".tick:last-of-type text").clone()
                     .attr("x", 4)
-                    .style("font-weight", "bold")
+                    .style("font-size", "8px")
                     .attr("text-anchor", "start")
-                    .text(column));
+                    .attr("font-weight", "bold")
+                    .text("Religious Freedom"));
 
             const svg = d3.select('#chart1')
                 .html("")
@@ -253,11 +253,11 @@
                 .attr("height", height);
 
             svg.append("text")
-                .attr("transform", "translate(300,0)")
+                .attr("transform", "translate(140,-25)")
                 .attr("x", 100)
                 .attr("y", 50)
-                .attr("font-size", "10px")
-                .text(`Religious Freedom across Countries (2010)`);
+                .style("font-size", "10px")
+                .text(`Religious Personal Freedom across Countries Aggregated (2010)`);
 
             svg.append("g")
                 .attr("fill", "#3498db")
@@ -301,26 +301,38 @@
 
             const xAxis = g => g
                 .attr("transform", `translate(0,${height - margin.bottom})`)
-                .call(d3.axisBottom(x0).tickSizeOuter(0))
-                .call(g => g.select(".domain").remove());
+                .call(d3.axisBottom(x0))
+                .call(g => g.append("text")
+                    .attr("x", 2 * (width - margin.right) / 3)
+                    .attr("y", 30)
+                    .attr("fill", "#000")
+                    .style("font-size", "8px")
+                    .attr("font-weight", "bold")
+                    .attr("text-anchor", "end")
+                    .text("Major religions"));
 
             const yAxis = g => g
                 .attr("transform", `translate(${margin.left},0)`)
-                .call(d3.axisLeft(y).ticks(null, "s"))
-                .call(g => g.select(".domain").remove())
+                .call(d3.axisLeft(y))
                 .call(g => g.select(".tick:last-of-type text").clone()
                     .attr("x", 3)
+                    .style("font-size", "8px")
                     .attr("text-anchor", "start")
                     .attr("font-weight", "bold")
                     .text("Score"));
 
+            const map_ = {
+                'pf_religion_restrictions': 'Religious Restrictions',
+                'pf_religion_harrasment': 'Religious Harrasment',
+                'pf_religion_estop': 'Religious Establishment',
+            };
 
             const legend = svg => {
                 const g = svg
                     .attr("transform", `translate(${width},0)`)
                     .attr("text-anchor", "end")
                     .attr("font-family", "sans-serif")
-                    .style("font-size", 10)
+                    .attr("font-size", 10)
                     .selectAll("g")
                     .data(color.domain().slice().reverse())
                     .join("g")
@@ -336,13 +348,20 @@
                     .attr("x", -24)
                     .attr("y", 9.5)
                     .attr("dy", "0.35em")
-                    .text(d => d);
+                    .text(d => map_[d]);
             };
 
             const svg = d3.select('#chart1')
                 .append('svg')
                 .attr("width", width)
                 .attr("height", height);
+
+            svg.append("text")
+                .attr("transform", "translate(140,-25)")
+                .attr("x", 100)
+                .attr("y", 50)
+                .style("font-size", "10px")
+                .text(`Major religious freedom scores (2010)`);
 
             svg.append("g")
                 .selectAll("g")
@@ -367,6 +386,7 @@
             svg.append("g")
                 .call(legend);
 
+            //svgToPng(svg.node(), 'other-religion.png');
             return svg.node();
         };
 
@@ -462,12 +482,26 @@
 
             const xAxis = g => g
                 .attr("transform", `translate(0,${height - margin.bottom})`)
-                .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+                .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+                .call(g => g.append("text")
+                    .attr("x", (width - margin.right) / 2)
+                    .attr("y", 40)
+                    .attr("fill", "#000")
+                    .attr("font-size", 10)
+                    .attr("font-weight", "bold")
+                    .text("Years"));
 
             const yAxis = g => g
                 .attr("transform", `translate(${width - margin.right},0)`)
-                .call(d3.axisRight(y))
-                .call(g => g.select(".domain").remove());
+                .call(d3.axisRight(y).tickFormat((d) => (d / 1000000000).toPrecision(3) + ' B'))
+                .call(g => g.select(".domain").remove())
+                .call(g => g.select(".tick:last-of-type text").clone()
+                    .attr("x", 4)
+                    .attr("y", -20)
+                    .attr("font-size", 10)
+                    .attr("text-anchor", "start")
+                    .attr("font-weight", "bold")
+                    .text('Population'));
 
             const legend = svg => {
                 const g = svg
@@ -496,6 +530,13 @@
                 .append('svg')
                 .attr("width", width)
                 .attr("height", height);
+
+            svg.append("text")
+                .attr("transform", "translate(200,100)")
+                .attr("x", 10)
+                .attr("y", 10)
+                .attr("font-size", "16px")
+                .text(`Population growth across religion over time`);
 
             svg.append("g")
                 .selectAll("path")

@@ -181,12 +181,26 @@
 
         const xAxis = g => g
             .attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+            .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+            .call(g => g.append("text")
+                .attr("x", (width - margin.right) / 2)
+                .attr("y", 40)
+                .attr("fill", "#000")
+                .attr("font-size", 14)
+                .attr("font-weight", "bold")
+                .text("Years"));
 
         const yAxis = g => g
             .attr("transform", `translate(${width - margin.right},0)`)
-            .call(d3.axisRight(y))
-            .call(g => g.select(".domain").remove());
+            .call(d3.axisRight(y).tickFormat((d) => (d / 1000000000).toPrecision(3) + ' B'))
+            .call(g => g.select(".domain").remove())
+            .call(g => g.select(".tick:last-of-type text").clone()
+                .attr("x", 4)
+                .attr("y", -20)
+                .attr("font-size", 14)
+                .attr("text-anchor", "start")
+                .attr("font-weight", "bold")
+                .text('Population'));
 
         const legend = svg => {
             const g = svg
@@ -214,6 +228,13 @@
             .html("")
             .attr("width", width)
             .attr("height", height);
+
+        svg.append("text")
+                .attr("transform", "translate(300,100)")
+                .attr("x", 10)
+                .attr("y", 10)
+                .attr("font-size", "20px")
+                .text(`Population growth across religion over time`);
 
         svg.append("g")
             .selectAll("path")
