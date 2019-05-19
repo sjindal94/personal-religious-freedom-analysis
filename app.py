@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request
 
-from constants import (TERRORISM_DB,
+from constants import (TERRORISM_DB, TERRORISM_COUNT_PER_RELIGION,
                        PF_RELIGIOUS_FREEDOM, PF_RELIGION_INTERPOLATED, HAPPINESS_DB,
                        MAJ_INT_RELIGIOUS_POPULATION,
                        GROWTH_DATA, POPULATION_BY_RELIGION,
@@ -119,6 +119,20 @@ def get_past_5_years_attacks(year):
     return json.dumps(year_df.values.tolist(), indent=2)
 
 
+@app.route("/terror_attacks_per_religion/<year>", methods=['POST', 'GET'])
+def get_attacks_per_religion(year):
+    religions = json.loads(request.args.get('religions'))
+    print(religions)
+    df = pd.read_csv(TERRORISM_COUNT_PER_RELIGION)
+    df = df[df.majority_religion.isin(religions)]
+    year_df = df[(df.year == int(year))]
+    year_df = year_df.drop('year', axis=1)
+    # res = []
+    # for val in year_df.values:
+    #     res.append({val[0]: val[1]})
+    return json.dumps(year_df.values.tolist(), indent=2)
+
+
 @app.route("/map/<year>", methods=['POST', 'GET'])
 def get_religion_by_year(year):
     religions = json.loads(request.args.get('religions'))
@@ -213,9 +227,9 @@ def heatmap():
     return render_template("heatmap.html")
 
 
-@app.route("/donuts", methods=['POST', 'GET'])
+@app.route("/terrorism_in_religion", methods=['POST', 'GET'])
 def donut_chart():
-    return render_template("donutchart.html")
+    return render_template("terrorism_in_religion.html")
 
 
 @app.route("/home", methods=['POST', 'GET'])

@@ -51,7 +51,7 @@ body {
             <li class="active">
                 <a href="/coordinated_view1">Coordinated View 1</a>
                 <a href="/coordinated_view2">Coordinated View 2</a>
-                <a href="/donuts">General Religion Stats</a>
+                <a href="/terrorism_in_religion">Terrorism in Religion</a>
                 <a href="/religion">World Religions Data</a>
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
@@ -74,27 +74,45 @@ body {
                 </button>
             </div>
         </nav>
-        <div id="slider-time"></div>
-        <table>
-            <tr>
-                <td><input type="checkbox" class="religion" name="religion" value="all" checked> All<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="christianity" checked>
-                    christianity<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="islam" checked> islam<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="hinduism" checked> hinduism<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="shinto" checked> shinto<br></td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="religion" name="religion" value="judaism" checked> judaism<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="buddhism" checked> buddhism<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="syncretism" checked> syncretism<br>
-                </td>
-                <td><input type="checkbox" class="religion" name="religion" value="animism" checked> animism<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="noreligion" checked> No Religion<br>
-                </td>
-            </tr>
-        </table>
-        <svg id="map"></svg>
+        <div>
+            <div style="display: flex; justify-content: flex-start">
+
+                <div id="slider-time"></div>
+                <table>
+                    <tr>
+                        <td><input type="checkbox" class="religion" name="religion" value="all" checked> All<br></td>
+                        <td><input type="checkbox" class="religion" name="religion" value="christianity" checked>
+                            christianity<br></td>
+                        <td><input type="checkbox" class="religion" name="religion" value="islam" checked> islam<br>
+                        </td>
+                        <td><input type="checkbox" class="religion" name="religion" value="hinduism" checked>
+                            hinduism<br>
+                        </td>
+                        <td><input type="checkbox" class="religion" name="religion" value="shinto" checked> shinto<br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="religion" name="religion" value="judaism" checked> judaism<br>
+                        </td>
+                        <td><input type="checkbox" class="religion" name="religion" value="buddhism" checked>
+                            buddhism<br>
+                        </td>
+                        <td><input type="checkbox" class="religion" name="religion" value="syncretism" checked>
+                            syncretism<br>
+                        </td>
+                        <td><input type="checkbox" class="religion" name="religion" value="animism" checked> animism<br>
+                        </td>
+                        <td><input type="checkbox" class="religion" name="religion" value="noreligion" checked> No
+                            Religion<br>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center">
+            <svg id="map"></svg>
+            <svg id="map2"></svg>
+        </div>
 
     </div>
 </div>
@@ -155,7 +173,8 @@ body {
                 getData(d3.timeFormat('%Y')(val)).then((data, err) => {
                     console.log(d3.timeFormat('%Y')(val));
                     mData = data[0].data;
-                    chart();
+                    donut();
+                    chart(data[1].data);
                 });
 
             }
@@ -178,7 +197,7 @@ body {
         .append('g')
         .attr('class', 'map');
 
-    function chart() {
+    function donut() {
 
         let pop_data = {};
         let pop_data_color = {};
@@ -192,7 +211,7 @@ body {
         pop_data["Rest of the world"] = pop_data["Rest of the world"] / 1000000;
 
         svg.selectAll("g").remove();
-        g = svg.append("g").attr("transform", "translate(" + 200 + "," + 130 + ")");
+        g = svg.append("g").attr("transform", "translate(" + 270 + "," + 185 + ")");
         var pie = d3.pie().sort(null);//diabling auto sorting of values
         var arc = d3.arc().innerRadius(40).outerRadius(radius);// Generate the arcs
         var label = d3.arc().outerRadius(radius + 40).innerRadius(radius);
@@ -265,10 +284,87 @@ body {
             .text("Majority Population Size");
     }
 
+    let chart = (data) => {
+        console.log(data);
+        const margin = ({top: 60, right: 20, bottom: 50, left: 40});
+        const width = 600;
+        const height = 400;
+        let binNames = [];
+        let maxVal = 0;
+        data.forEach(function (d) {
+            binNames.push(d[0]);
+            if (maxVal < d[1])
+                maxVal = d[1];
+        });
+        console.log(data, binNames, religions['christianity']);
+        const x = d3.scaleBand()
+            .domain(binNames)
+            .range([margin.left, width - margin.right])
+            .padding(0.5);
+        //d3.scaleLog().base(2)
+        const y = d3.scaleLinear()
+            .domain([0, maxVal]).nice()
+            .range([height - margin.bottom, margin.top]);
+
+        const xAxis = (g) => g.attr("transform", `translate(0,${height - margin.bottom})`)
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+            .call(g => g.append("text")
+                .attr("x", (width - margin.right) / 2)
+                .attr("y", 40)
+                .attr("fill", "#000")
+                .attr("font-size", 14)
+                .attr("font-weight", "bold")
+                .attr("text-anchor", "end")
+                .text("Countries with majority religions"));
+
+        const yAxis = (g) => g.attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y))
+            .call(g => g.select(".domain").remove())
+            .call(g => g.select(".tick:last-of-type text").clone()
+                .attr("x", 4)
+                .attr("font-size", 14)
+                .attr("text-anchor", "start")
+                .attr("font-weight", "bold")
+                .text('#Terror attacks'));
+
+        let svg = d3.select('#map2')
+            .attr("width", width + 100)
+            .attr("height", height);
+
+        svg.append("text")
+            .attr("transform", "translate(400,0)")
+            .attr("x", -300)
+            .attr("y", 25)
+            .attr("font-size", "16px")
+            .text(`Religious Personal Freedom across Countries Aggregated`);
+
+        svg.append("g")
+            .selectAll("rect")
+            .data(data)
+            .join("rect")
+            .attr("fill", d => religions[d[0]])
+            .attr("x", d => x(d[0]))
+            .attr("y", d => y(d[1]))
+            .attr("width", x.bandwidth())
+            .attr("height", d => y(0) - y(d[1]));
+
+        svg.append("g")
+            .call(xAxis);
+
+        svg.append("g")
+            .call(yAxis);
+
+        return svg.node();
+    };
+
     const getData = async () => {
 
         let promises = [
             axios.get(`/population_by_religion/${selectedYear}`, {
+                params:
+                    {religions: JSON.stringify(checkedReligions)},
+            }),
+            axios.get(`/terror_attacks_per_religion/${selectedYear}`, {
                 params:
                     {religions: JSON.stringify(checkedReligions)},
             })
@@ -279,7 +375,8 @@ body {
 
     getData().then((data, err) => {
         mData = data[0].data;
-        chart();
+        donut();
+        chart(data[1].data);
     });
 
     $('input[name=religion]').click(function () {
@@ -287,7 +384,8 @@ body {
         getCheckedReligions();
         getData().then((data, err) => {
             mData = data[0].data;
-            chart();
+            donut();
+            chart(data[1].data);
         });
     });
 
@@ -306,7 +404,8 @@ body {
 
         getData().then((data, err) => {
             mData = data[0].data;
-            chart();
+            donut();
+            chart(data[1].data);
         });
     });
 
