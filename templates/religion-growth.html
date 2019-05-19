@@ -20,6 +20,8 @@ body {
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous">
 <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+<link rel="stylesheet" href={{ url_for('static', filename='css/d3_exploding_boxplot.css') }}>
+<link rel="stylesheet" href={{ url_for('static', filename='css/d3.slider.css') }}>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -39,6 +41,8 @@ body {
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+<script src="static/js/d3_exploding_boxplot.js"></script>
 
 <body>
 <div class="wrapper">
@@ -77,15 +81,15 @@ body {
             </div>
         </nav>
         <div id="slider-time"></div>
-        <svg id="box"></svg>
+        <div id="box"></div>
     </div>
 </div>
 
 <script>
-    const margin = ({top: 60, right: 20, bottom: 50, left: 40});
+    const margin = {top: 60, right: 30, bottom: 50, left: 40};
     const width = 1000;
     const height = 500;
-    let selectedYear = "2010";
+    let selectedYear = "2000";
 
     let religions = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -105,13 +109,13 @@ body {
         .width(300)
         .tickFormat(d3.timeFormat('%Y'))
         .tickValues(dataTime)
-        .default(new Date(2010, 10, 3))
+        .default(new Date(2000, 10, 3))
         .on('onchange', val => {
             const year = d3.timeFormat('%Y')(val);
             if (year !== selectedYear) {
                 d3.select('p#value-time').text(year);
                 getData(d3.timeFormat('%Y')(val)).then((data, err) => {
-                    chart(data[0].data, data[1].data);
+                    chart(data[0].data);
                 });
                 selectedYear = year;
             }
@@ -132,116 +136,12 @@ body {
         "#00b16a", "#0000FF", "#dadfe1", "#FF0000", "#7CFC00"
     ];
 
-    let chart = (data, religions) => {
-        console.log(data, religions);
-        religions.splice(-1, 1);
-        const bins = d3.histogram()
-            .thresholds([1, 2, 3, 4, 5, 6, 7, 8, 9])
-            .value(d => d.x)
-            (data)
-            .map(bin => {
-                bin.sort((a, b) => a.y - b.y);
-                const values = bin.map(d => d.y);
-                const min = values[0];
-                const max = values[values.length - 1];
-                const q1 = d3.quantile(values, 0.25);
-                const q2 = d3.quantile(values, 0.50);
-                const q3 = d3.quantile(values, 0.75);
-                const iqr = q3 - q1; // interquartile range
-                const r0 = Math.max(min, q1 - iqr * 1.5);
-                const r1 = Math.min(max, q3 + iqr * 1.5);
-                bin.quartiles = [q1, q2, q3];
-                bin.range = [r0, r1];
-                bin.outliers = bin.filter(v => v.y < r0 || v.y > r1); // TODO
-                return bin;
-            });
-
-        const x = d3.scaleLinear()
-            .domain([d3.min(bins, d => d.x0), d3.max(bins, d => d.x1)])
-            .rangeRound([margin.left, width - margin.right]);
-
-        const x1 = d3.scaleBand()
-            .domain(religions)
-            .rangeRound([margin.left, width - margin.right]);
-
-        const y = d3.scaleLinear()
-            .domain([-15, 30]).nice()
-            .range([height - margin.bottom, margin.top]);
-
-        const xAxis = (g) => g
-            .attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(d3.axisBottom(x1).tickSizeOuter(0));
-
-        const yAxis = (g) => g
-            .attr("transform", `translate(${margin.left},0)`)
-            .call(d3.axisLeft(y).ticks(null, "s"));
-
-        const svg = d3.select('#box')
-            .html("")
-            .attr("width", width)
-            .attr("height", height)
-            .attr("stroke-width", 2);
-
-        svg.append("text")
-           .attr("transform", "translate(400,0)")
-           .attr("x", 100)
-           .attr("y", 50)
-           .attr("font-size", "16px")
-           .text(`Boxplot visualization of GDP across religions`);
-
-        const g = svg.append("g")
-            .selectAll("g")
-            .data(bins)
-            .join("g");
-
-        g.append("path")
-            .attr("stroke", (d, i) => (`${religion_colors[i]}`))
-            .attr("stroke-width", 2)
-            .attr("d", d => {
-                return `
-                M${x((d.x0 + d.x1) / 2)},${y(d.range[1])}
-                V${y(d.range[0])}
-              `
-            });
-
-        g.append("path")
-            .attr("fill", (d, i) => (`${religion_colors[i]}`))
-            .attr("fill-opacity", 0.5)
-            .attr("d", d => `
-                            M${x(d.x0) + 1},${y(d.quartiles[2])}
-                            H${x(d.x1)}
-                            V${y(d.quartiles[0])}
-                            H${x(d.x0) + 1}
-                            Z
-                          `);
-
-        g.append("path")
-            .attr("stroke", (d, i) => (`${religion_colors[i]}`))
-            .attr("stroke-width", 2)
-            .attr("d", d => `
-        M${x(d.x0) + 1},${y(d.quartiles[1])}
-        H${x(d.x1)}
-      `);
-
-        g.append("g")
-            .attr("fill", (d, i) => (`${religion_colors[i]}`))
-            .attr("fill-opacity", 0.8)
-            .attr("stroke", "none")
-            .attr("transform", d => `translate(${x((d.x0 + d.x1) / 2)},0)`)
-            .selectAll("circle")
-            .data(d => d.outliers)
-            .join("circle")
-            .attr("r", 2)
-            .attr("cx", () => (Math.random() - 0.5) * 4)
-            .attr("cy", d => y(d.y));
-
-        svg.append("g")
-            .call(xAxis);
-
-        svg.append("g")
-            .call(yAxis);
-
-        return svg.node();
+    let chart = (data) => {
+        console.log(data);
+        d3.select("#box").html("");
+        var chart = exploding_boxplot(data,
+            {y: 'y', group: 'group', color: 'color', label: 'label'});
+        chart('#box', width)
     };
 
     const getData = async (year) => {
@@ -250,17 +150,13 @@ body {
                 params:
                     {religions: JSON.stringify(Object.keys(religions))},
             }),
-            axios.get(`/all_religions`, {
-                params:
-                    {religions: JSON.stringify(Object.keys(religions))},
-            }),
         ];
 
         return await Promise.all(promises);
     };
 
-    getData(selectedYear).then((data, err) => {
-        chart(data[0].data, data[1].data);
+    getData(2000).then((data, err) => {
+        chart(data[0].data);
     });
 
     $(document).ready(function () {

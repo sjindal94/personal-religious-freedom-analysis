@@ -5,7 +5,7 @@ import pandas as pd
 from flask import Flask, render_template, request
 
 from constants import (TERRORISM_DB,
-                       PF_RELIGIOUS_FREEDOM, HAPPINESS_DB,
+                       PF_RELIGIOUS_FREEDOM, PF_RELIGION_INTERPOLATED, HAPPINESS_DB,
                        MAJ_INT_RELIGIOUS_POPULATION,
                        GROWTH_DATA, POPULATION_BY_RELIGION,
                        HEATMAP_DATA)
@@ -40,8 +40,9 @@ def get_heatmap_data(religion):
     return json.dumps({'data': df_corr.values.tolist(), 'columns': columns}, indent=2)
 
 
-@app.route("/growth_data1/<year>", methods=['POST', 'GET'])
-def get_growth_data2(year):
+@app.route("/growth_data/<year>", methods=['POST', 'GET'])
+def get_growth_data(year):
+    religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(GROWTH_DATA)
     color = {
         "christianity": "#9f5afd", "noreligion": "#dadfe1", "islam": "#00b16a",
@@ -49,6 +50,7 @@ def get_growth_data2(year):
         "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
     }
     df = df[(df.year == int(year))]
+    df = df[df.majority_religion.isin(religions)]
 
     res = []
     for key, tbl in df.groupby('majority_religion'):
@@ -59,42 +61,26 @@ def get_growth_data2(year):
     return json.dumps(res, indent=2)
 
 
-@app.route("/growth_data/<year>", methods=['POST', 'GET'])
-def get_growth_data(year):
-    religions = json.loads(request.args.get('religions'))
-    religion_dict = {rel: idx for idx, rel in enumerate(religions)}
-    df = pd.read_csv(GROWTH_DATA)
-    df = df[(df.year == int(year))]
-    df = df[df.majority_religion.isin(religions)]
-
-    res = []
-    for key, tbl in df.groupby('majority_religion'):
-        for val in tbl.growth.values:
-            res.append({'x': float(religion_dict[key]), 'y': float(val)})
-
-    return json.dumps(res, indent=2)
-
-
 @app.route("/all_religions")
 def all_religions():
     religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
-    df = df[df.religion.isin(religions + ['total_average'])]
+    df = df[df.religion.isin(religions)]
 
     return json.dumps(df.religion.values.tolist(), indent=2)
 
 
-@app.route("/religious_freedom", methods=['POST', 'GET'])
-def get_religious_freedom():
+@app.route("/religious_freedom/<year>", methods=['POST', 'GET'])
+def get_religious_freedom(year):
     religions = json.loads(request.args.get('religions'))
-    df = pd.read_csv(PF_RELIGIOUS_FREEDOM)
-    df = df[df.religion.isin(religions + ['total_average'])]
-    res = list()
-
-    for val in df.values:
-        res.append({'religion': val[1], 'pf_religion': val[2], 'pf_religion_estop': val[3],
-                    'pf_religion_harrasment': val[4], 'pf_religion_restrictions': val[5]})
-
+    df = pd.read_csv(PF_RELIGION_INTERPOLATED)
+    df = df[(df.year == int(year))]
+    df = df[df.majority_religion.isin(religions)]
+    res = []
+    for key, tbl in df.groupby('majority_religion'):
+        for val in tbl.values:
+            res.append({'religion': val[3], 'pf_religion': val[4], 'pf_religion_estop': val[5],
+                        'pf_religion_harrasment': val[6], 'pf_religion_restrictions': val[7]})
     return json.dumps(res, indent=2)
 
 
@@ -166,7 +152,7 @@ def get_world_population_by_religion(year):
 
 @app.route("/religion-growth", methods=['POST', 'GET'])
 def religion_growth():
-    return render_template("religion-growth1.html")
+    return render_template("religion-growth.html")
 
 
 @app.route("/religion", methods=['POST', 'GET'])

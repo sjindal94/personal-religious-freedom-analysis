@@ -68,6 +68,7 @@
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="static/js/d3-tip.js"></script>
+<script src="static/js/d3_exploding_boxplot.js"></script>
 
 
 <body>
@@ -356,7 +357,7 @@
 
         const getData = async (checkedReligions) => {
             let promises = [
-                axios.get(`/religious_freedom`, {
+                axios.get(`/religious_freedom/${selectedYear}`, {
                     params:
                         {religions: JSON.stringify(checkedReligions)},
                 }),
@@ -554,93 +555,28 @@
     };
 
     const constructChart3 = (checkedReligions) => {
-        const margin = ({top: 10, right: 10, bottom: 20, left: 20});
         let width = 600,
             height = 400;
 
         const religion_colors = [
-        "#999900", "#96281b", "#9f5afd", "#e67e22",
-        "#00b16a", "#0000FF", "#dadfe1", "#FF0000", "#7CFC00"
-    ];
+            "#999900", "#96281b", "#9f5afd", "#e67e22",
+            "#00b16a", "#0000FF", "#dadfe1", "#FF0000", "#7CFC00"
+        ];
 
-        let chart = (data) => {
-            console.log(data, checkedReligions);
-
-            const svg = d3.select('#chart3')
-                .html("")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("stroke-width", 2);
-
-            // Perform a numeric sort on an array
-              function sortNumber(a,b) {
-                return a - b;
-              }
-
-              // Sort group counts so quantile methods work
-              for(var key in groupCounts) {
-                var groupCount = groupCounts[key];
-                groupCounts[key] = groupCount.sort(sortNumber);
-              }
-
-            const bins = d3.histogram()
-                .value(d => d.x)
-                (data)
-                .map(bin => {
-                    bin.sort((a, b) => a.y - b.y);
-                    const values = bin.map(d => d.y);
-                    const min = values[0];
-                    const max = values[values.length - 1];
-                    const q1 = d3.quantile(values, 0.25);
-                    const q2 = d3.quantile(values, 0.50);
-                    const q3 = d3.quantile(values, 0.75);
-                    const iqr = q3 - q1; // interquartile range
-                    const r0 = Math.max(min, q1 - iqr * 1.5);
-                    const r1 = Math.min(max, q3 + iqr * 1.5);
-                    bin.quartiles = [q1, q2, q3];
-                    bin.range = [r0, r1];
-                    bin.outliers = bin.filter(v => v.y < r0 || v.y > r1); // TODO
-                    return bin;
-                });
-
-
-            const x = d3.scaleLinear()
-                .domain([d3.min(bins, d => d.x0), d3.max(bins, d => d.x1)])
-                .rangeRound([margin.left, width - margin.right]);
-
-            const x1 = d3.scaleBand()
-                .domain(religions)
-                .rangeRound([margin.left, width - margin.right]);
-
-            const y = d3.scaleLinear()
-                .domain([-15, 30]).nice()
-                .range([height - margin.bottom, margin.top]);
-
-            const xAxis = (g) => g
-                .attr("transform", `translate(0,${height - margin.bottom})`)
-                .call(d3.axisBottom(x1).tickSizeOuter(0));
-
-            const yAxis = (g) => g
-                .attr("transform", `translate(${margin.left},0)`)
-                .call(d3.axisLeft(y).ticks(null, "s"));
-
-
-            svg.append("g")
-                .call(xAxis);
-
-            svg.append("g")
-                .call(yAxis);
-
-            return svg.node();
-
-        }
+        let chart = (data, religions) => {
+            console.log(data);
+            d3.select("#box").html("");
+            var chart = exploding_boxplot(data,
+                {y: 'y', group: 'group', color: 'color', label: 'label'});
+            chart('#box', width)
+        };
 
         const getData = async () => {
             let promises = [
                 axios.get(`/growth_data/${selectedYear}`, {
-                params:
-                    {religions: JSON.stringify(checkedReligions)},
-            })
+                    params:
+                        {religions: JSON.stringify(checkedReligions)},
+                })
             ];
 
             return await Promise.all(promises);

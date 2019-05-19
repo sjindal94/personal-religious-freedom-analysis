@@ -157,7 +157,7 @@ path {
         return svg.node();
     };
 
-    let group_chart = (data, binNames) => {
+    let group_chart = (data) => {
         const groupKey = 'religion';
         const keys = ['pf_religion_estop', 'pf_religion_harrasment', 'pf_religion_restrictions'];
 
@@ -251,7 +251,7 @@ path {
 
     const getData = async (year) => {
         let promises = [
-            axios.get(`/religious_freedom`, {
+            axios.get(`/religious_freedom/${year}`, {
                 params:
                     {religions: JSON.stringify(Object.keys(religions))},
             }),
@@ -266,7 +266,7 @@ path {
 
     getData(2010).then((data, err) => {
         chart(data[0].data, data[1].data, 'pf_religion');
-        group_chart(data[0].data, data[1].data);
+        group_chart(data[0].data);
     });
 
     $(document).ready(function () {
