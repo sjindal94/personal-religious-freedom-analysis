@@ -20,6 +20,10 @@ path {
     shape-rendering: crispEdges;
 }
 
+#slider-time {
+  text-align: center;
+}
+
 </style>
 <link crossorigin="anonymous"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -214,10 +218,11 @@ path {
             });
 
         svg.append("text")
-            .attr("transform", "translate(400,0)")
+            .attr("transform", "translate(700,10)")
             .attr("x", -150)
             .attr("y", 20)
-            .attr("font-size", "16px")
+            .style("font-size", "16px")
+            .style("font-weight", "bold")
             .text(`Terrorist Attacks`);
 
         circle = svg.selectAll("circle")
