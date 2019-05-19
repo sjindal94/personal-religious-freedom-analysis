@@ -44,11 +44,11 @@ path {
         integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
         src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
 
-
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="static/js/d3-tip.js"></script>
+<script src="static/js/saveSvgAsPng.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <body>
@@ -266,6 +266,7 @@ path {
 
     getData(2015).then((data) => {
         chart(data[0], data[1].data, data[2].data);
+        // svgToPng()
     });
 
     $(document).ready(function () {
@@ -273,6 +274,10 @@ path {
             $('#sidebar').toggleClass('active');
         });
     });
+
+    function svgToPng() {
+        saveSvgAsPng(d3.select('#map').node(), 'chart.png');
+    }
 
 </script>
 </body>
