@@ -350,9 +350,9 @@
             return svg.node();
         };
 
-        const getData = async (checkedReligions) => {
+        const getData = async (checkedReligions, year) => {
             let promises = [
-                axios.get(`/religious_freedom`, {
+                axios.get(`/religious_freedom/${year}`, {
                     params:
                         {religions: JSON.stringify(checkedReligions)},
                 }),
@@ -365,7 +365,7 @@
             return await Promise.all(promises);
         };
 
-        getData(checkedReligions).then((data, err) => {
+        getData(checkedReligions, 2010).then((data, err) => {
             chart(data[0].data, data[1].data, 'pf_religion');
             group_chart(data[0].data);
         });

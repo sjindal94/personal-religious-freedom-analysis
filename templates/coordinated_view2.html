@@ -37,6 +37,11 @@
         align-items: center;
     }
 
+    .arc text {
+        font: 14px sans-serif;
+        text-anchor: middle;
+    }
+
 </style>
 <link crossorigin="anonymous"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -408,179 +413,118 @@
 
     const constructChart2 = (checkedReligions) => {
         const margin = ({top: 200, right: 80, bottom: 50, left: 40});
-        let width = 600,
-            height = 400;
+        const width = 400;
+        const height = 300;
+        const radius = Math.min(width, height) / 4;
 
-        const filteredReligions = pick(...checkedReligions)(religions);
-
-        function multisum(entries) {
-            return multimap(entries, (p, v) => p + v, () => 0);
-        }
-
-        function multimap(entries, reducer = (p, v) => (p.push(v), p), initializer = () => []) {
-            const map = new Map();
-            for (const [key, value] of entries) {
-                map.set(key, reducer(map.has(key) ? map.get(key) : initializer(), value));
-            }
-            return map;
-        }
-
-        function chart(data) {
-            data = data.map(({series, count, year}) => (
-                {name: series, value: count, date: new Date(`${year}-01-01`)}
-            ));
-
-            const top = [...multisum(data.map(d => [d.name, d.value]))]
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 9)
-                .map(d => d[0]);
-
-            const series = multimap(data.map(d => [d.name, d]));
-            data = [].concat(...top.map(name => series.get(name)));
-
-            const stack = d3.stack()
-                .keys(top)
-                .value((d, key) => d.get(key).value)
-                (Array.from(
-                    multimap(
-                        data.map(d => {
-                            return [+d.date, d]
-                        }),
-                        (p, v) => p.set(v.name, v),
-                        () => new Map
-                    ).values()
-                ));
-
-            for (const layer of stack) {
-                for (const d of layer) {
-                    d.data.get(layer.key).values = [d[0], d[1]];
-                }
-            }
-
-            const area = d3.area()
-                .curve(d3.curveBasis)
-                .x(d => x(d.date))
-                .y0(d => y(d.values[0]))
-                .y1(d => y(d.values[1]));
-
-            const color = d3.scaleOrdinal()
-                .domain(Object.keys(filteredReligions))
-                .range(Object.values(filteredReligions));
-
-            const x = d3.scaleTime()
-                .domain(d3.extent(data, d => d.date))
-                .range([margin.left, width - margin.right]);
-
-            const y = d3.scaleLinear()
-                .domain([0, d3.max(data, d => d.values[1])])
-                .range([height - margin.bottom, margin.top]);
-
-            const xAxis = g => g
-                .attr("transform", `translate(0,${height - margin.bottom})`)
-                .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
-
-            const yAxis = g => g
-                .attr("transform", `translate(${width - margin.right},0)`)
-                .call(d3.axisRight(y))
-                .call(g => g.select(".domain").remove());
-
-            const legend = svg => {
-                const g = svg
-                    .attr("transform", `translate(${margin.left + 1},${margin.top - 100})`)
-                    .attr("font-family", "sans-serif")
-                    .style("font-size", 10)
-                    .selectAll("g")
-                    .data(color.domain().slice().reverse())
-                    .join("g")
-                    .attr("transform", (d, i) => `translate(0,${i * 20})`);
-
-                g.append("rect")
-                    .attr("width", 19)
-                    .attr("height", 19)
-                    .attr("fill", color);
-
-                g.append("text")
-                    .attr("x", 24)
-                    .attr("y", 9.5)
-                    .attr("dy", "0.35em")
-                    .text(d => d);
-            };
-
-            const svg = d3.select('#chart2')
+        const svg = d3.select('#chart2')
                 .html("")
-                .append('svg')
                 .attr("width", width)
-                .attr("height", height);
+                .attr("height", height)
+                .append('g');
 
-            svg.append("g")
-                .selectAll("path")
-                .data([...multimap(data.map(d => [d.name, d]))])
-                .join("path")
-                .attr("class", "layer")
-                .attr("fill", ([name]) => filteredReligions[name])
-                .attr("d", ([, values]) => area(values))
-                .append("title")
-                .text(([name]) => name);
+        function chart() {
 
-            svg.append("g")
-                .call(xAxis);
+            console.log(mData);
+            let pop_data = {};
+            let pop_data_color = {};
+            pop_data["Rest of the world"] = mData['world_population'];
+            pop_data_color[0] = "#A9A9A9";
+            checkedReligions.forEach(function (d,i) {
+                    pop_data[d] = mData[d] / 1000000;
+                    pop_data["Rest of the world"] = pop_data["Rest of the world"] - mData[d];
+                    pop_data_color[i+1] = religions[d];
+            });
+            pop_data["Rest of the world"] = pop_data["Rest of the world"]/1000000;
+            svg.selectAll("g").remove();
+            g = svg.append("g").attr("transform", "translate(" + 200 + "," + 130 + ")");
+            var pie = d3.pie().sort(null);//diabling auto sorting of values
+            var arc = d3.arc().innerRadius(40).outerRadius(radius);// Generate the arcs
+            var label = d3.arc().outerRadius(radius + 40).innerRadius(radius);
 
-            svg.append("g")
-                .call(yAxis);
+            var pie = g.selectAll("arc")
+                .data(pie(Object.values(pop_data)))// redraw the arcs)
+                .enter().append("g")
+                .attr("class", "arc");
 
-            svg.append("g")
-                .call(legend);
-
-            svg.selectAll(".layer")
-                .attr("opacity", 1)
-                .on("mouseover", function (d, i) {
-                    svg.selectAll(".layer").transition()
-                        .duration(250)
-                        .attr("opacity", function (d, j) {
-                            return j !== i ? 0.6 : 1;
-                        });
-                });
-
-            let vertical = d3.select(".chart")
-                .append("div")
-                .attr("class", "remove")
-                .style("position", "absolute")
-                .style("z-index", "19")
-                .style("width", "1px")
-                .style("height", "380px")
-                .style("top", "10px")
-                .style("bottom", "30px")
-                .style("left", "0px")
-                .style("background", "#fff");
-
-            d3.select(".chart")
-                .on("mousemove", function () {
-                    let mousex = d3.mouse(this);
-                    mousex = mousex[0] + 5;
-                    vertical.style("left", mousex + "px")
+            pie.append("path")
+                .attr("d", arc)
+                .attr("fill", function (d, i) {
+                    return pop_data_color[i];
                 })
-                .on("mouseover", function () {
-                    let mousex = d3.mouse(this);
-                    mousex = mousex[0] + 5;
-                    vertical.style("left", mousex + "px")
+                .transition()
+                .duration(300).attrTween('d', function (d) {
+                var i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
+                return function (t) {
+                    d.endAngle = i(t);
+                    return arc(d);
+                }
+            });
+
+            pie.append("text")
+                .attr("transform", function (d) {
+                    return "translate(" + label.centroid(d) + ")";
+                })
+                .attr("dx", ".75em")
+                .attr("fill", function (d,i) {
+                    return pop_data_color[i];
+                })
+                .text(function (d, i) {
+                    return (Object.values(pop_data)[i]).toPrecision(4) + ' M';
                 });
 
-            return svg.node();
+            let legend = svg.selectAll("g.legend")
+                .data(Object.values(pop_data_color))
+                .enter().append("g")
+                .attr("class", "legend");
+
+            let tile_size = 20;
+
+            legend.append("rect")
+                .attr("x", 20)
+                .attr("y", function (d, i) {
+                    return height - (i * tile_size) - 2 * tile_size;
+                })
+                .attr("width", tile_size)
+                .attr("height", tile_size)
+                .style("fill", function (d) {
+                    return d;
+                })
+                .style("opacity", 0.8);
+
+            legend.append("text")
+                .attr("x", 50)
+                .style("font-size", 10)
+                .attr("y", function (d, i) {
+                    return height - (i * tile_size) - tile_size - 4;
+                })
+                .text(function (d, i) {
+                    return Object.keys(pop_data)[i];
+                });
+
+            svg.append("text")
+                .attr("transform", "translate(0,0)")
+                .attr("x", 100)
+                .attr("y", 25)
+                .attr("font-size", "16px")
+                .text("Majority Population Size");
         }
 
-        const getData = async (checkedReligions) => {
+        const getData = async () => {
+
             let promises = [
-                axios.get(`/population_by_religion_dict`, {
+                axios.get(`/population_by_religion/${selectedYear}`, {
                     params:
                         {religions: JSON.stringify(checkedReligions)},
-                }),
+                })
             ];
 
             return await Promise.all(promises);
         };
 
-        getData(checkedReligions).then((data, err) => {
-            chart(data[0].data);
+        getData().then((data, err) => {
+            mData = data[0].data;
+            chart();
         });
     };
 
@@ -594,11 +538,10 @@
         ];
 
         let chart = (data) => {
-            console.log(data);
-            d3.select("#box").html("");
+            d3.select("#chart3").html("");
             let chart = exploding_boxplot(data,
                 {y: 'y', group: 'group', color: 'color', label: 'label'});
-            chart('#box', width)
+            chart('#chart3', width)
         };
 
         const getData = async () => {
@@ -651,7 +594,6 @@
         let path;
         let svg;
         let projection;
-        let countries;
         let circle;
 
         let drawMap = (mapData) => {
