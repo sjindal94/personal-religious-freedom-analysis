@@ -79,35 +79,96 @@ body {
             <div style="display: flex; justify-content: flex-start">
 
                 <div id="slider-time"></div>
-                <table>
-                    <tr>
-                        <td><input type="checkbox" class="religion" name="religion" value="all" checked> All<br></td>
-                        <td><input type="checkbox" class="religion" name="religion" value="christianity" checked>
-                            christianity<br></td>
-                        <td><input type="checkbox" class="religion" name="religion" value="islam" checked> islam<br>
-                        </td>
-                        <td><input type="checkbox" class="religion" name="religion" value="hinduism" checked>
-                            hinduism<br>
-                        </td>
-                        <td><input type="checkbox" class="religion" name="religion" value="shinto" checked> shinto<br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="religion" name="religion" value="judaism" checked> judaism<br>
-                        </td>
-                        <td><input type="checkbox" class="religion" name="religion" value="buddhism" checked>
-                            buddhism<br>
-                        </td>
-                        <td><input type="checkbox" class="religion" name="religion" value="syncretism" checked>
-                            syncretism<br>
-                        </td>
-                        <td><input type="checkbox" class="religion" name="religion" value="animism" checked> animism<br>
-                        </td>
-                        <td><input type="checkbox" class="religion" name="religion" value="noreligion" checked> No
-                            Religion<br>
-                        </td>
-                    </tr>
-                </table>
+                <div class="filters">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="all" value="all" checked>
+                                    <label class="form-check-label" for="all">All</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox"
+                                           id="christianity"
+                                           value="christianity" checked>
+                                    <label class="form-check-label" for="christianity">Christianity</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox"
+                                           id="noreligion"
+                                           value="noreligion" checked>
+                                    <label class="form-check-label" for="noreligion">No Religion</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox" id="islam"
+                                           value="islam"
+                                           checked>
+                                    <label class="form-check-label" for="islam">Islam</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox"
+                                           id="animism"
+                                           value="animism"
+                                           checked>
+                                    <label class="form-check-label" for="animism">Animism</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox"
+                                           id="hinduism"
+                                           value="hinduism"
+                                           checked>
+                                    <label class="form-check-label" for="hinduism">Hinduism</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox"
+                                           id="judaism"
+                                           value="judaism"
+                                           checked>
+                                    <label class="form-check-label" for="judaism">Judaism</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox"
+                                           id="syncretism"
+                                           value="syncretism" checked>
+                                    <label class="form-check-label" for="syncretism">Syncretism</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox"
+                                           id="buddhism"
+                                           value="buddhism"
+                                           checked>
+                                    <label class="form-check-label" for="buddhism">Buddhism</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input religion" name="religion" type="checkbox" id="shinto"
+                                           value="shinto"
+                                           checked>
+                                    <label class="form-check-label" for="shinto">Shinto</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <div style="display: flex; justify-content: center">
@@ -298,7 +359,7 @@ body {
             .padding(0.5);
 
         const y = d3.scaleLinear()
-            .domain([0, maxVal]).nice()
+            .domain([1, 2000]).nice()
             .range([height - margin.bottom, margin.top]);
 
         const xAxis = (g) => g.attr("transform", `translate(0,${height - margin.bottom})`)
@@ -399,8 +460,7 @@ body {
         $('#shinto').prop('checked', state);
 
         getData().then((data, err) => {
-            mData = data[0].data;
-            donut();
+            donut(data[0].data);
             chart(data[1].data);
         });
     });

@@ -40,8 +40,13 @@
             align-items: center;
         }
 
-        btn {
+        .btn {
             margin: 5px;
+            height: 125px;
+            width: 125px;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: bold;
         }
 
         a {
@@ -70,39 +75,40 @@
 
     <!-- Sidebar -->
     <nav id="sidebar">
-        <div class="sidebar-header">
-            <a href="/home" align=center><h3>Understanding the correlation between personal religious freedom and
-                socio-economic</h3></a>
-        </div>
-
-        <div style="margin: 10px; text-align: center">
-            By <br>
-            Arun Swaminathan <br>
-            and <br>
-            Shubham Jindal
+        <div style="margin: 10px; text-align: center; display: flex; flex-direction: column; justify-content: space-evenly; height: 100%">
+            <div>
+                <a href="/home" align=center><h3>Understanding the correlation between personal religious freedom and
+                    socio-economic</h3></a>
+            </div>
+            <div>
+                By <br>
+                Arun Swaminathan <br>
+                and <br>
+                Shubham Jindal
+            </div>
         </div>
     </nav>
 
     <div class="mainContainer container">
         <div class="rows">
-            <button class="btn btn-info"><a href="/coordinated_view1">Coordinated View 1</a></button>
-            <button class="btn btn-info"><a href="/coordinated_view2">Coordinated View 2</a></button>
+            <a href="/coordinated_view1"><button class="btn btn-success">Coordinated View 1</button></a>
+            <a href="/coordinated_view2"><button class="btn btn-success">Coordinated View 2</button></a>
         </div>
 
         <div class=rows>
-            <button class="btn btn-info"><a href="/terrorism_in_religion">Terrorism in Religion</a></button>
-            <button class="btn btn-info"><a href="/religion">World Religions Data</a></button>
-            <button class="btn btn-info"><a href="/">Global Terrorism Data</a></button>
+            <a href="/terrorism_in_religion"><button class="btn btn-info">Terrorism in Religion</button></a>
+            <a href="/religion"><button class="btn btn-info">World Religions Data</button></a>
+            <a href="/"><button class="btn btn-info">Global Terrorism Data</button></a>
         </div>
 
         <div class=rows>
-            <button class="btn btn-info"><a href="/happiness">World Happiness Report</a></button>
-            <button class="btn btn-info"><a href="/religion-growth">Economic growth across Religions</a></button>
+            <a href="/happiness"><button class="btn btn-danger">World Happiness Report</button></a>
+            <a href="/religion-growth"><button class="btn btn-danger">Economic growth across Religions</button></a>
         </div>
         <div class=rows>
 
-            <button class="btn btn-info"><a href="/religion_population">Stacked Area Chart</a></button>
-            <button class="btn btn-info"><a href="/heatmap">Heat Map</a></button>
+            <a href="/religion_population"><button class="btn btn-warning">Stacked Area Chart</button></a>
+            <a href="/heatmap"><button class="btn btn-warning">Heat Map</button></a>
         </div>
     </div>
 </div>
