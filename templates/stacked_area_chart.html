@@ -53,6 +53,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="static/js/saveSvgAsPng.js"></script>
 
 <body>
 <div class="wrapper">
@@ -304,6 +305,7 @@
                 vertical.style("left", mousex + "px")
             });
 
+        //svgToPng(svg.node(), 'stacked-area.png');
         return svg.node();
     }
 
@@ -327,6 +329,10 @@
             $('#sidebar').toggleClass('active');
         });
     });
+
+    function svgToPng(svgNode, name) {
+        saveSvgAsPng(svgNode, name);
+    }
 
 </script>
 </body>

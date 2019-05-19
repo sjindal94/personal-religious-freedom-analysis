@@ -43,6 +43,7 @@ body {
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 <script src="static/js/d3_exploding_boxplot.js"></script>
+<script src="static/js/saveSvgAsPng.js"></script>
 
 <body>
 <div class="wrapper">
@@ -138,7 +139,9 @@ body {
             width,
             height,
             margin);
-        chart('#box')
+        chart('#box');
+
+        //svgToPng(d3.select("#box").select('svg').node(),'religion-growth');
     };
 
     const getData = async (year) => {
@@ -161,6 +164,10 @@ body {
             $('#sidebar').toggleClass('active');
         });
     });
+
+    function svgToPng(svgNode, name) {
+        saveSvgAsPng(svgNode, name);
+    }
 
 
 </script>

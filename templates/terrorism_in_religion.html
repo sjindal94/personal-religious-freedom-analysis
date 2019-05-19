@@ -37,6 +37,7 @@ body {
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="static/js/saveSvgAsPng.js"></script>
 
 <body>
 <div class="wrapper">
@@ -282,6 +283,8 @@ body {
             .attr("y", 25)
             .attr("font-size", "16px")
             .text("Majority Population Size");
+
+        //svgToPng(svg.node(), 'terror_attacks_donut.png');
     }
 
     let chart = (data) => {
@@ -354,6 +357,7 @@ body {
         svg.append("g")
             .call(yAxis);
 
+        //svgToPng(svg.node(), 'terror_attacks_bar.png');
         return svg.node();
     };
 
@@ -414,6 +418,10 @@ body {
             $('#sidebar').toggleClass('active');
         });
     });
+
+    function svgToPng(svgNode, name) {
+        saveSvgAsPng(svgNode, name);
+    }
 
 
 </script>

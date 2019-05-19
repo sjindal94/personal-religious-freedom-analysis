@@ -43,7 +43,7 @@ path {
         integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+<script src="static/js/saveSvgAsPng.js"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
 <body>
@@ -155,6 +155,7 @@ path {
         svg.append("g")
             .call(yAxis);
 
+        //svgToPng(svg.node(), 'pf-religion.png');
         return svg.node();
     };
 
@@ -247,6 +248,7 @@ path {
         svg.append("g")
             .call(legend);
 
+        //svgToPng(svg.node(), 'other-religion.png');
         return svg.node();
     };
 
@@ -276,6 +278,9 @@ path {
         });
     });
 
+    function svgToPng(svgNode, name) {
+        saveSvgAsPng(svgNode, name);
+    }
 
 </script>
 </body>

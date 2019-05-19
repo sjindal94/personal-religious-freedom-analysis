@@ -53,6 +53,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/d3-simple-slider"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="static/js/saveSvgAsPng.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 
 <body>
@@ -257,6 +258,7 @@
 
     getData('all').then((data, err) => {
         chart(data[0].data.data, data[0].data.columns);
+        //svgToPng();
     });
 
     $(document).ready(function () {
@@ -276,5 +278,9 @@
         });
     });
 
+    function svgToPng() {
+        console.log("Saving");
+        saveSvgAsPng(d3.select('.chart').node(), 'heatmap.png');
+    }
 </script>
 </body>

@@ -50,6 +50,7 @@ path {
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="static/js/d3-tip.js"></script>
 <script src="https://unpkg.com/d3-simple-slider"></script>
+<script src="static/js/saveSvgAsPng.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <body>
@@ -329,6 +330,7 @@ path {
         drawMap(mapData[0]);
         getData(2015).then((data) => {
             chart(data[0].data, data[1].data);
+            //svgToPng();
         });
     });
 
@@ -337,6 +339,10 @@ path {
             $('#sidebar').toggleClass('active');
         });
     });
+
+    function svgToPng() {
+        saveSvgAsPng(d3.select('#map').node(), 'global_terrorism.png');
+    }
 
 </script>
 </body>
