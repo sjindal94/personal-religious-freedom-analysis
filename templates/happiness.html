@@ -157,7 +157,7 @@ path {
             } else {
                 d.religion = "No religion";
             }
-            if(h_scoreById[d.properties.name] != null) {
+            if (h_scoreById[d.properties.name] != null) {
                 d.happiness_score = h_scoreById[d.properties.name];
             } else {
                 d.happiness_score = 0;
@@ -166,8 +166,8 @@ path {
 
 
         const opacityScale = d3.scaleLinear()
-    	.domain([d3.min(Object.values(h_scoreById)), d3.max(Object.values(h_scoreById))])
-    	.range([0, 1]);
+            .domain([d3.min(Object.values(h_scoreById)), d3.max(Object.values(h_scoreById))])
+            .range([0, 1]);
 
         svg.append("g")
             .attr("class", "countries")
@@ -207,11 +207,11 @@ path {
             });
 
         svg.append("text")
-           .attr("transform", "translate(400,0)")
-           .attr("x", -150)
-           .attr("y", 20)
-           .attr("font-size", "16px")
-           .text(`Happiness Score Interpolated(2015) across Countries Aggregated`);
+            .attr("transform", "translate(400,0)")
+            .attr("x", -150)
+            .attr("y", 20)
+            .attr("font-size", "16px")
+            .text(`Happiness Score Interpolated(2015) across Countries Aggregated`);
 
         svg.append("path")
             .datum(topojson.mesh(data.features, function (a, b) {

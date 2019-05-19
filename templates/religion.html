@@ -98,61 +98,61 @@ path {
 
     let chart = (data, binNames, column) => {
         const x = d3.scaleBand()
-                    .domain(binNames)
-                    .range([margin.left, width - margin.right])
-                    .padding(0.5);
+            .domain(binNames)
+            .range([margin.left, width - margin.right])
+            .padding(0.5);
 
         const y = d3.scaleLinear()
-                    .domain([0, 10]).nice()
-                    .range([height - margin.bottom, margin.top]);
+            .domain([0, 10]).nice()
+            .range([height - margin.bottom, margin.top]);
 
         const xAxis = (g) => g.attr("transform", `translate(0,${height - margin.bottom})`)
-                              .call(d3.axisBottom(x).tickSizeOuter(0))
-                              .call(g => g.append("text")
-                                          .attr("x", (width - margin.right) / 2)
-                                          .attr("y", 40)
-                                          .attr("fill", "#000")
-                                          .attr("font-size", 14)
-                                          .attr("font-weight", "bold")
-                                          .attr("text-anchor", "end")
-                                          .text("Countries with majority religions"));
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+            .call(g => g.append("text")
+                .attr("x", (width - margin.right) / 2)
+                .attr("y", 40)
+                .attr("fill", "#000")
+                .attr("font-size", 14)
+                .attr("font-weight", "bold")
+                .attr("text-anchor", "end")
+                .text("Countries with majority religions"));
 
         const yAxis = (g) => g.attr("transform", `translate(${margin.left},0)`)
-                              .call(d3.axisLeft(y))
-                              .call(g => g.select(".domain").remove())
-                              .call(g => g.select(".tick:last-of-type text").clone()
-                                          .attr("x", 4)
-                                          .attr("font-size", 14)
-                                          .attr("text-anchor", "start")
-                                          .attr("font-weight", "bold")
-                                          .text(column));
+            .call(d3.axisLeft(y))
+            .call(g => g.select(".domain").remove())
+            .call(g => g.select(".tick:last-of-type text").clone()
+                .attr("x", 4)
+                .attr("font-size", 14)
+                .attr("text-anchor", "start")
+                .attr("font-weight", "bold")
+                .text(column));
         const svg = d3.select('#content')
-                      .append('svg')
-                      .attr("width", width)
-                      .attr("height", height);
+            .append('svg')
+            .attr("width", width)
+            .attr("height", height);
 
         svg.append("text")
-           .attr("transform", "translate(400,0)")
-           .attr("x", 100)
-           .attr("y", 50)
-           .attr("font-size", "16px")
-           .text(`Religious Personal Freedom across Countries Aggregated`);
+            .attr("transform", "translate(400,0)")
+            .attr("x", 100)
+            .attr("y", 50)
+            .attr("font-size", "16px")
+            .text(`Religious Personal Freedom across Countries Aggregated`);
 
         svg.append("g")
-                       .attr("fill", "#3498db")
-                       .selectAll("rect")
-                       .data(data)
-                       .join("rect")
-                           .attr("x", d => x(d.religion))
-                           .attr("y", d => y(d[column]))
-                           .attr("width", d => x.bandwidth())
-                           .attr("height", d => y(0) - y(d[column]));
+            .attr("fill", "#3498db")
+            .selectAll("rect")
+            .data(data)
+            .join("rect")
+            .attr("x", d => x(d.religion))
+            .attr("y", d => y(d[column]))
+            .attr("width", d => x.bandwidth())
+            .attr("height", d => y(0) - y(d[column]));
 
         svg.append("g")
-           .call(xAxis);
+            .call(xAxis);
 
         svg.append("g")
-           .call(yAxis);
+            .call(yAxis);
 
         return svg.node();
     };
@@ -162,86 +162,86 @@ path {
         const keys = ['pf_religion_estop', 'pf_religion_harrasment', 'pf_religion_restrictions'];
 
         const x0 = d3.scaleBand()
-                     .domain(data.map(d => d[groupKey]))
-                     .rangeRound([margin.left, width - margin.right])
-                     .paddingInner(0.3);
+            .domain(data.map(d => d[groupKey]))
+            .rangeRound([margin.left, width - margin.right])
+            .paddingInner(0.3);
 
         const x1 = d3.scaleBand()
-                     .domain(keys)
-                     .rangeRound([0, x0.bandwidth()])
-                     .padding(0.05);
+            .domain(keys)
+            .rangeRound([0, x0.bandwidth()])
+            .padding(0.05);
 
         const y = d3.scaleLinear()
-                    .domain([0, d3.max(data, d => d3.max(keys, key => d[key]))]).nice()
-                    .rangeRound([height - margin.bottom, margin.top]);
+            .domain([0, d3.max(data, d => d3.max(keys, key => d[key]))]).nice()
+            .rangeRound([height - margin.bottom, margin.top]);
 
         const color = d3.scaleOrdinal()
-                        .range(["#a05d56", "#d0743c", "#ff8c00"]);
+            .range(["#a05d56", "#d0743c", "#ff8c00"]);
 
         const xAxis = g => g
-                            .attr("transform", `translate(0,${height - margin.bottom})`)
-                            .call(d3.axisBottom(x0).tickSizeOuter(0))
-                            .call(g => g.select(".domain").remove());
+            .attr("transform", `translate(0,${height - margin.bottom})`)
+            .call(d3.axisBottom(x0).tickSizeOuter(0))
+            .call(g => g.select(".domain").remove());
 
         const yAxis = g => g
-                            .attr("transform", `translate(${margin.left},0)`)
-                            .call(d3.axisLeft(y).ticks(null, "s"))
-                            .call(g => g.select(".domain").remove())
-                            .call(g => g.select(".tick:last-of-type text").clone()
-                            .attr("x", 3)
-                            .attr("text-anchor", "start")
-                            .attr("font-weight", "bold")
-                            .text("Score"));
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y).ticks(null, "s"))
+            .call(g => g.select(".domain").remove())
+            .call(g => g.select(".tick:last-of-type text").clone()
+                .attr("x", 3)
+                .attr("text-anchor", "start")
+                .attr("font-weight", "bold")
+                .text("Score"));
 
 
         const legend = svg => {
-          const g = svg
-              .attr("transform", `translate(${width},0)`)
-              .attr("text-anchor", "end")
-              .attr("font-family", "sans-serif")
-              .attr("font-size", 10)
-            .selectAll("g")
-            .data(color.domain().slice().reverse())
-            .join("g")
-              .attr("transform", (d, i) => `translate(0,${i * 20})`);
+            const g = svg
+                .attr("transform", `translate(${width},0)`)
+                .attr("text-anchor", "end")
+                .attr("font-family", "sans-serif")
+                .attr("font-size", 10)
+                .selectAll("g")
+                .data(color.domain().slice().reverse())
+                .join("g")
+                .attr("transform", (d, i) => `translate(0,${i * 20})`);
 
-          g.append("rect")
-              .attr("x", -19)
-              .attr("width", 19)
-              .attr("height", 19)
-              .attr("fill", color);
+            g.append("rect")
+                .attr("x", -19)
+                .attr("width", 19)
+                .attr("height", 19)
+                .attr("fill", color);
 
-          g.append("text")
-              .attr("x", -24)
-              .attr("y", 9.5)
-              .attr("dy", "0.35em")
-              .text(d => d);
+            g.append("text")
+                .attr("x", -24)
+                .attr("y", 9.5)
+                .attr("dy", "0.35em")
+                .text(d => d);
         };
 
         const svg = d3.select('#content')
-                      .append('svg')
-                      .attr("width", width)
-                      .attr("height", height);
+            .append('svg')
+            .attr("width", width)
+            .attr("height", height);
 
         svg.append("g")
             .selectAll("g")
             .data(data)
             .join("g")
-                .attr("transform", d => `translate(${x0(d[groupKey])},0)`)
-                .selectAll("rect")
-                .data(d => keys.map(key => ({key, value: d[key]})))
-                .join("rect")
-                    .attr("x", d => x1(d.key))
-                    .attr("y", d => y(d.value))
-                    .attr("width", x1.bandwidth())
-                    .attr("height", d => y(0) - y(d.value))
-                    .attr("fill", d => color(d.key));
+            .attr("transform", d => `translate(${x0(d[groupKey])},0)`)
+            .selectAll("rect")
+            .data(d => keys.map(key => ({key, value: d[key]})))
+            .join("rect")
+            .attr("x", d => x1(d.key))
+            .attr("y", d => y(d.value))
+            .attr("width", x1.bandwidth())
+            .attr("height", d => y(0) - y(d.value))
+            .attr("fill", d => color(d.key));
 
         svg.append("g")
-           .call(xAxis);
+            .call(xAxis);
 
         svg.append("g")
-           .call(yAxis);
+            .call(yAxis);
 
         svg.append("g")
             .call(legend);
@@ -270,9 +270,9 @@ path {
     });
 
     $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
     });
 
 

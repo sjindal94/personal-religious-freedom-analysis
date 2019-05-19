@@ -262,11 +262,11 @@ body {
     const getData = async () => {
 
         let promises = [
-                axios.get(`/population_by_religion/${selectedYear}`, {
-                    params:
-                        {religions: JSON.stringify(checkedReligions)},
-                })
-            ];
+            axios.get(`/population_by_religion/${selectedYear}`, {
+                params:
+                    {religions: JSON.stringify(checkedReligions)},
+            })
+        ];
 
         return await Promise.all(promises);
     };
