@@ -49,6 +49,7 @@
       rel="stylesheet">
 <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
 <link rel="stylesheet" href={{ url_for('static', filename='css/worldMap.css') }}>
+<link rel="stylesheet" href={{ url_for('static', filename='css/d3_exploding_boxplot.css') }}>
 
 <script crossorigin="anonymous"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -424,8 +425,6 @@
             .append('g');
 
         function chart() {
-
-            console.log(mData);
             let pop_data = {};
             let pop_data_color = {};
             pop_data["Rest of the world"] = mData['world_population'];
@@ -532,16 +531,16 @@
         let width = 600,
             height = 400;
 
-        const religion_colors = [
-            "#999900", "#96281b", "#9f5afd", "#e67e22",
-            "#00b16a", "#0000FF", "#dadfe1", "#FF0000", "#7CFC00"
-        ];
+        const margin = {top: 60, right: 30, bottom: 50, left: 40};
 
         let chart = (data) => {
             d3.select("#chart3").html("");
             let chart = exploding_boxplot(data,
-                {y: 'y', group: 'group', color: 'color', label: 'label'});
-            chart('#chart3', width)
+                {y: 'y', group: 'group', color: 'color', label: 'label'},
+                width,
+                height,
+                margin);
+            chart('#chart3')
         };
 
         const getData = async () => {

@@ -1,38 +1,38 @@
 let compute_boxplot = function (data, iqr_k, value) {
-    iqr_k = iqr_k || 1.5
-    value = value || Number
+    iqr_k = iqr_k || 1.5;
+    value = value || Number;
 
-    let seriev = data.map(functorkey(value)).sort(d3.ascending)
+    let seriev = data.map(functorkey(value)).sort(d3.ascending);
 
     let quartiles = [
         d3.quantile(seriev, 0.25),
         d3.quantile(seriev, 0.5),
         d3.quantile(seriev, 0.75)
-    ]
+    ];
 
-    let iqr = (quartiles[2] - quartiles[0]) * iqr_k
+    let iqr = (quartiles[2] - quartiles[0]) * iqr_k;
 
     //group by outlier or not
-    let max = Number.MIN_VALUE
-    let min = Number.MAX_VALUE
+    let max = Number.MIN_VALUE;
+    let min = Number.MAX_VALUE;
     let box_data = d3.nest()
         .key(function (d) {
-            d = functorkey(value)(d)
+            d = functorkey(value)(d);
             let type = (d < quartiles[0] - iqr || d > quartiles[2] + iqr) ? 'outlier' : 'normal';
-            if (type == 'normal' && (d < min || d > max)) {
-                max = Math.max(max, d)
-                min = Math.min(min, d)
+            if (type === 'normal' && (d < min || d > max)) {
+                max = Math.max(max, d);
+                min = Math.min(min, d);
             }
             return type
         })
-        .map(data)
+        .map(data);
 
     if (!box_data.outlier)
-        box_data.outlier = []
-    box_data.quartiles = quartiles
-    box_data.iqr = iqr
-    box_data.max = max
-    box_data.min = min
+        box_data.outlier = [];
+    box_data.quartiles = quartiles;
+    box_data.iqr = iqr;
+    box_data.max = max;
+    box_data.min = min;
 
 
     return box_data
@@ -44,13 +44,10 @@ function constant(x) {
     };
 }
 
-let exploding_boxplot = function (data, aes) {
+let exploding_boxplot = function (data, aes, width, height, margin) {
     //defaults
     let iqr = 1.5;
-    let height = 480;
-    let width = 1000;
     let boxpadding = 0.2;
-    let margin = {top: 10, bottom: 30, left: 40, right: 10};
     let rotateXLabels = false;
 
     aes.color = aes.color || aes.group;
@@ -66,7 +63,7 @@ let exploding_boxplot = function (data, aes) {
         .range([height - margin.top - margin.bottom, 0]);
 
 
-    let groups
+    let groups;
     if (aes.group) {
         groups = d3.nest()
             .key(functorkey(aes.group))
@@ -86,43 +83,43 @@ let exploding_boxplot = function (data, aes) {
 
     let colorscale = d3.scaleOrdinal()
         .domain(d3.set(data.map(functorkey(aes.color))).values())
-        .range(d3.set(data.map(functorkey(aes.color))).values())
+        .range(d3.set(data.map(functorkey(aes.color))).values());
 
     //create boxplot data
     groups = groups.map(function (g) {
-        let o = compute_boxplot(g.values, iqr, aes.y)
-        o['group'] = g.key
+        let o = compute_boxplot(g.values, iqr, aes.y);
+        o['group'] = g.key;
         return o
-    })
+    });
 
 
     let tickFormat = function (n) {
         return n.toLocaleString()
-    }
+    };
 
     //default tool tip function
     let _tipFunction = function (d) {
         return ' <span style="color: whitesmoke">' +
             functorkey(aes.label)(d) + '</span><span style="color:#DDDDDD;" > ' + '</span>';
-    }
+    };
 
 
     let svg, container, tip;
     let chart = function (elem) {
         svg = d3.select(elem).append('svg')
             .attr('width', width)
-            .attr('height', height)
+            .attr('height', height);
 
         svg.append('g').append('rect')
             .attr('width', width)
             .attr('height', height)
             .style('color', 'white')
             .style('opacity', 0)
-            .on('dblclick', implode_boxplot)
+            .on('dblclick', implode_boxplot);
 
 
         container = svg.append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 
         let xAxis = d3.axisBottom(xscale);
@@ -160,7 +157,7 @@ let exploding_boxplot = function (data, aes) {
             .style("text-anchor", "middle")
             .text("growth");
 
-        container = container.insert('g', '.axis')
+        container = container.insert('g', '.axis');
 
         draw()
     };
@@ -172,7 +169,7 @@ let exploding_boxplot = function (data, aes) {
             .enter()
             .append('circle')
             .call(init_jitter)
-            .call(draw_jitter)
+            .call(draw_jitter);
         d3.select(this).append('g')
             .attr('class', 'd3-exploding-boxplot normal-points')
     };
@@ -190,7 +187,7 @@ let exploding_boxplot = function (data, aes) {
             })
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
-    }
+    };
     let draw_jitter = function (s) {
         s.attr('cx', function (d) {
             let w = xscale.bandwidth();
@@ -199,7 +196,7 @@ let exploding_boxplot = function (data, aes) {
             .attr('cy', function (d) {
                 return yscale((functorkey(aes.y))(d))
             })
-    }
+    };
 
     let create_boxplot = function (g, i) {
         let s = d3.select(this).append('g')
@@ -209,21 +206,21 @@ let exploding_boxplot = function (data, aes) {
             })
             .selectAll('.box')
             .data([g])
-            .enter()
+            .enter();
         //box
         s.append('rect')
             .attr('class', 'd3-exploding-boxplot box')
             .attr('fill', function (d) {
                 return colorscale(functorkey(aes.color)(d['$normal'][0]))
-            })
+            });
         //median line
-        s.append('line').attr('class', 'd3-exploding-boxplot median line')
+        s.append('line').attr('class', 'd3-exploding-boxplot median line');
         //min line
-        s.append('line').attr('class', 'd3-exploding-boxplot min line hline')
+        s.append('line').attr('class', 'd3-exploding-boxplot min line hline');
         //min vline
-        s.append('line').attr('class', 'd3-exploding-boxplot line min vline')
+        s.append('line').attr('class', 'd3-exploding-boxplot line min vline');
         //max line
-        s.append('line').attr('class', 'd3-exploding-boxplot max line hline')
+        s.append('line').attr('class', 'd3-exploding-boxplot max line hline');
         //max vline
         s.append('line').attr('class', 'd3-exploding-boxplot line max vline')
     };
@@ -237,7 +234,7 @@ let exploding_boxplot = function (data, aes) {
             })
             .attr('height', function (d) {
                 return yscale(d.quartiles[0]) - yscale(d.quartiles[2])
-            })
+            });
         //median line
         s.select('line.median')
             .attr('x1', 0).attr('x2', xscale.bandwidth())
@@ -246,7 +243,7 @@ let exploding_boxplot = function (data, aes) {
             })
             .attr('y2', function (d) {
                 return yscale(d.quartiles[1])
-            })
+            });
         //min line
         s.select('line.min.hline')
             .attr('x1', xscale.bandwidth() * 0.25)
@@ -256,7 +253,7 @@ let exploding_boxplot = function (data, aes) {
             })
             .attr('y2', function (d) {
                 return yscale(Math.min(d.min, d.quartiles[0]))
-            })
+            });
         //min vline
         s.select('line.min.vline')
             .attr('x1', xscale.bandwidth() * 0.5)
@@ -266,7 +263,7 @@ let exploding_boxplot = function (data, aes) {
             })
             .attr('y2', function (d) {
                 return yscale(d.quartiles[0])
-            })
+            });
         //max line
         s.select('line.max.hline')
             .attr('x1', xscale.bandwidth() * 0.25)
@@ -276,7 +273,7 @@ let exploding_boxplot = function (data, aes) {
             })
             .attr('y2', function (d) {
                 return yscale(Math.max(d.max, d.quartiles[2]))
-            })
+            });
         //max vline
         s.select('line.max.vline')
             .attr('x1', xscale.bandwidth() * 0.5)
@@ -345,7 +342,7 @@ let exploding_boxplot = function (data, aes) {
                     .attr('cx', xscale.bandwidth() * 0.5)
                     .attr('cy', yscale(g.quartiles[1]))
                     .remove()
-            })
+            });
 
 
         container.selectAll('.boxcontent')
@@ -354,17 +351,17 @@ let exploding_boxplot = function (data, aes) {
             .duration(300)
             .delay(200)
             .call(draw_boxplot)
-    }
+    };
     let create_tip = function () {
         tip = d3.tip().attr('class', 'd3-exploding-boxplot tip')
             .direction('n')
-            .html(_tipFunction)
+            .html(_tipFunction);
         return tip
     };
 
     function draw() {
         tip = tip || create_tip();
-        chart.tip = tip
+        chart.tip = tip;
         let boxContent = container.selectAll('.boxcontent')
             .data(groups)
             .enter().append('g')
@@ -376,8 +373,7 @@ let exploding_boxplot = function (data, aes) {
             .each(create_boxplot)
             .call(draw_boxplot)
 
-    };
-
+    }
     chart.iqr = function (_) {
         if (!arguments.length) return iqr;
         iqr = _;
@@ -387,14 +383,14 @@ let exploding_boxplot = function (data, aes) {
     chart.width = function (_) {
         if (!arguments.length) return width;
         width = _;
-        xscale.rangeRoundBands([0, width - margin.left - margin.right], boxpadding).padding(0.2)
+        xscale.rangeRoundBands([0, width - margin.left - margin.right], boxpadding).padding(0.2);
         return chart;
     };
 
     chart.height = function (_) {
         if (!arguments.length) return height;
         height = _;
-        yscale.range([height - margin.top - margin.bottom, 0])
+        yscale.range([height - margin.top - margin.bottom, 0]);
         return chart;
     };
 
@@ -402,8 +398,8 @@ let exploding_boxplot = function (data, aes) {
         if (!arguments.length) return margin;
         margin = _;
         //update scales
-        xscale.rangeRoundBands([0, width - margin.left - margin.right], boxpadding).padding(0.2)
-        yscale.range([height - margin.top - margin.bottom, 0])
+        xscale.rangeRoundBands([0, width - margin.left - margin.right], boxpadding).padding(0.2);
+        yscale.range([height - margin.top - margin.bottom, 0]);
         return chart;
     };
 
@@ -419,39 +415,39 @@ let exploding_boxplot = function (data, aes) {
     };
     chart.ylimit = function (_) {
         if (!arguments.length) return yscale.domain();
-        yscale.domain(_.sort(d3.ascending))
+        yscale.domain(_.sort(d3.ascending));
         return chart
     };
     chart.yscale = function (_) {
         if (!arguments.length) return yscale;
-        yscale = _
+        yscale = _;
         return chart
     };
     chart.xscale = function (_) {
         if (!arguments.length) return xscale;
-        xscale = _
+        xscale = _;
         return chart
     };
     chart.tickFormat = function (_) {
         if (!arguments.length) return tickFormat;
-        tickFormat = _
+        tickFormat = _;
         return chart
     };
     chart.colors = function (_) {
         if (!arguments.length) return colorscale.range();
-        colorscale.range(_)
+        colorscale.range(_);
         return chart;
     };
     chart.rotateXLabels = function (_) {
         if (!arguments.length) return rotateXLabels;
-        rotateXLabels = _
+        rotateXLabels = _;
         return chart;
-    }
+    };
 
 
     return chart;
 
-}
+};
 
 function functorkey(v) {
     return typeof v === "function" ? v : function (d) {
@@ -467,4 +463,4 @@ function fk(v) {
     };
 }
 
-exploding_boxplot.compute_boxplot = compute_boxplot
+exploding_boxplot.compute_boxplot = compute_boxplot;

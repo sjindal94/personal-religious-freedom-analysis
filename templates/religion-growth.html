@@ -131,17 +131,14 @@ body {
 
     gTime.call(sliderTime);
 
-    const religion_colors = [
-        "#999900", "#96281b", "#9f5afd", "#e67e22",
-        "#00b16a", "#0000FF", "#dadfe1", "#FF0000", "#7CFC00"
-    ];
-
     let chart = (data) => {
-        console.log(data);
         d3.select("#box").html("");
         let chart = exploding_boxplot(data,
-            {y: 'y', group: 'group', color: 'color', label: 'label'});
-        chart('#box', width)
+            {y: 'y', group: 'group', color: 'color', label: 'label'},
+            width,
+            height,
+            margin);
+        chart('#box')
     };
 
     const getData = async (year) => {
