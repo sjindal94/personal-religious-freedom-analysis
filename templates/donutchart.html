@@ -78,7 +78,8 @@ body {
         <table>
             <tr>
                 <td><input type="checkbox" class="religion" name="religion" value="all" checked> All<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="christianity" checked> christianity<br></td>
+                <td><input type="checkbox" class="religion" name="religion" value="christianity" checked>
+                    christianity<br></td>
                 <td><input type="checkbox" class="religion" name="religion" value="islam" checked> islam<br></td>
                 <td><input type="checkbox" class="religion" name="religion" value="hinduism" checked> hinduism<br></td>
                 <td><input type="checkbox" class="religion" name="religion" value="shinto" checked> shinto<br></td>
@@ -86,9 +87,11 @@ body {
             <tr>
                 <td><input type="checkbox" class="religion" name="religion" value="judaism" checked> judaism<br></td>
                 <td><input type="checkbox" class="religion" name="religion" value="buddhism" checked> buddhism<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="syncretism" checked> syncretism<br></td>
+                <td><input type="checkbox" class="religion" name="religion" value="syncretism" checked> syncretism<br>
+                </td>
                 <td><input type="checkbox" class="religion" name="religion" value="animism" checked> animism<br></td>
-                <td><input type="checkbox" class="religion" name="religion" value="noreligion" checked> No Religion<br></td>
+                <td><input type="checkbox" class="religion" name="religion" value="noreligion" checked> No Religion<br>
+                </td>
             </tr>
         </table>
         <svg id="map"></svg>
@@ -122,7 +125,7 @@ body {
         });
         let index = checkedReligions.indexOf("all");
         if (index > -1) {
-          checkedReligions.splice(index, 1);
+            checkedReligions.splice(index, 1);
         }
         if (checkedReligions.length === 0)
             checkedReligions = AllReligions;
@@ -181,12 +184,12 @@ body {
         let pop_data_color = {};
         pop_data["Rest of the world"] = mData['world_population'];
         pop_data_color[0] = "#A9A9A9";
-        checkedReligions.forEach(function (d,i) {
-                pop_data[d] = mData[d] / 1000000;
-                pop_data["Rest of the world"] = pop_data["Rest of the world"] - mData[d];
-                pop_data_color[i+1] = religions[d];
+        checkedReligions.forEach(function (d, i) {
+            pop_data[d] = mData[d] / 1000000;
+            pop_data["Rest of the world"] = pop_data["Rest of the world"] - mData[d];
+            pop_data_color[i + 1] = religions[d];
         });
-        pop_data["Rest of the world"] = pop_data["Rest of the world"]/1000000;
+        pop_data["Rest of the world"] = pop_data["Rest of the world"] / 1000000;
 
         svg.selectAll("g").remove();
         g = svg.append("g").attr("transform", "translate(" + 200 + "," + 130 + ")");
@@ -218,7 +221,7 @@ body {
                 return "translate(" + label.centroid(d) + ")";
             })
             .attr("dx", ".75em")
-            .attr("fill", function (d,i) {
+            .attr("fill", function (d, i) {
                 return pop_data_color[i];
             })
             .text(function (d, i) {
