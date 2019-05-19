@@ -36,6 +36,11 @@
         align-items: center;
     }
 
+    .arc text {
+        font: 14px sans-serif;
+        text-anchor: middle;
+    }
+
 </style>
 <link crossorigin="anonymous"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -92,7 +97,6 @@
                 <a href="/religion_population">Stacked Area Chart</a>
                 <a href="/heatmap">Heat Map</a>
             </li>
-
         </ul>
     </nav>
 
@@ -219,11 +223,13 @@
         "syncretism": "#7CFC00", "buddhism": "#96281b", "shinto": "#FF0000"
     };
 
-    const dataTime = d3.range(0, 10).map(function (d) {
-        return new Date(1965 + (d * 5), 10, 3);
+    const dataTime = d3.range(0, 9).map(function (d) {
+        return new Date(1970 + (d * 5), 10, 3);
     });
 
     let selectedYear = "2010";
+
+    let mapSVG;
 
     const sliderTime = d3
         .sliderBottom()
@@ -238,7 +244,7 @@
             const year = d3.timeFormat('%Y')(val);
             if (year !== selectedYear) {
                 selectedYear = year;
-                drawAllCharts(getCheckedReligions());
+                drawAllCharts(getCheckedReligions(), mapSVG);
             }
         });
 
@@ -253,8 +259,8 @@
     gTime.call(sliderTime);
 
     const constructChart1 = (checkedReligions) => {
-        const margin = ({top: 30, right: 20, bottom: 30, left: 30});
-        const width = 500;
+        const margin = ({top: 30, right: 100, bottom: 30, left: 30});
+        const width = 650;
         const height = 200;
 
         let chart = (data, binNames, column) => {
@@ -283,10 +289,10 @@
                 .call(g => g.select(".domain").remove())
                 .call(g => g.select(".tick:last-of-type text").clone()
                     .attr("x", 4)
-                    .style("font-size", "8px")
                     .style("font-weight", "bold")
                     .attr("text-anchor", "start")
                     .text(column));
+
             const svg = d3.select('#chart1')
                 .html("")
                 .append('svg')
@@ -294,11 +300,11 @@
                 .attr("height", height);
 
             svg.append("text")
-                .attr("transform", "translate(400,0)")
-                .attr("x", 100)
-                .attr("y", 50)
+                .attr("transform", "translate(300,0)")
+                .attr("x", 0)
+                .attr("y", 10)
                 .attr("font-size", "10px")
-                .text(`Religious Personal Freedom across Countries Aggregated`);
+                .text(`Religious Freedom across Countries (2010)`);
 
             svg.append("g")
                 .attr("fill", "#3498db")
@@ -358,7 +364,7 @@
 
             const legend = svg => {
                 const g = svg
-                    .attr("transform", `translate(${width + 10},0)`)
+                    .attr("transform", `translate(${width},0)`)
                     .attr("text-anchor", "end")
                     .attr("font-family", "sans-serif")
                     .style("font-size", 10)
@@ -433,18 +439,11 @@
     };
 
     const constructChart2 = (checkedReligions) => {
-        const margin = ({top: 200, right: 80, bottom: 50, left: 40});
-        const width = 400;
-        const height = 300;
+        const width = 500;
+        const height = 400;
         const radius = Math.min(width, height) / 4;
 
-        const svg = d3.select('#chart2')
-            .html("")
-            .attr("width", width)
-            .attr("height", height)
-            .append('g');
-
-        function chart() {
+        function donut(mData) {
             let pop_data = {};
             let pop_data_color = {};
             pop_data["Rest of the world"] = mData['world_population'];
@@ -455,13 +454,23 @@
                 pop_data_color[i + 1] = religions[d];
             });
             pop_data["Rest of the world"] = pop_data["Rest of the world"] / 1000000;
-            svg.selectAll("g").remove();
-            g = svg.append("g").attr("transform", "translate(" + 200 + "," + 130 + ")");
-            var pie = d3.pie().sort(null);//diabling auto sorting of values
-            var arc = d3.arc().innerRadius(40).outerRadius(radius);// Generate the arcs
-            var label = d3.arc().outerRadius(radius + 40).innerRadius(radius);
 
-            var pie = g.selectAll("arc")
+            const svg = d3.select('#chart2')
+                .html("")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append('g')
+                .attr('class', 'map');
+
+            let g = svg.append("g")
+                .attr("transform", "translate(" + 250 + "," + 185 + ")");
+
+            let pie = d3.pie().sort(null);//diabling auto sorting of values
+            let arc = d3.arc().innerRadius(40).outerRadius(radius);// Generate the arcs
+            let label = d3.arc().outerRadius(radius + 40).innerRadius(radius);
+
+            pie = g.selectAll("arc")
                 .data(pie(Object.values(pop_data)))// redraw the arcs)
                 .enter().append("g")
                 .attr("class", "arc");
@@ -527,12 +536,17 @@
                 .attr("y", 25)
                 .attr("font-size", "16px")
                 .text("Majority Population Size");
+
+            //svgToPng(svg.node(), 'terror_attacks_donut.png');
         }
 
         const getData = async () => {
-
             let promises = [
                 axios.get(`/population_by_religion/${selectedYear}`, {
+                    params:
+                        {religions: JSON.stringify(checkedReligions)},
+                }),
+                axios.get(`/terror_attacks_per_religion/${selectedYear}`, {
                     params:
                         {religions: JSON.stringify(checkedReligions)},
                 })
@@ -542,8 +556,7 @@
         };
 
         getData().then((data, err) => {
-            mData = data[0].data;
-            chart();
+            donut(data[0].data);
         });
     };
 

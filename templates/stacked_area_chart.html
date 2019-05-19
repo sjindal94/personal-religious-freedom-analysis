@@ -6,10 +6,6 @@
         font: 10px sans-serif;
     }
 
-    .chart {
-        background: #fff;
-    }
-
     p {
         font: 12px helvetica;
     }
@@ -76,13 +72,13 @@
                 <a href="/religion_population">Stacked Area Chart</a>
                 <a href="/heatmap">Heat Map</a>
             </li>
-
         </ul>
     </nav>
 
     <!-- Page Content -->
     <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+             style="margin-bottom: 0; box-shadow: none; background-color:antiquewhite !important">
             <div class="container-fluid">
 
                 <button class="btn btn-info" id="sidebarCollapse" type="button">
@@ -290,8 +286,7 @@
             .style("height", "380px")
             .style("top", "10px")
             .style("bottom", "30px")
-            .style("left", "0px")
-            .style("background", "#fff");
+            .style("left", "0px");
 
         d3.select(".chart")
             .on("mousemove", function () {
