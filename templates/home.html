@@ -7,7 +7,20 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+    <link rel="stylesheet" href={{ url_for(
+    'static', filename='css/style.css') }}>
     <style>
+        html, body, .wrapper {
+            font: 14px Arial;
+            height: 100%;
+        }
+
+        path {
+            stroke: steelblue;
+            stroke-width: 2;
+            fill: none;
+        }
+
         .mainContainer {
             display: flex;
             justify-content: space-evenly;
@@ -16,13 +29,8 @@
             padding: 30px;
         }
 
-        html, body {
-            height: 100%;
-        }
-
-        .mainContainer, .jumbotron {
+        .mainContainer {
             overflow-y: auto;
-            height: 100%;
         }
 
         .rows {
@@ -30,6 +38,10 @@
             width: 100%;
             justify-content: space-evenly;
             align-items: center;
+        }
+
+        btn {
+            margin: 5px;
         }
 
         a {
@@ -54,13 +66,20 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="wrapper">
 
-<div class="jumbotron">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <a href="/home" align=center><h3>Understanding the correlation between personal religious freedom and
+                socio-economic</h3></a>
+        </div>
+
+        <ul class="list-unstyled components">
+        </ul>
+    </nav>
 
     <div class="mainContainer container">
-        <h2 style="text-align: center">Understanding the correlation between personal religious freedom and
-            socio-economic
-            backgrounds.</h2>
         <div class="rows">
             <button class="btn btn-info"><a href="/coordinated_view1">Coordinated View 1</a></button>
             <button class="btn btn-info"><a href="/coordinated_view2">Coordinated View 2</a></button>

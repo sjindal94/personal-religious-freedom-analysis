@@ -121,10 +121,12 @@ def get_past_5_years_attacks(year):
 
 @app.route("/terror_attacks_per_religion/<year>", methods=['POST', 'GET'])
 def get_attacks_per_religion(year):
-    religions = json.loads(request.args.get('religions'))
-    print(religions)
+    religions = []
+    if request.args.get('religions'):
+        religions = json.loads(request.args.get('religions'))
     df = pd.read_csv(TERRORISM_COUNT_PER_RELIGION)
-    df = df[df.majority_religion.isin(religions)]
+    if religions:
+        df = df[df.majority_religion.isin(religions)]
     year_df = df[(df.year == int(year))]
     year_df = year_df.drop('year', axis=1)
     # res = []
