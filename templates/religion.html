@@ -132,11 +132,11 @@ path {
             .attr("height", height);
 
         svg.append("text")
-            .attr("transform", "translate(400,0)")
+            .attr("transform", "translate(300,0)")
             .attr("x", 100)
             .attr("y", 50)
             .attr("font-size", "16px")
-            .text(`Religious Personal Freedom across Countries Aggregated`);
+            .text(`Religious Personal Freedom across Countries Aggregated (2010)`);
 
         svg.append("g")
             .attr("fill", "#3498db")
@@ -251,11 +251,11 @@ path {
 
     const getData = async (year) => {
         let promises = [
-            axios.get(`/religious_freedom/${year}`, {
+            axios.get(`/religious_freedom1`, {
                 params:
                     {religions: JSON.stringify(Object.keys(religions))},
             }),
-            axios.get(`/all_religions`, {
+            axios.get(`/all_religions1`, {
                 params:
                     {religions: JSON.stringify(Object.keys(religions))},
             }),
