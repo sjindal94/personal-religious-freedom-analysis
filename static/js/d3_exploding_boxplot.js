@@ -187,7 +187,6 @@ let exploding_boxplot = function (data, aes, width, height, margin) {
             .attr('fill', function (d) {
                 return colorscale(functorkey(aes.color)(d))
             })
-            .attr("fill-opacity", 0.5)
             .call(function (s) {
                 if (!s.empty())
                     tip(s)
