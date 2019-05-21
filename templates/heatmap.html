@@ -187,6 +187,13 @@
             .attr("width", width)
             .attr("height", height);
 
+        svg.append("text")
+            .attr("transform", "translate(500,0)")
+            .attr("x", -300)
+            .attr("y", 25)
+            .attr("font-size", "16px")
+            .text(`Heat map on diverse features`);
+
         svg.append("g")
             .call(xAxis);
 
