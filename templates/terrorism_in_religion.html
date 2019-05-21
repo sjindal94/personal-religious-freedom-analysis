@@ -52,7 +52,7 @@ body {
             <li class="active">
                 <a href="/coordinated_view1">Coordinated View 1</a>
                 <a href="/coordinated_view2">Coordinated View 2</a>
-                <a href="/terrorism_in_religion">Terrorism in Religion</a>
+                <a href="/terrorism_in_religion">#TerrorAttacks per Religion</a>
                 <a href="/religion">World Religions Data</a>
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
@@ -292,12 +292,13 @@ body {
         });
 
         pie.append("text")
+            .attr("class", "text")
             .attr("transform", function (d) {
                 return "translate(" + label.centroid(d) + ")";
             })
             .attr("dx", ".75em")
             .attr("fill", function (d, i) {
-                return pop_data_color[i];
+                return "black";
             })
             .text(function (d, i) {
                 return (Object.values(pop_data)[i]).toPrecision(4) + ' M';
@@ -337,7 +338,7 @@ body {
             .attr("x", 100)
             .attr("y", 25)
             .attr("font-size", "16px")
-            .text("Majority Population Size");
+            .text("Majority Religion Population Size");
 
         //svgToPng(svg.node(), 'terror_attacks_donut.png');
     }
@@ -394,7 +395,7 @@ body {
             .attr("x", -300)
             .attr("y", 25)
             .attr("font-size", "16px")
-            .text(`Religious Personal Freedom across Countries Aggregated`);
+            .text(`#Terror Attacks per religion`);
 
         svg.append("g")
             .selectAll("rect")

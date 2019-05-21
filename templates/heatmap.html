@@ -69,7 +69,7 @@
             <li class="active">
                 <a href="/coordinated_view1">Coordinated View 1</a>
                 <a href="/coordinated_view2">Coordinated View 2</a>
-                <a href="/terrorism_in_religion">Terrorism in Religion</a>
+                <a href="/terrorism_in_religion">#TerrorAttacks per Religion</a>
                 <a href="/religion">World Religions Data</a>
                 <a href="/">Global Terrorism Data</a>
                 <a href="/happiness">World Happiness Report</a>
@@ -227,7 +227,7 @@
 
         legend
             .selectAll("rect")
-            .data(legendBins)
+            .data(legendBins.reverse())
             .enter()
             .append("rect")
             .attr("x", width - 230)
@@ -247,7 +247,7 @@
             .style("font-size", "9pt")
             .style("font-family", "Consolas, courier")
             .style("fill", "#aaa");
-
+        svgToPng();
         return svg.node();
     }
 
@@ -264,7 +264,6 @@
 
     getData('all').then((data, err) => {
         chart(data[0].data.data, data[0].data.columns);
-        //svgToPng();
     });
 
     $(document).ready(function () {
