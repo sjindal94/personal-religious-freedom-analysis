@@ -24,10 +24,6 @@
         top: 10px;
     }
 
-    #headline {
-        color: black;
-    }
-
 </style>
 <link crossorigin="anonymous"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -91,8 +87,6 @@
                 </button>
             </div>
         </nav>
-        <p id="headline">
-        </p>
         <svg class="chart" style="margin-left: 35px"></svg>
     </div>
 </div>
@@ -100,8 +94,8 @@
 <script src="http://d3js.org/d3.v5.js"></script>
 
 
-<!--<div class="chart">-->
-<!--</div>-->
+<div class="chart">
+</div>
 
 <script>
 
@@ -236,11 +230,11 @@
             .attr("height", height);
 
         svg.append("text")
-            .attr("transform", "translate(300,100)")
-            .attr("x", 10)
-            .attr("y", 10)
-            .attr("font-size", "20px")
-            .text(`Population growth across religion over time`);
+                .attr("transform", "translate(300,100)")
+                .attr("x", 10)
+                .attr("y", 10)
+                .attr("font-size", "20px")
+                .text(`Population growth across religion over time`);
 
         svg.append("g")
             .selectAll("path")
@@ -270,6 +264,8 @@
             .style("top", "30px")
             .style("left", "55px");
 
+        svg.append()
+
         svg.selectAll(".layer")
             .attr("opacity", 1)
             .on("mouseover", function (d, i) {
@@ -282,40 +278,29 @@
 
             .on("mousemove", function (d, i) {
                 let mousex = d3.mouse(this);
+                console.log(this, mousex, d, i);
                 mousex = mousex[0];
-                let idx = parseInt(`${14 * (mousex - 40) / (820 - 40)}`)
-                d3.select('#headline')
-                    .html("")
-                    .append("text")
-                    .attr("font-size", "20px")
-                    .html(`Population: ${d[1][idx].value}` + "<br>"  + `\n Religion: ${d[0]}`);
+                let invertedx = (mousex);
+                console.log(820-40);
 
-                let invertedx = x.invert(mousex);
                 invertedx = 5 * (Math.trunc(invertedx / 5));
-                // console.log(invertedx)
-                // console.log(d[1][invertedx]);
+                let years = (Object.values(d));
                 d3.select(this)
                     .classed("hover", true)
                     .attr("stroke", "black")
-                    .attr("stroke-width", "0.5px"),
-                    tooltip.html("<p>" + d[0] + " : " + invertedx + "</p>").style("visibility", "visible");
+                    .attr("stroke-width", "0.5px");
+
+                tooltip.html("<p>" + d[0] + "<br>" + pro + "</p>").style("visibility", "visible");
 
             })
-            .on("mouseout", function (d, i) {
-                $('headline').text(d[1][i]);
-                let mousex = d3.mouse(this);
-                mousex = mousex[0];
-                let invertedx = x.invert(mousex);
-                invertedx = 5 * (Math.trunc(invertedx / 5));
-
+            .on("mouseout", function (d) {
                 svg.selectAll(".layer")
                     .transition()
                     .duration(250)
                     .attr("opacity", "1");
                 d3.select(this)
                     .classed("hover", false)
-                    .attr("stroke-width", "0px"), tooltip.html("<p>" + d[0] + " : " + invertedx + "</p>").style("visibility", "hidden");
-                ;
+                    .attr("stroke-width", "0px"), tooltip.html("<p>" + d.key +"asfaf"+ "<br>" + pro + "</p>").style("visibility", "hidden");
             });
 
         let vertical = d3.select(".chart")
